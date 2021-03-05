@@ -9,8 +9,6 @@ jobs:
     name: Test
     runs-on: macOS-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
     - name: Install CocoaPods
       run: pod install
     - name: Tests

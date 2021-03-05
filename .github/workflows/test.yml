@@ -11,10 +11,5 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    - name: Install CocoaPods
-      run: |
-        ls -la
-        cd tangem-sdk-ios
-        pod install
     - name: Tests
       run: fastlane test

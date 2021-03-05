@@ -9,8 +9,8 @@ jobs:
     name: Test
     runs-on: macOS-latest
     steps:
+    - run: ls -la
     - name: Install CocoaPods
       run: pod install
-    - run: ls -la
     - name: Tests
       run: fastlane test

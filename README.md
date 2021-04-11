@@ -118,13 +118,14 @@ tangemSdk.scanCard { result in
 ```
 
 #### Sign hash
-Method `sign(hash: hash, cardId: cardId)` allows you to sign single hash. The SIGN command will return a corresponding signature.
+Method `sign(hash: Data, walletPublicKey: Data, cardId: String?)` allows you to sign single hash. The SIGN command will return the corresponding signature.
 
 **Arguments:**
 
 | Parameter | Description |
 | ------------ | ------------ |
 | hash | Hash to be signed by card |
+| walletPublicKey | Public key of wallet that should sign hashes |
 | cardId | *(Optional)* If cardId is passed, the sign command will be performed only if the card  |
 
 
@@ -133,8 +134,10 @@ Example:
 // Creates random hash with length = 32
 let hash = Data((0..<32).map { _ in UInt8(arc4random_uniform(255)) })
 let cardId = ...
+// Can be found in Card.wallets
+let publicKey = ...
 
-tangemSdk.sign(hash: hash, cardId: cardId) { result in
+tangemSdk.sign(hash: hash, walletPublicKey: publicKey, cardId: cardId) { result in
     switch result {
     case .success(let signResponse):
         print("Result: \(signResponse)")
@@ -145,13 +148,14 @@ tangemSdk.sign(hash: hash, cardId: cardId) { result in
 ```
 
 #### Sign hashes
-Method `sign(hashes: hashes, cardId: cardId)` allows you to sign multiple hashes. The SIGN command will return a corresponding array of signatures.
+Method `sign(hashes: [Data], walletPublicKey: Data, cardId: String)` allows you to sign multiple hashes. The SIGN command will return a corresponding array of signatures.
 
 **Arguments:**
 
 | Parameter | Description |
 | ------------ | ------------ |
 | hashes | Array of hashes to be signed by card |
+| walletPublicKey | Public key of wallet that should sign hashes |
 | cardId | *(Optional)* If cardId is passed, the sign command will be performed only if the card  |
 
 
@@ -159,8 +163,10 @@ Example:
 ```swift
 let hashes = [hash1, hash2]
 let cardId = ...
+// Can be found in Card.wallets
+let publicKey = ...
 
-tangemSdk.sign(hashes: hashes, cardId: cardId) { result in
+tangemSdk.sign(hashes: hashes, walletPublicKey: publicKey, cardId: cardId) { result in
     switch result {
     case .success(let signResponse):
         print("Result: \(signResponse)")
@@ -283,6 +289,37 @@ tangemSdk.startSession(cardId: nil) { session, error in
 }
 ```
 
+## Migration Guide v4
+In new version of SDK `walletPublicKey`, `curve`, `maxSignatures`, `walletRemainingSignatures` and `walletSignedHashes` were removed from card. All wallet related information now stored in `Array<CardWallet>`. After scanning the card you can access wallet using `wallet(at index: WalletIndex) -> CardWallet?` using wallet integer index or wallet public key. 
+```swift
+tangemSdk.scanCard { result in
+    switch result {
+        case .success(let card):
+            print("Wallets on card: \(card.wallets)")
+            guard let firstWallet = card.wallets.first else {
+                print("There is no wallets on card")
+                return
+            }
+            
+            print("First wallet public key: \(firstWallet.publicKey)")
+            print("First wallet index: \(firstWallet.index)")
+            print("First wallet status: \(firstWallet.status)")
+
+            // Searching for wallet by public key. Public key will be nil if wallet has status Empty
+            if let pubkey = firstWallet.publicKey {
+                print("Wallet with pubkey \(pubkey.asHexString()): \(card.wallet(at: .publicKey(pubkey)))")
+            }
+
+            // Searching for wallet by index
+            print("Wallet at index \(firstWallet.index): \(card.wallet(at: .index(firstWallet.index)))")
+            
+        case .failure(let error):
+            print("Completed with error: \(error.localizedDescription), details: \(error)")
+    }
+}
+```
+
+Signing hashes now splitted into two methods one for signing single hash and second for signing multiple hashes. Signing array of hashes now will return array of `Data` instead of single `Data`. Also you must pass walletPublicKey received from `card.wallets` to select with which wallet should interact, this related to [`sign(hash)`](#sign-hash) , [`sign(hashes)`](#sign-hashes) and `purgeWallet` methods in Tangem SDK.
 
 ## Customization
 ### UI

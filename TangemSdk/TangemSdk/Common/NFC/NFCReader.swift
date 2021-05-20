@@ -72,6 +72,14 @@ final class NFCReader: NSObject {
     
     init(pollingOption: NFCTagReaderSession.PollingOption = [.iso14443]) {
         self.pollingOption = pollingOption
+        super.init()
+        
+        NotificationCenter //For instant cancellation
+            .default
+            .publisher(for: UIApplication.didBecomeActiveNotification)
+            .map { _ in return true }
+            .assign (to: \.cancelled, on: self)
+            .store(in: &bag)
     }
     
     deinit {
@@ -109,13 +117,6 @@ extension NFCReader: CardReader {
             startNFCStuckTimer()
             start()
         }
-        
-        NotificationCenter //For instant cancellation
-            .default
-            .publisher(for: UIApplication.didBecomeActiveNotification)
-            .map { _ in return true }
-            .assign (to: \.cancelled, on: self)
-            .store(in: &bag)
         
         $cancelled //speed up cancellation if no tag interaction
             .dropFirst()

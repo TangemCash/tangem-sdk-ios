@@ -12,7 +12,8 @@ import SwiftUI
 struct PhoneView: View {
     @EnvironmentObject var style: TangemSdkStyle
     
-    private let capsuleHeight: CGFloat = 40
+    private let notchHeight: CGFloat = 12
+    private let notchCornerRadius: CGFloat = 10
     
     var body: some View {
         GeometryReader { geo in
@@ -26,10 +27,10 @@ struct PhoneView: View {
                 
                 Capsule(style: .continuous)
                     .fill(style.colors.phoneStroke)
+                    .cornerRadius(notchCornerRadius)
                     .frame(width: 0.5 * geo.size.width,
-                           height: capsuleHeight)
-                    .clipShape(Rectangle().offset(y: capsuleHeight/2))
-                    .offset(y: -geo.size.height/2)
+                           height: 2 * notchHeight)
+                    .offset(y: -geo.size.height/2 + notchHeight)
             }
         }
     }

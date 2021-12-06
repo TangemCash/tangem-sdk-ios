@@ -1,24 +1,60 @@
-*   83d98d7 - (HEAD -> release/3.1.4, tag: develop-97, origin/develop, develop) Merge pull request #111 from tangem/IOS-993_create_wallet_invalid_state
+*   209f0a7 - (HEAD -> release/3.1.5, tag: develop-109, origin/develop, develop) Merge pull request #128 from tangem/CSS-282_attst_crashfix
 |\  
-| * eec08a8 - IOS-993 Create wallet task
+| * 24bc140 - CSS-282 attestation crashfix
 |/  
-*   7c8a4a3 - (tag: develop-96) Merge pull request #110 from tangem/CSS_263_create_wallet_response
+*   951d65d - (tag: develop-108) Merge pull request #127 from tangem/CSS-281_linked_terminal_omit
 |\  
-| * 5c652df - CSS-263 Fix comment
-| * 50f084c - CSS-263 Handle wallet response in create wallet command
-| * a5ce7d7 - CSS-263 Fix read wallet command
+| * f64e47d - CSS-281 Omit terminal keys for new cards
 |/  
-*   e5b2de8 - (tag: develop-95) Merge pull request #109 from tangem/CSS-268_fix_pin_error_message
+*   887fa2a - (tag: develop-107) Merge pull request #123 from tangem/CSS-280_create_wallet_task_fix
 |\  
-| * ef6c704 - CSS-268 Fix pin error message
+| *   9a12cfc - Merge branch 'develop' into CSS-280_create_wallet_task_fix
+| |\  
+| |/  
+|/|   
+* |   8dcd2ee - (tag: develop-106) Merge pull request #122 from tangem/CSS_279_rename_derivationPathes
+|\ \  
+| * | da3f0a9 - CSS-279 Rename derivationPathes to derivationPaths
+|/ /  
+| * 0d25934 - CSS-280 Create wallet task. Backport for ikd cards
 |/  
-*   ad1905b - (tag: develop-94) Merge pull request #108 from tangem/CSS_267_change_text
+*   77f7318 - (tag: develop-105) Merge pull request #121 from tangem/CSS-278_select_wallet_index
 |\  
-| * b47cb31 - CSS-267 Change error text for en
+| * 4800ab5 - CSS-278 Select wallet by index
 |/  
-*   4f99758 - (tag: develop-93) Merge pull request #107 from tangem/CSS-266_read_files_fix
+*   a832ade - (tag: develop-104) Merge pull request #119 from tangem/CSS-277_hd_wallets_refactor
 |\  
-| * 352b1f7 - CSS-266 Re-indent app model
-| * c0a5649 - CSS-266 Fix read files
+| * e76c660 - CSS-277 Update docs and minor renamings
+| * cc5533f - CSS-277 Make ExtendedPublicKey conforms to Codable
+| * f72879a - CSS-277 hd wallets refactor
+| * 7eae403 - CSS-277 Refactor hd wallets
 |/  
-* 32ffff5 - (tag: develop-92) Merge pull request #106 from tangem/master
+*   d668bf4 - (tag: develop-103) Merge pull request #118 from tangem/CSS-276_derivatoinPath_codable
+|\  
+| *   0237e13 - Merge branch 'develop' into CSS-276_derivatoinPath_codable
+| |\  
+| |/  
+|/|   
+* |   f12898f - (tag: develop-102) Merge pull request #117 from tangem/CSS-275_update_default_initial_message
+|\ \  
+| * | f9766ba - CSS-275 Update default initial message
+|/ /  
+| * b764227 - CSS-276 Add hashable conformance
+| * 1a8ed8b - CSS-276 Remove available attr
+| * 13593c4 - CSS-276 Custom codable implementation
+| * ab62e5c - CSS-276 Remove availability attr
+| * 95944b9 - CSS-276 Make DerivationPath conform to Codable
+|/  
+*   0425c3b - (tag: develop-101) Merge pull request #116 from tangem/CSS-274_optimize_collections
+|\  
+| * de67b0d - CSS-274 Remove excess count calls
+|/  
+*   2716940 - (tag: develop-100) Merge pull request #115 from tangem/CSS-273_fix_query_order
+|\  
+| * de3e9c7 - CSS-273 Make quey items order constant
+|/  
+*   2400e91 - (tag: develop-99) Merge pull request #114 from tangem/CSS-271_pass_urlsessionsconf
+|\  
+| * ca83163 - CSS-271 Pass url session configuration
+|/  
+* 8d1cbbd - (tag: develop-98) Merge pull request #113 from tangem/master

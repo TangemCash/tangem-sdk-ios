@@ -47,7 +47,7 @@ public struct FirmwareVersion: Codable {
             self.patch = patch
         }
         
-        type = .type(for: cardTypeStr)
+        type = .type(for: cardTypeStr.trim())
     }
     
     public init(major: Int, minor: Int, patch: Int = 0, type: FirmwareType = .sdk) {
@@ -131,7 +131,7 @@ public extension FirmwareVersion {
         case special
         
         static func type(for str: String) -> FirmwareType {
-            FirmwareType(rawValue: str) ?? .special
+            FirmwareType(rawValue: str) ?? .release
         }
     }
 }

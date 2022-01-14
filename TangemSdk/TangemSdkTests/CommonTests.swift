@@ -60,4 +60,31 @@ class CommonTests: XCTestCase {
         formatter.style = .last(16)
         XCTAssertEqual(formatter.string(from: cardIdString), "Card #CB79 0000 0001 8201")
     }
+    
+    func testFirmwareParsing() {
+        let dev = FirmwareVersion(stringValue: "4.45d Sdk")
+        XCTAssertEqual(dev.major, 4)
+        XCTAssertEqual(dev.minor, 45)
+        XCTAssertEqual(dev.patch, 0)
+        XCTAssertEqual(dev.type, .release)
+        
+        let spec = FirmwareVersion(stringValue: "4.45 special")
+        XCTAssertEqual(spec.major, 4)
+        XCTAssertEqual(spec.minor, 45)
+        XCTAssertEqual(spec.patch, 0)
+        XCTAssertEqual(spec.type, .special)
+        
+        let spec1 = FirmwareVersion(stringValue: "4.45special")
+        XCTAssertEqual(spec, spec1)
+        
+        let rel = FirmwareVersion(stringValue: "4.45r")
+        XCTAssertEqual(rel.type, .release)
+        XCTAssertEqual(rel.major, 4)
+        XCTAssertEqual(rel.minor, 45)
+        XCTAssertEqual(rel.patch, 0)
+        XCTAssertEqual(rel.type, .release)
+        
+        let rel1 = FirmwareVersion(stringValue: "4.45")
+        XCTAssertEqual(rel, rel1)
+    }
 }

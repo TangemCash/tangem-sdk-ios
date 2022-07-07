@@ -17,15 +17,12 @@ public struct CardIdFormatter {
         self.style = style
     }
     
-    public func string(from rawCardId: String) -> String {
-        let isTwinCard = TwinCardSeries.series(for: rawCardId) != nil
-        let cardId = isTwinCard ? String(rawCardId.dropLast()) : rawCardId
-        
+    public func string(from cardId: String) -> String {
         switch style {
         case .full:
             return split(cardId)
-        case .last(let numbers):
-            let cropped = String(cardId.suffix(numbers))
+        case .last(let numbers, let offset):
+            let cropped = String(cardId.dropLast(offset).suffix(numbers))
             let splitted = split(cropped)
             return format(splitted)
         case .lastMasked(let numbers, let mask):

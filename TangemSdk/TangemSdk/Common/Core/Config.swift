@@ -67,7 +67,7 @@ public enum CardIdDisplayFormat {
     /// Full cardId splitted by 4 numbers
     case full
     /// n numbers from the end
-    case last(_ numbers: Int)
+    case last(_ numbers: Int, offset: Int)
     /// n numbers from the end with mask, e.g.  * * *1234
     case lastMasked(_ numbers: Int, mask: String = "***")
     /// n numbers from the end except last

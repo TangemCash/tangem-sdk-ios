@@ -17,7 +17,10 @@ public struct CardIdFormatter {
         self.style = style
     }
     
-    public func string(from cardId: String) -> String {
+    public func string(from rawCardId: String) -> String {
+        let isTwinCard = TwinCardSeries.series(for: rawCardId) != nil
+        let cardId = isTwinCard ? String(rawCardId.dropLast()) : rawCardId
+        
         switch style {
         case .full:
             return split(cardId)

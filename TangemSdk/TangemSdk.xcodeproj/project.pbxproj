@@ -291,6 +291,7 @@
 		B0EC6500260110530088F03D /* WalletDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EC64FF260110530088F03D /* WalletDeserializer.swift */; };
 		B0EC6508260110CC0088F03D /* ReadWalletCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EC6507260110CC0088F03D /* ReadWalletCommand.swift */; };
 		B0EC650E260131220088F03D /* ReadWalletsListCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EC650D260131220088F03D /* ReadWalletsListCommand.swift */; };
+		DAA153C02877100D002254D1 /* TwinCardInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA153BF2877100D002254D1 /* TwinCardInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -595,6 +596,7 @@
 		B0EC64FF260110530088F03D /* WalletDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDeserializer.swift; sourceTree = "<group>"; };
 		B0EC6507260110CC0088F03D /* ReadWalletCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWalletCommand.swift; sourceTree = "<group>"; };
 		B0EC650D260131220088F03D /* ReadWalletsListCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWalletsListCommand.swift; sourceTree = "<group>"; };
+		DAA153BF2877100D002254D1 /* TwinCardInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwinCardInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1225,6 +1227,7 @@
 				5D6A92D52344E2B400158457 /* Localization */,
 				B0EC64FE260110440088F03D /* Deserialization */,
 				5DFCAF56258CB9FF00CD237F /* CardIdFormatter.swift */,
+				DAA153BF2877100D002254D1 /* TwinCardInfo.swift */,
 				5D379C2A268FA4D200C7F473 /* CompletionResult.swift */,
 				5DDD6C6B25D30B0D00E48D7B /* SuccessResponse.swift */,
 				5D379C2C268FA53D00C7F473 /* KeyPair.swift */,
@@ -1652,6 +1655,7 @@
 				B0EC6500260110530088F03D /* WalletDeserializer.swift in Sources */,
 				5D379C2B268FA4D200C7F473 /* CompletionResult.swift in Sources */,
 				5D86CBDD24A1105A00FB5BA7 /* Manufacturer.swift in Sources */,
+				DAA153C02877100D002254D1 /* TwinCardInfo.swift in Sources */,
 				B0D3C48B26088ECD0038A5C9 /* Array+Tlv.swift in Sources */,
 				B01B9A572530871800ECB6BF /* FileHashHelper.swift in Sources */,
 				5D6931D223D9AAD90088C6C0 /* TlvEncoder.swift in Sources */,

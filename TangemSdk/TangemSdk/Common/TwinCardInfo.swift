@@ -14,14 +14,14 @@ public enum TwinCardSeries: String, CaseIterable {
     case cb64 = "CB64"
     case cb65 = "CB65"
 
-    var number: Int {
+    public var number: Int {
         switch self {
         case .cb61, .cb64: return 1
         case .cb62, .cb65: return 2
         }
     }
 
-    var pair: TwinCardSeries {
+    public var pair: TwinCardSeries {
         switch self {
         case .cb61: return .cb62
         case .cb62: return .cb61
@@ -30,13 +30,19 @@ public enum TwinCardSeries: String, CaseIterable {
         }
     }
 
-    static func series(for cardId: String) -> TwinCardSeries? {
+    public static func series(for cardId: String) -> TwinCardSeries? {
         TwinCardSeries.allCases.first(where: { cardId.hasPrefix($0.rawValue) })
     }
 }
 
 public struct TwinCardInfo {
-    let cid: String
-    let series: TwinCardSeries
-    var pairPublicKey: Data?
+    public let cid: String
+    public let series: TwinCardSeries
+    public var pairPublicKey: Data?
+    
+    public init(cid: String, series: TwinCardSeries, pairPublicKey: Data? = nil) {
+        self.cid = cid
+        self.series = series
+        self.pairPublicKey = pairPublicKey
+    }
 }

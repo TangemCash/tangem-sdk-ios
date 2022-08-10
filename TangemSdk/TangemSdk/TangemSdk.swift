@@ -21,7 +21,7 @@ public final class TangemSdk {
     private let onlineCardVerifier = OnlineCardVerifier()
     private let terminalKeysService = TerminalKeysService()
     private var cardSession: CardSession? = nil
-    private var onlineVerificationCancellable: AnyCancellable? = nil
+    private var onlineVerificationCancellables: [String: AnyCancellable] = [:]
     
     private lazy var jsonConverter: JSONRPCConverter = {
         return .shared
@@ -175,7 +175,7 @@ public extension TangemSdk {
     func loadCardInfo(cardPublicKey: Data,
                       cardId: String,
                       completion: @escaping CompletionResult<CardVerifyAndGetInfoResponse.Item>) {
-        onlineVerificationCancellable = onlineCardVerifier
+        let cancellable = onlineCardVerifier
             .getCardInfo(cardId: cardId, cardPublicKey: cardPublicKey)
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { receivedCompletion in
@@ -185,6 +185,8 @@ public extension TangemSdk {
             }, receiveValue: { response in
                 completion(.success(response))
             })
+
+        onlineVerificationCancellables[cardId] = cancellable
     }
     
     /// Set or change card's access code

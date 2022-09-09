@@ -38,18 +38,18 @@ public class CardSession {
     private var currentTag: NFCTagType = .none
     private var resetCodesController: ResetCodesController? = nil
     /// Allows access codes to be stored in a secure location
-    private var accessCodeRepository: AccessCodeRepository? = nil
+    private var userCodeRepository: UserCodeRepository? = nil
     
     private var shouldRequestBiometrics: Bool {
-        guard let accessCodeRepository = self.accessCodeRepository else {
+        guard let userCodeRepository = self.userCodeRepository else {
             return false
         }
         
         if let cardId = self.cardId {
-            return accessCodeRepository.contains(cardId)
+            return userCodeRepository.contains(cardId)
         }
         
-        return !accessCodeRepository.isEmpty
+        return !userCodeRepository.isEmpty
     }
     
     /// Main initializer
@@ -60,21 +60,21 @@ public class CardSession {
     ///   - cardReader: NFC-reader implementation
     ///   - viewDelegate: viewDelegate implementation
     ///   - jsonConverter: JSONRPCConverter
-    ///   - accessCodeRepository: Optional AccessCodeRepository that saves access codes to Apple Keychain
+    ///   - userCodeRepository: Optional UserCodeRepository that saves access codes to Apple Keychain
     init(environment: SessionEnvironment,
          cardId: String? = nil,
          initialMessage: Message? = nil,
          cardReader: CardReader,
          viewDelegate: SessionViewDelegate,
          jsonConverter: JSONRPCConverter,
-         accessCodeRepository: AccessCodeRepository?) {
+         userCodeRepository: UserCodeRepository?) {
         self.reader = cardReader
         self.viewDelegate = viewDelegate
         self.environment = environment
         self.initialMessage = initialMessage
         self.cardId = cardId
         self.jsonConverter = jsonConverter
-        self.accessCodeRepository = accessCodeRepository
+        self.userCodeRepository = userCodeRepository
     }
     
     deinit {
@@ -350,7 +350,7 @@ public class CardSession {
         switch environment.config.accessCodeRequestPolicy {
         case .alwaysWithBiometrics:
             if shouldRequestBiometrics {
-                 accessCodeRepository?.unlock { result in
+                 userCodeRepository?.unlock { result in
                      switch result {
                      case .success:
                          runnable.prepare(self, completion: completion)
@@ -497,7 +497,7 @@ public class CardSession {
     
     func fetchAccessCodeIfNeeded() {
         guard let card = environment.card, card.isAccessCodeSet,
-              let userCode = accessCodeRepository?.fetch(for: card.cardId)
+              let userCode = userCodeRepository?.fetch(for: card.cardId)
         else {
             return
         }
@@ -524,8 +524,8 @@ public class CardSession {
             return
         }
         
-        accessCodeRepository?.save(userCode, for: card.cardId) {[weak self] result in
-            self?.accessCodeRepository?.lock()
+        userCodeRepository?.save(userCode, for: card.cardId) {[weak self] result in
+            self?.userCodeRepository?.lock()
         }
     }
     

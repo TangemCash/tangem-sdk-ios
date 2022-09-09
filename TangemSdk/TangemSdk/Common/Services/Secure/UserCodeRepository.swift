@@ -1,5 +1,5 @@
 //
-//  AccessCodeRepository.swift
+//  UserCodeRepository.swift
 //  TangemSdk
 //
 //  Created by Andrey Chukavin on 13.05.2022.
@@ -9,7 +9,7 @@
 import LocalAuthentication
 
 @available(iOS 13.0, *)
-public class AccessCodeRepository {
+public class UserCodeRepository {
     var isEmpty: Bool {
         getCards().isEmpty
     }
@@ -23,7 +23,7 @@ public class AccessCodeRepository {
     public init() {}
     
     deinit {
-        Log.debug("AccessCodeRepository deinit")
+        Log.debug("UserCodeRepository deinit")
     }
     
     func save(_ userCode: UserCode, for cardIds: [String], completion: @escaping (Result<Void, TangemSdkError>) -> Void) {

@@ -641,8 +641,8 @@ extension TangemSdk {
     }
     
     public func deleteSavedAccessCodes() {
-        let accessCodeRepository = makeAccessCodeRepository(with: config)
-        accessCodeRepository?.clear()
+        let userCodeRepository = makeUserCodeRepository(with: config)
+        userCodeRepository?.clear()
     }
 }
 
@@ -659,10 +659,10 @@ extension TangemSdk {
         Log.config = config.logConfig
     }
     
-    private func makeAccessCodeRepository(with config: Config) -> AccessCodeRepository? {
+    private func makeUserCodeRepository(with config: Config) -> UserCodeRepository? {
         if case .alwaysWithBiometrics = config.accessCodeRequestPolicy,
            BiometricsUtil.isAvailable {
-            return AccessCodeRepository()
+            return UserCodeRepository()
         }
         
         return nil
@@ -677,6 +677,6 @@ extension TangemSdk {
               cardReader: reader,
               viewDelegate: viewDelegate,
               jsonConverter: jsonConverter,
-              accessCodeRepository: makeAccessCodeRepository(with: config))
+              userCodeRepository: makeUserCodeRepository(with: config))
     }
 }

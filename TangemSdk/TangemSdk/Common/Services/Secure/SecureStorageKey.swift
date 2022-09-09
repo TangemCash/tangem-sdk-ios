@@ -14,7 +14,7 @@ enum SecureStorageKey: String {
     case signatureOfAttestedCards
     
     //access codes repo
-    case accessCodes
+    case userCodes
     case cardsWithSavedCodes
     
     //secure enclave service

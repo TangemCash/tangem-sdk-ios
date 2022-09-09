@@ -10,7 +10,7 @@ import Foundation
 
 ///// Contains information about the user code
 @available(iOS 13.0, *)
-struct UserCode {
+struct UserCode: Codable {
     let type: UserCodeType
     let value: Data?
     
@@ -30,7 +30,7 @@ struct UserCode {
     }
 }
 
-public enum UserCodeType {
+public enum UserCodeType: Codable {
     case accessCode
     case passcode
     

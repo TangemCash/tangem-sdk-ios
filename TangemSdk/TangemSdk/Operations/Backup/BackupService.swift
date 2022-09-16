@@ -36,6 +36,7 @@ public class BackupService: ObservableObject {
     public var primaryCardIsSet: Bool { repo.data.primaryCard != nil }
     public var primaryCardId: String? { repo.data.primaryCard?.cardId }
     public var backupCardIds: [String] { repo.data.backupCards.map {$0.cardId} }
+    public var allCardIds: [String] { [primaryCardId].compactMap { $0 } + backupCardIds }
     
     private let sdk: TangemSdk
     private var repo: BackupRepo = .init()

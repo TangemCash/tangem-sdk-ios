@@ -640,6 +640,14 @@ extension TangemSdk {
         }
     }
     
+    public func saveAccessCode(_ accessCode: String, for cardIds: [String], completion: @escaping (Result<Void, TangemSdkError>) -> Void) {
+        if let userCodeRepository = makeUserCodeRepository(with: config) {
+            userCodeRepository.save(UserCode(.accessCode, stringValue: accessCode), for: cardIds, completion: completion)
+        } else {
+            completion(.failure(.biometricsUnavailable))
+        }
+    }
+    
     public func deleteSavedAccessCodes() {
         let userCodeRepository = makeUserCodeRepository(with: config)
         userCodeRepository?.clear()

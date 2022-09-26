@@ -70,7 +70,7 @@ final class PreflightReadTask: CardSessionRunnable {
                     completion(.failure(error.toTangemSdkError()))
                 }
                 
-                session.fetchAccessCodeIfNeeded()
+                session.fetchUserCodeIfNeeded()
                 
                 self.finalizeRead(in: session, completion: completion)
             case .failure(let error):

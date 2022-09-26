@@ -126,7 +126,7 @@ public class CardSession {
                             self.stop(message: "nfc_alert_default_done".localized) {
                                 completion(.success(runnableResponse))
                                 
-                                session.saveAccessCodeIfNeeded()
+                                session.saveUserCodeIfNeeded()
                             }
                         case .failure(let error):
                             Log.error(error)
@@ -335,7 +335,7 @@ public class CardSession {
         Log.session("Prepare card session")
         preflightReadMode = runnable.preflightReadMode
         
-        let requestAccessCodeAction = {
+        let requestUserCodeAction = {
             self.environment.accessCode = UserCode(.accessCode, value: nil)
             self.requestUserCodeIfNeeded(.accessCode) { result in
                 switch result {
@@ -355,14 +355,14 @@ public class CardSession {
                      case .success:
                          runnable.prepare(self, completion: completion)
                      case .failure:
-                         requestAccessCodeAction()
+                         requestUserCodeAction()
                      }
                  }
             } else {
                 runnable.prepare(self, completion: completion)
             }
         case .always:
-            requestAccessCodeAction()
+            requestUserCodeAction()
         case .default:
             runnable.prepare(self, completion: completion)
         }
@@ -495,7 +495,7 @@ public class CardSession {
         }))
     }
     
-    func fetchAccessCodeIfNeeded() {
+    func fetchUserCodeIfNeeded() {
         guard let card = environment.card, card.isAccessCodeSet,
               let userCode = userCodeRepository?.fetch(for: card.cardId)
         else {
@@ -510,7 +510,7 @@ public class CardSession {
         }
     }
     
-    func saveAccessCodeIfNeeded() {
+    func saveUserCodeIfNeeded() {
         guard let card = environment.card else {
             return
         }

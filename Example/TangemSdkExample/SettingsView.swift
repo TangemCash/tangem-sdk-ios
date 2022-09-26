@@ -18,7 +18,7 @@ struct SettingsView: View {
             
             Toggle("Display logs", isOn: $model.displayLogs)
             
-            Text("Access code request policy")
+            Text("User code request policy")
                 .fontWeight(.bold)
                 .padding()
             
@@ -30,7 +30,7 @@ struct SettingsView: View {
             }
             .pickerStyle(SegmentedPickerStyle())
             
-            Button("Remove access codes", action: model.onRemoveAccessCodes)
+            Button("Remove user codes", action: model.onRemoveUserCodes)
                 .padding()
             
             Spacer()

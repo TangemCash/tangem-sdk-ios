@@ -715,7 +715,7 @@ extension AppModel {
         showSettings = true
     }
     
-    func onRemoveAccessCodes() {
+    func onRemoveUserCodes() {
         let repo = UserCodeRepository()
         repo.clear()
     }

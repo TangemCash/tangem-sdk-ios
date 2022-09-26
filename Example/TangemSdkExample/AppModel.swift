@@ -716,7 +716,7 @@ extension AppModel {
     }
     
     func onRemoveAccessCodes() {
-        let repo = AccessCodeRepository()
+        let repo = UserCodeRepository()
         repo.clear()
     }
     

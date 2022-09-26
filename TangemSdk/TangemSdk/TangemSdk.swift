@@ -639,6 +639,19 @@ extension TangemSdk {
             completion(error.toJsonResponse().json)
         }
     }
+    
+    public func saveAccessCode(_ accessCode: String, for cardIds: [String], completion: @escaping (Result<Void, TangemSdkError>) -> Void) {
+        if let userCodeRepository = makeUserCodeRepository(with: config) {
+            userCodeRepository.save(UserCode(.accessCode, stringValue: accessCode), for: cardIds, completion: completion)
+        } else {
+            completion(.failure(.biometricsUnavailable))
+        }
+    }
+    
+    public func deleteSavedAccessCodes() {
+        let userCodeRepository = makeUserCodeRepository(with: config)
+        userCodeRepository?.clear()
+    }
 }
 
 //MARK: - Private
@@ -654,10 +667,10 @@ extension TangemSdk {
         Log.config = config.logConfig
     }
     
-    private func makeAccessCodeRepository(with config: Config) -> AccessCodeRepository? {
+    private func makeUserCodeRepository(with config: Config) -> UserCodeRepository? {
         if case .alwaysWithBiometrics = config.accessCodeRequestPolicy,
            BiometricsUtil.isAvailable {
-            return AccessCodeRepository()
+            return UserCodeRepository()
         }
         
         return nil
@@ -672,6 +685,6 @@ extension TangemSdk {
               cardReader: reader,
               viewDelegate: viewDelegate,
               jsonConverter: jsonConverter,
-              accessCodeRepository: makeAccessCodeRepository(with: config))
+              userCodeRepository: makeUserCodeRepository(with: config))
     }
 }

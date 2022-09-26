@@ -291,7 +291,7 @@
 		B0EC6500260110530088F03D /* WalletDeserializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EC64FF260110530088F03D /* WalletDeserializer.swift */; };
 		B0EC6508260110CC0088F03D /* ReadWalletCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EC6507260110CC0088F03D /* ReadWalletCommand.swift */; };
 		B0EC650E260131220088F03D /* ReadWalletsListCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0EC650D260131220088F03D /* ReadWalletsListCommand.swift */; };
-		DA216CC0282E4D86003585B9 /* AccessCodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA216CBF282E4D86003585B9 /* AccessCodeRepository.swift */; };
+		DAA5E2F328D0BF40003C0E80 /* UserCodeRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5E2F228D0BF40003C0E80 /* UserCodeRepository.swift */; };
 		DC8B0E3F286F221D009D64F7 /* BiometricsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B0E3E286F221D009D64F7 /* BiometricsUtil.swift */; };
 		DC9FFF2C28B354EF0076BCDC /* LAContext+.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9FFF2B28B354EF0076BCDC /* LAContext+.swift */; };
 		DCEA3ABC2875AEBA00B0B0DA /* BiometricsStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCEA3ABB2875AEBA00B0B0DA /* BiometricsStorage.swift */; };
@@ -600,7 +600,7 @@
 		B0EC64FF260110530088F03D /* WalletDeserializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletDeserializer.swift; sourceTree = "<group>"; };
 		B0EC6507260110CC0088F03D /* ReadWalletCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWalletCommand.swift; sourceTree = "<group>"; };
 		B0EC650D260131220088F03D /* ReadWalletsListCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadWalletsListCommand.swift; sourceTree = "<group>"; };
-		DA216CBF282E4D86003585B9 /* AccessCodeRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessCodeRepository.swift; sourceTree = "<group>"; };
+		DAA5E2F228D0BF40003C0E80 /* UserCodeRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCodeRepository.swift; sourceTree = "<group>"; };
 		DC8B0E3E286F221D009D64F7 /* BiometricsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsUtil.swift; sourceTree = "<group>"; };
 		DC9FFF2B28B354EF0076BCDC /* LAContext+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LAContext+.swift"; sourceTree = "<group>"; };
 		DCEA3ABB2875AEBA00B0B0DA /* BiometricsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsStorage.swift; sourceTree = "<group>"; };
@@ -660,7 +660,7 @@
 				5DE59F2E23D9703A00312DA4 /* SecureStorage.swift */,
 				5D14947E2686458100C0D923 /* GenericPasswordConvertible.swift */,
 				5D1494802686488600C0D923 /* SecureEnclaveService.swift */,
-				DA216CBF282E4D86003585B9 /* AccessCodeRepository.swift */,
+				DAA5E2F228D0BF40003C0E80 /* UserCodeRepository.swift */,
 				DC8B0E3E286F221D009D64F7 /* BiometricsUtil.swift */,
 				DCEA3ABB2875AEBA00B0B0DA /* BiometricsStorage.swift */,
 				DCEA3ABD2875AF0F00B0B0DA /* SecureStorageKey.swift */,
@@ -1647,7 +1647,6 @@
 				5DDD6C6C25D30B0D00E48D7B /* SuccessResponse.swift in Sources */,
 				5D8666622731687A0095CC82 /* ResetCodesViewModel.swift in Sources */,
 				5D6831D423DB31AB0095BB1D /* PurgeWalletCommand.swift in Sources */,
-				DA216CC0282E4D86003585B9 /* AccessCodeRepository.swift in Sources */,
 				5DCAA7872383DDC200249F42 /* ReadIssuerDataCommand.swift in Sources */,
 				B0390F7B25658EEE0061E5ED /* CardSettings.swift in Sources */,
 				5DA5B61C233E12B30058C720 /* Tlv.swift in Sources */,
@@ -1730,6 +1729,7 @@
 				5D379C2D268FA53D00C7F473 /* KeyPair.swift in Sources */,
 				5DE59F2B23D96F8B00312DA4 /* NFCUtils.swift in Sources */,
 				5D170AF126B42CA3000D4F36 /* ExtendedPublicKey.swift in Sources */,
+				DAA5E2F328D0BF40003C0E80 /* UserCodeRepository.swift in Sources */,
 				5D7F4E3E2489456E00A1700D /* TangemSdk+Combine.swift in Sources */,
 				5DE7EA1826C3EDDA00B551EF /* TangemSdkStyle.swift in Sources */,
 				5DDD6D4825D57F0900E48D7B /* SLIX+.swift in Sources */,

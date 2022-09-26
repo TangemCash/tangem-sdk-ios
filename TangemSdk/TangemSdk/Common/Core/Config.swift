@@ -62,8 +62,8 @@ public struct Config {
     /// Only `secp256k1` and `ed25519` supported
     public var defaultDerivationPaths: [EllipticCurve: [DerivationPath]] = [:]
     
-    /// Access codes  request policy
-    public var accessCodeRequestPolicy: AccessCodeRequestPolicy = .`default`
+    /// User code request policy
+    public var userCodeRequestPolicy: UserCodeRequestPolicy = .`default`
 }
 
 public enum CardIdDisplayFormat {
@@ -77,7 +77,7 @@ public enum CardIdDisplayFormat {
     case lastLunh(_ numbers: Int)
 }
 
-public enum AccessCodeRequestPolicy: String, CaseIterable {
+public enum UserCodeRequestPolicy: String, CaseIterable {
     /// User code will be requested before card scan. Biometrics will be used if enabled and there are any saved codes.
     case alwaysWithBiometrics
     /// User code will be requested before card scan.

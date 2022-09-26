@@ -347,7 +347,7 @@ public class CardSession {
             }
         }
         
-        switch environment.config.accessCodeRequestPolicy {
+        switch environment.config.userCodeRequestPolicy {
         case .alwaysWithBiometrics:
             if shouldRequestBiometrics {
                  userCodeRepository?.unlock { result in
@@ -540,7 +540,7 @@ public class CardSession {
     
     private func restoreUserCode(_ type: UserCodeType, cardId: String?, _ completion: @escaping CompletionResult<String>) {
         var config = environment.config
-        config.accessCodeRequestPolicy = .default
+        config.userCodeRequestPolicy = .default
         let resetService = ResetPinService(config: config)
         let viewDelegate = ResetCodesViewDelegate(style: config.style)
         resetCodesController = ResetCodesController(resetService: resetService, viewDelegate: viewDelegate)

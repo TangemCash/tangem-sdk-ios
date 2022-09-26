@@ -22,10 +22,10 @@ struct SettingsView: View {
                 .fontWeight(.bold)
                 .padding()
             
-            Picker("", selection: $model.accessCodeRequestPolicy) {
-                ForEach(0..<AccessCodeRequestPolicy.allCases.count, id: \.self) { index in
-                    Text(AccessCodeRequestPolicy.allCases[index].rawValue)
-                        .tag(AccessCodeRequestPolicy.allCases[index])
+            Picker("", selection: $model.userCodeRequestPolicy) {
+                ForEach(0..<UserCodeRequestPolicy.allCases.count, id: \.self) { index in
+                    Text(UserCodeRequestPolicy.allCases[index].rawValue)
+                        .tag(UserCodeRequestPolicy.allCases[index])
                 }
             }
             .pickerStyle(SegmentedPickerStyle())

@@ -18,8 +18,6 @@ public class UserCodeRepository {
     private let biometricsStorage: BiometricsStorage  = .init()
     private var userCodes: [String: UserCode] = [:]
     
-    private lazy var context: LAContext = LAContext.default
-    
     public init() {}
     
     deinit {

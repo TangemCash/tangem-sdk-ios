@@ -37,7 +37,7 @@ public class CardSession {
     private var preflightReadMode: PreflightReadMode = .fullCardRead
     private var currentTag: NFCTagType = .none
     private var resetCodesController: ResetCodesController? = nil
-    /// Allows access codes to be stored in a secure location
+    /// Allows user codes to be stored in a secure location
     private var userCodeRepository: UserCodeRepository? = nil
     
     private var shouldRequestBiometrics: Bool {
@@ -60,7 +60,7 @@ public class CardSession {
     ///   - cardReader: NFC-reader implementation
     ///   - viewDelegate: viewDelegate implementation
     ///   - jsonConverter: JSONRPCConverter
-    ///   - userCodeRepository: Optional UserCodeRepository that saves access codes to Apple Keychain
+    ///   - userCodeRepository: Optional UserCodeRepository that saves user codes to Apple Keychain
     init(environment: SessionEnvironment,
          cardId: String? = nil,
          initialMessage: Message? = nil,

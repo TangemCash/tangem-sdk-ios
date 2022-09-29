@@ -648,7 +648,7 @@ extension TangemSdk {
         }
     }
     
-    public func deleteSavedAccessCodes() {
+    public func deleteSavedUserCodes() {
         let userCodeRepository = makeUserCodeRepository(with: config)
         userCodeRepository?.clear()
     }
@@ -668,7 +668,7 @@ extension TangemSdk {
     }
     
     private func makeUserCodeRepository(with config: Config) -> UserCodeRepository? {
-        if case .alwaysWithBiometrics = config.accessCodeRequestPolicy,
+        if case .alwaysWithBiometrics = config.userCodeRequestPolicy,
            BiometricsUtil.isAvailable {
             return UserCodeRepository()
         }

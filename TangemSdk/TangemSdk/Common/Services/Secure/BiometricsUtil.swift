@@ -30,7 +30,7 @@ public final class BiometricsUtil {
     ///   - localizedReason:The app-provided reason for requesting authentication, which displays in the authentication dialog presented to the user. Must be non-empty. Only for touchID.
     ///   - completion: Result<Void, TangemSdkError>
     @available(iOS 13.0, *)
-    public static func requestAccess(localizedReason: String, completion: @escaping CompletionResult<LAContext>) {
+    public static func requestAccess(localizedReason: String, completion: @escaping CompletionResult<Void>) {
         let context = LAContext.default
         
         DispatchQueue.global().async {
@@ -39,7 +39,7 @@ public final class BiometricsUtil {
                     if let error = error {
                         completion(.failure(error.toTangemSdkError()))
                     } else {
-                        completion(.success(context))
+                        completion(.success(()))
                     }
                 }
             }

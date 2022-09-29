@@ -38,7 +38,7 @@ class AppModel: ObservableObject {
     //MARK:-  Config
     @Published var handleErrors: Bool = true
     @Published var displayLogs: Bool = false
-    @Published var accessCodeRequestPolicy: AccessCodeRequestPolicy = .default
+    @Published var userCodeRequestPolicy: UserCodeRequestPolicy = .default
     
     var backupService: BackupService? = nil
     var resetPinService: ResetPinService? = nil
@@ -52,7 +52,7 @@ class AppModel: ObservableObject {
         config.allowUntrustedCards = true
         config.handleErrors = self.handleErrors
         config.filter.allowedCardTypes = FirmwareVersion.FirmwareType.allCases
-        config.accessCodeRequestPolicy = accessCodeRequestPolicy
+        config.userCodeRequestPolicy = userCodeRequestPolicy
         if displayLogs {
             config.logConfig = .custom(logLevel: Log.Level.allCases,
                                        loggers: [ConsoleLogger(), logger])
@@ -715,7 +715,7 @@ extension AppModel {
         showSettings = true
     }
     
-    func onRemoveAccessCodes() {
+    func onRemoveUserCodes() {
         let repo = UserCodeRepository()
         repo.clear()
     }

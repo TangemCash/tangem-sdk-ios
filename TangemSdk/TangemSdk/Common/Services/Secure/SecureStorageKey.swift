@@ -13,7 +13,7 @@ enum SecureStorageKey: String {
     case attestedCards
     case signatureOfAttestedCards
     
-    //access codes repo
+    //user codes repo
     case userCodes
     case cardsWithSavedCodes
     

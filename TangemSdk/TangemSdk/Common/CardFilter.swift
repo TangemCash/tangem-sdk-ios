@@ -13,30 +13,43 @@ public struct CardFilter {
     /// Filter that can be used to limit cards that can be interacted with in TangemSdk.
     public var allowedCardTypes: [FirmwareVersion.FirmwareType] = [.release, .sdk]
     
+    /// Use this filter to configure cards allowed to work with your app
+    public var cardIdFilter: ItemFilter? = nil
+    
     /// Use this filter to configure batches allowed to work with your app
     public var batchIdFilter: ItemFilter? = nil
     
     /// Use this filter to configure issuers allowed to work with your app
     public var issuerFilter: ItemFilter? = nil
     
+    /// Custom error localized description
+    public var localizedDescription: String? = nil
+    
     public static var `default`: CardFilter = .init()
     
-    public func isCardAllowed(_ card: Card) -> Bool {
+    private var wrongCardError: TangemSdkError {
+        .wrongCardType(localizedDescription)
+    }
+    
+    public func verifyCard(_ card: Card) throws {
         if !allowedCardTypes.contains(card.firmwareVersion.type) {
-            return false
+            throw wrongCardError
         }
         
         if let batchIdFilter = batchIdFilter,
            !batchIdFilter.isAllowed(card.batchId) {
-            return false
+            throw wrongCardError
         }
         
         if let issuerFilter = issuerFilter,
            !issuerFilter.isAllowed(card.issuer.name) {
-            return false
+            throw wrongCardError
         }
         
-        return true
+        if let cardIdFilter = cardIdFilter,
+           !cardIdFilter.isAllowed(card.cardId) {
+            throw wrongCardError
+        }
     }
 }
 

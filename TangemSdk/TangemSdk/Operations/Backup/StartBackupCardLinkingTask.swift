@@ -14,12 +14,14 @@ final class StartBackupCardLinkingTask: CardSessionRunnable {
     private let primaryCard: PrimaryCard
     private let addedBackupCards: [String]
     private let onlineCardVerifier = OnlineCardVerifier()
+    private let skipCompatibilityChecks: Bool
     private var cancellable: AnyCancellable? = nil
     private var linkingCommand: StartBackupCardLinkingCommand? = nil
     
-    init(primaryCard: PrimaryCard, addedBackupCards: [String]) {
+    init(primaryCard: PrimaryCard, addedBackupCards: [String], skipCompatibilityChecks: Bool = false) {
         self.primaryCard = primaryCard
         self.addedBackupCards = addedBackupCards
+        self.skipCompatibilityChecks = skipCompatibilityChecks
     }
     
     deinit {
@@ -36,14 +38,21 @@ final class StartBackupCardLinkingTask: CardSessionRunnable {
             let primaryWalletCurves = Set(primaryCard.walletCurves)
             let backupCardSupportedCurves = Set(card.supportedCurves)
             
-            if card.issuer.publicKey != primaryCard.issuer.publicKey {
-                completion(.failure(.backupFailedWrongIssuer))
-                return
-            }
-            
-            if card.settings.isHDWalletAllowed != primaryCard.isHDWalletAllowed {
-                completion(.failure(.backupFailedHDWalletSettings))
-                return
+            if !skipCompatibilityChecks {
+                if card.issuer.publicKey != primaryCard.issuer.publicKey {
+                    completion(.failure(.backupFailedWrongIssuer))
+                    return
+                }
+                
+                if card.settings.isHDWalletAllowed != primaryCard.isHDWalletAllowed {
+                    completion(.failure(.backupFailedHDWalletSettings))
+                    return
+                }
+                
+                if !isBatchIdCompatible(card.batchId) {
+                    completion(.failure(.backupFailedIncompatibleBatch))
+                    return
+                }
             }
             
             if !primaryWalletCurves.isSubset(of: backupCardSupportedCurves) {
@@ -53,11 +62,6 @@ final class StartBackupCardLinkingTask: CardSessionRunnable {
             
             if primaryCard.existingWalletsCount > card.settings.maxWalletsCount {
                 completion(.failure(.backupFailedNotEnoughWallets))
-                return
-            }
-            
-            if !isBatchIdCompatible(card.batchId) {
-                completion(.failure(.backupFailedIncompatibleBatch))
                 return
             }
             

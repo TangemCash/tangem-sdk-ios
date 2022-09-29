@@ -38,9 +38,10 @@ class AppModel: ObservableObject {
     //MARK:-  Config
     @Published var handleErrors: Bool = true
     @Published var displayLogs: Bool = false
-    @Published var accessCodeRequestPolicy: AccessCodeRequestPolicy = .alwaysWithBiometrics
+    @Published var accessCodeRequestPolicy: AccessCodeRequestPolicy = .default
     
     var backupService: BackupService? = nil
+    var resetPinService: ResetPinService? = nil
     
     private lazy var _tangemSdk: TangemSdk = { .init() }()
     private lazy var logger: DebugLogger = .init()
@@ -719,6 +720,11 @@ extension AppModel {
         repo.clear()
     }
     
+    func onResetService() {
+        resetPinService = ResetPinService(config: tangemSdk.config)
+        showResetPin = true
+    }
+    
     @ViewBuilder
     func makeSettingsDestination() -> some View {
         SettingsView().environmentObject(self)
@@ -730,6 +736,15 @@ extension AppModel {
             BackupView().environmentObject(service)
         } else {
             BackupView()
+        }
+    }
+    
+    @ViewBuilder
+    func makePinResetDestination() -> some View {
+        if let service = self.resetPinService {
+            ResetPinView().environmentObject(service)
+        } else {
+            ResetPinView()
         }
     }
 }

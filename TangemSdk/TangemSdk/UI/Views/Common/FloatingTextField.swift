@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 @available(iOS 13.0, *)
 struct FloatingTextField: View {
@@ -90,6 +91,35 @@ private extension FloatingTextField {
         
         @FocusState private var focusedField: Field?
         
+        @State private var appearPublisher: CurrentValueSubject<Bool, Never> = .init(false)
+        @State private var activePublisher: CurrentValueSubject<Bool, Never> = .init(UIApplication.shared.isActive)
+        
+        private var becomeActivePublisher: AnyPublisher<Void, Never> {
+            NotificationCenter.default
+                .publisher(for: UIApplication.didBecomeActiveNotification)
+                .map { _ in () }
+                .eraseToAnyPublisher()
+        }
+        
+        private var focusPublisher: AnyPublisher<Void, Never> {
+            appearPublisher
+                .filter { $0 }
+                .delay(for: .milliseconds(appearDelay), scheduler: DispatchQueue.main)
+                .combineLatest(activePublisher.filter { $0 })
+                .filter { _ in shouldBecomeFirstResponder }
+                .map { _ in () }
+                .eraseToAnyPublisher()
+        }
+        
+        /// This is the minimum allowable delay, calculated empirically for all iOS versions prior 16.
+        private var appearDelay: Int {
+            if #available(iOS 16.0, *) {
+                return 0
+            } else {
+                return 500
+            }
+        }
+        
         var body: some View {
             ZStack {
                 if isSecured {
@@ -100,24 +130,39 @@ private extension FloatingTextField {
                         .focused($focusedField, equals: .plain)
                 }
             }
-            .onAppear(perform: onAppear)
+            .onAppear {
+                appearPublisher.send(true)
+            }
             .onChange(of: isSecured) { newValue in
                 setFocus(for: newValue)
             }
+            .onReceive(becomeActivePublisher) { _ in
+                activePublisher.send(true)
+            }
+            .onReceive(focusPublisher) { _ in
+                setFocus(for: isSecured)
+            }
+        }
+        
+        init(isSecured: Bool,
+             shouldBecomeFirstResponder: Bool,
+             text: Binding<String>,
+             onCommit: @escaping () -> Void = {}) {
+            self.isSecured = isSecured
+            self.shouldBecomeFirstResponder = shouldBecomeFirstResponder
+            self.text = text
+            self.onCommit = onCommit
         }
         
         private func setFocus(for value: Bool) {
             focusedField = value ? .secure : .plain
         }
-        
-        private func onAppear() {
-            if shouldBecomeFirstResponder {
-                // Works only with huge delay
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    setFocus(for: isSecured)
-                }
-            }
-        }
+    }
+}
+
+fileprivate extension UIApplication {
+    var isActive: Bool {
+        applicationState == .active
     }
 }
 

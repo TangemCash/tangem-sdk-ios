@@ -63,9 +63,11 @@ final class PreflightReadTask: CardSessionRunnable {
                     }
                 }
                 
-                if !session.environment.config.filter.isCardAllowed(readResponse) {
-                    completion(.failure(.wrongCardType))
-                    return
+                do {
+                    let filter = session.environment.config.filter
+                    try filter.verifyCard(readResponse)
+                } catch {
+                    completion(.failure(error.toTangemSdkError()))
                 }
                 
                 session.fetchAccessCodeIfNeeded()

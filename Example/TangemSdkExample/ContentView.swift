@@ -25,6 +25,11 @@ struct ContentView: View {
                     isActive: $model.showSettings,
                     label: {EmptyView()})
                 
+                NavigationLink(
+                    destination: model.makePinResetDestination(),
+                    isActive: $model.showResetPin,
+                    label: {EmptyView()})
+                
                 GeometryReader { geo in
                     VStack {
                         ScrollView {
@@ -48,6 +53,7 @@ struct ContentView: View {
                                 Button("Clear", action: model.clear)
                                 Button("Copy", action: model.copy)
                                 Button("Backup", action: model.onBackup)
+                                Button("Reset", action: model.onResetService)
                             }
                             
                             additionalView
@@ -75,7 +81,7 @@ struct ContentView: View {
             }
             .navigationBarTitle("SDK", displayMode: .inline)
             .navigationBarItems(trailing: Button(action: model.onSettings,
-                                                 label: { Image(systemName: "gearshape")}))
+                                                 label: { Image(systemName: "gear")}))
         }
         .padding(.bottom, 8)
         .actionSheet(isPresented: $model.showWalletSelection) {

@@ -54,7 +54,7 @@ public class BiometricsStorage {
         DispatchQueue.global().async { [weak self] in
             guard let self = self else { return }
             
-            var query: [CFString: Any] = [
+            let query: [CFString: Any] = [
                 kSecClass: kSecClassGenericPassword,
                 kSecAttrAccount: account,
                 kSecUseDataProtectionKeychain: true,
@@ -66,7 +66,7 @@ public class BiometricsStorage {
             var status = SecItemAdd(query as CFDictionary, nil)
             
             if status == errSecDuplicateItem && overwrite {
-                var searchQuery: [CFString: Any] = [
+                let searchQuery: [CFString: Any] = [
                     kSecClass: kSecClassGenericPassword,
                     kSecAttrAccount: account,
                     kSecUseDataProtectionKeychain: true,

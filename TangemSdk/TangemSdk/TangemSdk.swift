@@ -668,9 +668,13 @@ extension TangemSdk {
     }
     
     private func makeUserCodeRepository(with config: Config) -> UserCodeRepository? {
-        if case .alwaysWithBiometrics = config.userCodeRequestPolicy,
-           BiometricsUtil.isAvailable {
-            return UserCodeRepository()
+        switch config.userCodeRequestPolicy {
+        case .useBiometryForAccessCode, .useBiometryForPasscode:
+            if BiometricsUtil.isAvailable {
+                return UserCodeRepository()
+            }
+        default:
+            break
         }
         
         return nil

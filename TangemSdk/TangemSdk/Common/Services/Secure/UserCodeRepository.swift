@@ -109,7 +109,7 @@ public class UserCodeRepository {
         for cardId in cardIds {
             let existingCode = userCodes[cardId]
             
-            if existingCode?.value == userCode.value {
+            if existingCode?.value == userCode.value || (existingCode?.type != nil && existingCode?.type != userCode.type) {
                 continue //We already know this code. Ignoring
             }
             

@@ -336,8 +336,19 @@ public class CardSession {
         preflightReadMode = runnable.preflightReadMode
         
         let requestUserCodeAction = {
-            self.environment.accessCode = UserCode(.accessCode, value: nil)
-            self.requestUserCodeIfNeeded(.accessCode) { result in
+            guard let userCodeType = self.environment.config.userCodeRequestPolicy.userCodeType else {
+                return
+            }
+            
+            let userCode = UserCode(userCodeType, value: nil)
+            switch userCodeType {
+            case .accessCode:
+                self.environment.accessCode = userCode
+            case .passcode:
+                self.environment.passcode = userCode
+            }
+            
+            self.requestUserCodeIfNeeded(userCodeType) { result in
                 switch result {
                 case .success:
                     runnable.prepare(self, completion: completion)
@@ -348,7 +359,7 @@ public class CardSession {
         }
         
         switch environment.config.userCodeRequestPolicy {
-        case .alwaysWithBiometrics:
+        case .useBiometryForAccessCode, .useBiometryForPasscode:
             if shouldRequestBiometrics {
                  userCodeRepository?.unlock { result in
                      switch result {
@@ -361,7 +372,7 @@ public class CardSession {
             } else {
                 runnable.prepare(self, completion: completion)
             }
-        case .always:
+        case .enterAccessCode, .enterPasscode:
             requestUserCodeAction()
         case .default:
             runnable.prepare(self, completion: completion)
@@ -496,7 +507,20 @@ public class CardSession {
     }
     
     func fetchUserCodeIfNeeded() {
-        guard let card = environment.card, card.isAccessCodeSet,
+        guard let card = environment.card else { return }
+
+        let checkAccessCode = card.isAccessCodeSet
+        
+        #warning("HACK: we don't know whether passcode is set at this point. Do we need to use CheckUserCodesCommand?")
+        let checkPasscode: Bool
+        switch environment.config.userCodeRequestPolicy {
+        case .enterPasscode, .useBiometryForPasscode:
+            checkPasscode = true
+        default:
+            checkPasscode = false
+        }
+        
+        guard checkAccessCode || checkPasscode,
               let userCode = userCodeRepository?.fetch(for: card.cardId)
         else {
             return
@@ -516,14 +540,19 @@ public class CardSession {
         }
         
         let userCode: UserCode
-        if environment.accessCode.value != nil {
+        switch environment.config.userCodeRequestPolicy {
+        case .useBiometryForAccessCode, .enterAccessCode:
             userCode = environment.accessCode
-        } else if environment.passcode.value != nil {
+        case .useBiometryForPasscode, .enterPasscode:
             userCode = environment.passcode
-        } else {
+        default:
             return
         }
         
+        if userCode.value == nil {
+            return
+        }
+
         userCodeRepository?.save(userCode, for: card.cardId) {[weak self] result in
             self?.userCodeRepository?.lock()
         }

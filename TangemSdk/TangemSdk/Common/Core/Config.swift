@@ -78,10 +78,27 @@ public enum CardIdDisplayFormat {
 }
 
 public enum UserCodeRequestPolicy: String, CaseIterable {
-    /// User code will be requested before scanning the card. Biometrics will be used if enabled and there are any saved codes.
-    case alwaysWithBiometrics
-    /// User code will be requested before scanning the card.
-    case always
+    /// Access code will be requested before scanning the card. Biometrics will be used if enabled and there are any saved codes.
+    case useBiometryForAccessCode
+    /// Passcode will be requested before scanning the card. Biometrics will be used if enabled and there are any saved codes.
+    case useBiometryForPasscode
+    /// Access code will be requested before scanning the card.
+    case enterAccessCode
+    /// Passcode will be requested before scanning the card.
+    case enterPasscode
     /// User code will be requested only if it has been set for the card. User will have to scan the card twice.
     case `default`
+}
+
+extension UserCodeRequestPolicy {
+    var userCodeType: UserCodeType? {
+        switch self {
+        case .useBiometryForAccessCode, .enterAccessCode:
+            return .accessCode
+        case .useBiometryForPasscode, .enterPasscode:
+            return .passcode
+        case .default:
+            return nil
+        }
+    }
 }

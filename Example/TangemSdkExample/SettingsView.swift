@@ -28,7 +28,7 @@ struct SettingsView: View {
                         .tag(UserCodeRequestPolicy.allCases[index])
                 }
             }
-            .pickerStyle(SegmentedPickerStyle())
+            .pickerStyle(WheelPickerStyle())
             
             Button("Remove user codes", action: model.onRemoveUserCodes)
                 .padding()

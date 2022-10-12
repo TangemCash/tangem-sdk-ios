@@ -359,7 +359,7 @@ public class CardSession {
                      }
                  }
             } else {
-                requestAccessCodeAction()
+                runnable.prepare(self, completion: completion)
             }
         case .always:
             requestAccessCodeAction()

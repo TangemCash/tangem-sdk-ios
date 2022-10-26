@@ -32,7 +32,8 @@
 "error_not_activated" = "Эта карта не активирована";
 "error_card_verification_failed" = "Ошибка проверки карты";
 "error_user_cancelled" = "Пользователь отменил операцию";
-"error_wrong_card_number" = "Вы коснулись другой картой. Пожалуйста, приложите карту %@.";
+"error_wrong_card_number_with_card_id" = "Вы коснулись другой картой. Пожалуйста, приложите карту %@.";
+"error_wrong_card_number_without_card_id" = "Вы коснулись другой картой";
 "error_wrong_card_type" = "Данная карта не предназначена для работы с этим приложением";
 "error_file_not_found" = "Файл не найден";
 "error_not_supported_firmware_version" = "Эта команда не поддерживается данной картой";

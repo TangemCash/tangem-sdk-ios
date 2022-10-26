@@ -32,7 +32,8 @@
 "error_not_activated" = "Diese Karte ist nicht aktiviert worden";
 "error_card_verification_failed" = "Die Kartenverifizierung ist fehlgeschlagen";
 "error_user_cancelled" = "Der Benutzer hat den Vorgang unterbrochen";
-"error_wrong_card_number" = "You tapped a different card. Please tap card %@.";
+"error_wrong_card_number_with_card_id" = "You tapped a different card. Please tap card %@.";
+"error_wrong_card_number_without_card_id" = "You tapped a different card";
 "error_wrong_card_type" = "Diese Karte ist für eine andere App konfiguriert. Sehen Sie sich die Informationen auf Ihrer Karte an und laden Sie die entsprechende App herunter.";
 "error_file_not_found" = "File not found";
 "error_not_supported_firmware_version" = "The command requires a card with a different firmware version";

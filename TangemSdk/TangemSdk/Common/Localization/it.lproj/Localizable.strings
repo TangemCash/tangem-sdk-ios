@@ -32,7 +32,8 @@
 "error_not_activated" = "Questa carta non è stata attivata";
 "error_card_verification_failed" = "Non è stata eseguita la verifica della carta";
 "error_user_cancelled" = "L'utente ha annullato l'operazione";
-"error_wrong_card_number" = "You tapped a different card. Please tap card %@.";
+"error_wrong_card_number_with_card_id" = "You tapped a different card. Please tap card %@.";
+"error_wrong_card_number_without_card_id" = "You tapped a different card";
 "error_wrong_card_type" = "Questa carta è creata per un'altra applicazione. Controlla le informazioni sulla mappa e scarica l'apposita applicazione.";
 "error_file_not_found" = "File not found";
 "error_not_supported_firmware_version" = "The command requires a card with a different firmware version";

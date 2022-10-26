@@ -281,7 +281,7 @@ public class CardSession {
                 guard currentTag != .none else { return true } //Skip filtration because we have nothing to compare with
                 
                 if tag != currentTag { //handle wrong tag connection during any operation
-                    let cardId = self.cardId ?? ""
+                    let cardId = self.environment.card?.cardId
                     self.viewDelegate.wrongCard(message: TangemSdkError.wrongCardNumber(cardId: cardId).localizedDescription)
                     DispatchQueue.global().asyncAfter(deadline: .now() + 2) { [weak self] in
                         self?.restartPolling()

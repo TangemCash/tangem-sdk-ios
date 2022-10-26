@@ -50,6 +50,7 @@ public struct CardIdFormatter {
             return String(cardId[startIndex ..< endIndex])
         }
         
-        return chunks.reversed().joined(separator: " ")
+        let nbsp = " "
+        return chunks.reversed().joined(separator: nbsp)
     }
 }

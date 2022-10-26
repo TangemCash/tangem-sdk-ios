@@ -32,7 +32,7 @@
 "error_not_activated" = "Cette carte n'a pas été activée";
 "error_card_verification_failed" = "Erreur de validation de la carte";
 "error_user_cancelled" = "L'utilisateur a annulé l'opération";
-"error_wrong_card_number" = "You have used a card from another wallet. Tap the card associated with this wallet.";
+"error_wrong_card_number" = "You tapped a different card. Please tap card %@.";
 "error_wrong_card_type" = "Cette carte est personnalisée pour une autre application. Veuillez lire les informations sur votre carte et télécharger l'application correspondante.";
 "error_file_not_found" = "File not found";
 "error_not_supported_firmware_version" = "The command requires a card with a different firmware version";

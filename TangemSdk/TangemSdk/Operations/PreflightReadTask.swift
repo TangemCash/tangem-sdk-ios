@@ -58,7 +58,7 @@ final class PreflightReadTask: CardSessionRunnable {
                 if session.environment.config.handleErrors {
                     if let expectedCardId = self.cardId?.uppercased(),
                        expectedCardId != readResponse.cardId.uppercased() {
-                        completion(.failure(.wrongCardNumber))
+                        completion(.failure(.wrongCardNumber(cardId: expectedCardId)))
                         return
                     }
                 }

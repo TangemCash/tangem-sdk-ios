@@ -72,7 +72,7 @@ class BIP32Tests: XCTestCase {
         let bip32 = BIP32()
 
         let mPriv = try bip32.makeMasterKey(from: seed, curve: .secp256k1)
-        let mPub = try mPriv.makePublicKey(for: .secp256k1)
+        let mPub = try mPriv.makePublicKey()
 
         let xpriv = try mPriv.serialize(for: .mainnet)
         XCTAssertEqual(xpriv, "xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChkVvvNKmPGJxWUtg6LnF5kejMRNNU3TGtRBeJgk33yuGBxrMPHi")
@@ -87,7 +87,7 @@ class BIP32Tests: XCTestCase {
         let bip32 = BIP32()
 
         let mPriv = try bip32.makeMasterKey(from: seed, curve: .secp256k1)
-        let mPub = try mPriv.makePublicKey(for: .secp256k1)
+        let mPub = try mPriv.makePublicKey()
 
         let xpriv = try mPriv.serialize(for: .mainnet)
         XCTAssertEqual(xpriv, "xprv9s21ZrQH143K31xYSDQpPDxsXRTUcvj2iNHm5NUtrGiGG5e2DtALGdso3pGz6ssrdK4PFmM8NSpSBHNqPqm55Qn3LqFtT2emdEXVYsCzC2U")
@@ -109,7 +109,7 @@ class BIP32Tests: XCTestCase {
         let bip32 = BIP32()
 
         let mPriv = try bip32.makeMasterKey(from: seed, curve: .secp256k1)
-        let mPub = try mPriv.makePublicKey(for: .secp256k1)
+        let mPub = try mPriv.makePublicKey()
 
         let xpriv = try mPriv.serialize(for: .mainnet)
         XCTAssertEqual(xpriv, "xprv9s21ZrQH143K25QhxbucbDDuQ4naNntJRi4KUfWT7xo4EKsHt2QJDu7KXp1A3u7Bi1j8ph3EGsZ9Xvz9dGuVrtHHs7pXeTzjuxBrCmmhgC6")
@@ -124,7 +124,7 @@ class BIP32Tests: XCTestCase {
         let bip32 = BIP32()
 
         let mPriv = try bip32.makeMasterKey(from: seed, curve: .secp256k1)
-        let mPub = try mPriv.makePublicKey(for: .secp256k1)
+        let mPub = try mPriv.makePublicKey()
 
         let xpriv = try mPriv.serialize(for: .mainnet)
         XCTAssertEqual(xpriv, "xprv9s21ZrQH143K48vGoLGRPxgo2JNkJ3J3fqkirQC2zVdk5Dgd5w14S7fRDyHH4dWNHUgkvsvNDCkvAwcSHNAQwhwgNMgZhLtQC63zxwhQmRv")

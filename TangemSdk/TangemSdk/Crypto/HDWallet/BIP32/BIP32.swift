@@ -39,7 +39,7 @@ struct BIP32 {
             return try makeMasterKey(from: i, curve: curve)
         }
 
-        return ExtendedPrivateKey(privateKey: iL, chainCode: iR)
+        return ExtendedPrivateKey(privateKey: iL, chainCode: iR, curve: curve)
     }
 }
 

@@ -18,12 +18,15 @@ public struct ExtendedPrivateKey: Equatable, Hashable, JSONStringConvertible, Co
     public let parentFingerprint: Data
     public let childNumber: UInt32
 
-    public init(privateKey: Data, chainCode: Data, depth: Int, parentFingerprint: Data, childNumber: UInt32) throws {
+    public let curve: EllipticCurve
+
+    public init(privateKey: Data, chainCode: Data, depth: Int, parentFingerprint: Data, childNumber: UInt32, curve: EllipticCurve) throws {
         self.privateKey = privateKey
         self.chainCode = chainCode
         self.depth = depth
         self.parentFingerprint = parentFingerprint
         self.childNumber = childNumber
+        self.curve = curve
 
         if depth == 0 && (parentFingerprint.contains(where: { $0 != 0 }) || childNumber != 0) {
             throw ExtendedKeySerializationError.wrongKey
@@ -34,15 +37,17 @@ public struct ExtendedPrivateKey: Equatable, Hashable, JSONStringConvertible, Co
     /// - Parameters:
     ///   - privateKey: privateKey
     ///   - chainCode: chainCode
-    public init(privateKey: Data, chainCode: Data) {
+    ///   - curve: Current elliptic curve
+    public init(privateKey: Data, chainCode: Data, curve: EllipticCurve) {
         self.privateKey = privateKey
         self.chainCode = chainCode
         self.depth = 0
         self.parentFingerprint = Data(hexString: "0x00000000")
         self.childNumber = 0
+        self.curve = curve
     }
 
-    public func makePublicKey(for curve: EllipticCurve) throws -> ExtendedPublicKey {
+    public func makePublicKey() throws -> ExtendedPublicKey {
         let publicKey = try CryptoUtils.makePublicKey(from: privateKey, curve: curve)
 
         return try ExtendedPublicKey(
@@ -100,7 +105,8 @@ extension ExtendedPrivateKey: ExtendedKeySerializable {
             chainCode: chainCode,
             depth: depth,
             parentFingerprint: parentFingerprint,
-            childNumber: childNumber
+            childNumber: childNumber,
+            curve: .secp256k1
         )
     }
 

@@ -39,14 +39,16 @@ public class DeriveWalletPublicKeysTask: CardSessionRunnable {
         let path = derivationPaths[index]
         let task = DeriveWalletPublicKeyTask(walletPublicKey: walletPublicKey, derivationPath: path)
         task.run(in: session) { result in
+            var keys = keys
+            
             switch result {
             case .success(let key):
-                var keys = keys
                 keys[path] = key
-                self.runDerivation(at: index + 1, keys: keys, in: session, completion: completion)
             case .failure(let error):
-                completion(.failure(error))
+                Log.error(error)
             }
+
+            self.runDerivation(at: index + 1, keys: keys, in: session, completion: completion)
         }
     }
 }

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name = 'TangemSdk'
-  s.version = '3.9.0'
+  s.version = '3.10.0'
   s.summary = 'Use TangemSdk for Tangem cards integration'
   s.description = <<-DESC
 Tangem is a Swiss-based secure hardware wallet manufacturer that enables blockchain-based assets to be kept in custody within smart physical banknotes and accessed via NFC technology. Tangem’s mission is to make digital assets accessible, affordable and convenient for consumers.

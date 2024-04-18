@@ -1,343 +1,45 @@
-*   ae82aca0 - (HEAD -> release/3.9.0, tag: develop-280, tag: 1.0(36), origin/develop, develop) Merge pull request #336 from tangem/IOS-5602_add_privacy_manifest
+*   d3f79b59 - (HEAD -> release/3.10.0, tag: develop-289, origin/develop, develop) Merge pull request #349 from tangem/IOS-6620_update_privacy_manifest
 |\  
-| * 0d6ff58d - IOS-5602 Add PrivacyInfo for UserDefaults
+| * 22f5bcd5 - IOS-6620 Remove unsupported devices
+| * 35c8b3d1 - IOS-6620 Add Privacy Manifest into example
+| * 9cde2028 - IOS-6620 Update privacy manifest
 |/  
-*   1dd026ba - (tag: develop-279) Merge pull request #335 from tangem/IOS-5376_open_read_wallets
+*   7a1ff80a - (tag: develop-288) Merge pull request #347 from tangem/IOS-5193_refactor_extension
 |\  
-| *   09bb944c - Merge branch 'develop' into IOS-5376_open_read_wallets
+| * 9cab3b95 - IOS-5193 Refactor extensions
+|/  
+*   b2b15a41 - (tag: develop-287) Merge pull request #346 from tangem/IOS-5193_add_convenience_method
+|\  
+| * 5a77a2f3 - IOS-5193 Add convenience method
+|/  
+*   151522de - (tag: develop-286) Merge pull request #344 from tangem/feature/IOS-6296_backup_errors_update
+|\  
+| * 36fc8529 - Show separate messages for backupFailedAlreadyCreated and noActiveBackup errors
+|/  
+*   24d07f57 - (tag: develop-285, tag: 37) Merge pull request #343 from tangem/IOS-6210_add_logs_backup
+|\  
+| * d2fb40ea - IOS-6210 Add backup logs
+|/  
+*   68fcf888 - (tag: develop-284) Merge pull request #341 from tangem/IOS-5986_skip_derivation_errors
+|\  
+| *   a205aca6 - Merge branch 'develop' into IOS-5986_skip_derivation_errors
 | |\  
 | |/  
 |/|   
-* |   32ba6584 - (tag: develop-278) Merge pull request #334 from tangem/IOS-4876_refactor_backup_flow
+* |   94c1a699 - (tag: develop-283) Merge pull request #342 from tangem/feature/IOS-6085-seed-make-words-count-public
 |\ \  
-| * \   ef8710d7 - Merge branch 'develop' into IOS-4876_refactor_backup_flow
-| |\ \  
-| |/ /  
-|/| |   
-* | |   342eacba - (tag: develop-277) Merge pull request #333 from tangem/feature/IOS-5453-add-spm-support
-|\ \ \  
-| * \ \   b65de7a2 - Merge branch 'develop' into feature/IOS-5453-add-spm-support
-| |\ \ \  
-| |/ / /  
-|/| | |   
-| * | | fdbe938f - IOS-5453: Fix some typos and warnings
-| * | | fb0d4be7 - IOS-5453: Fix compilation error
-| * | | 669291bf - IOS-5453: Update example project
-| * | | 4a694280 - IOS-5453: Improve file path for localization resources
-| * | | 6cb5c5ed - IOS-5453: Fix example project file inconsistency
-| * | | 935d62c3 - IOS-5453: Fix bundle resources in the main target
-| * | | 2027d357 - IOS-5453: Fix bundle resources in unit tests when SPM is used
-| * | | 80591906 - IOS-5453: Add package manifest
-| * | | 0150cf71 - IOS-5453: Fix compilation errors due to transitive imports
-| * | | 73647881 - IOS-5453: Remove unused codegen-related C file
-| * | | 4a87c4bd - IOS-5453: Fix project file inconsistency
-| * | | 1931371b - IOS-5453: Update example project
-| * | | d31fc7fc - IOS-5453: Fix C flags
-| * | | d5a78744 - IOS-5453: Fix compilation error due to script sandboxing
-| * | | bdf9e6b5 - IOS-5453: Add refs to gemfiles and podfiles
-| * | | 818ed79f - IOS-5453: Clean-up podspec file a bit
-| * | | dd8e7d70 - IOS-5453: Bring back iOS 11.0 as a minimum deployment target
-| * | | 0f57689d - IOS-5453: Update project using Xcode 15.1.0
-| * | | 7763841e - IOS-5453: Update ruby deps and fix their versions
-| | * | 0c6fdb44 - IOS-4876 Refine code
-| | * | 238d24c7 - IOS-4876 Split certificate loading
-| |/ /  
-|/| |   
-| | * 570e25d4 - IOS-5376 Open read command
-| | * a7c4549b - IOS-5376 Make read wallets list public
-| |/  
-|/|   
-* |   d7f37dfe - (tag: develop-276) Merge pull request #332 from tangem/IOS-5256_update_timeout_loc
-|\ \  
-| |/  
-|/|   
-| * 58ef4753 - IOS-5256 Update timeout error locaization
+| * | 63546fbf - IOS-6085: Make EntropyLength words count public
+|/ /  
+| * 25e83ac5 - IOS-5986 Ignore only concrete errors
+| * 2ffb346e - IOS-5986 Skip derivation errors
 |/  
-*   57b2b20f - (tag: develop-275) Merge pull request #331 from tangem/IOS-5346_rename_header
+*   7ddce67f - (tag: develop-282) Merge pull request #338 from tangem/IOS-5674_fix_reader
 |\  
-| * 2f20128c - IOS-5346 Rename secp256k1 header
-|/  
-*   4399166e - (tag: develop-274) Merge pull request #329 from tangem/IOS-4025_refactor_prefligh_filtering
-|\  
-| * f25eaeb6 - (tag: IOS-4025_4) IOS-4025 Fix error handling
-| * 02ae031b - (tag: IOS-4025_3) IOS-4025 Filter old cards too
-| * dcc8a752 - (tag: IOS-4025_2) IOS-4025 Old xcode compile issue
-| * abc70173 - IOS-4025 Rename file
-| * 9d151508 - IOS-4025 Rename
-| *   3e318d4c - IOS-4025 Merge branch 'IOS-4025_refactor_prefligh_filtering' of github.com:Tangem/tangem-sdk-ios into IOS-4025_refactor_prefligh_filtering
-| |\  
-| | *   3520c4d6 - Merge branch 'develop' into IOS-4025_refactor_prefligh_filtering
-| | |\  
-| |_|/  
-|/| |   
-* | |   dddb7efe - (tag: develop-273) Merge pull request #330 from tangem/IOS-4905_decrese_interval
-|\ \ \  
-| * | | ffd6daaa - (tag: develop-272_test1) IOS-4905 Decrease interval
-|/ / /  
-| | * 3cd562c3 - Update TangemSdk/TangemSdk/TangemSdk.swift
-| | * 6e542e0d - Update TangemSdk/TangemSdk/TangemSdk.swift
-| * | d58e90da - IOS-4025 Reset environment on preflight error
-| |/  
-| * 25719685 - (tag: IOS-4025_1) IOS-4025 Refactoring
-| * c028c2be - IOS-4025 PublicKeyId -> PublicKeyID
-| * 0e3fe8c1 - (tag: filtering_test) IOS-4025 Code polishing
-| * 715e4603 - IOS-4025 Refactor preflight filtering
-|/  
-*   169b69b2 - (tag: develop-272) Merge pull request #328 from tangem/IOS-5072_nfc_device_list
-|\  
-| * 8dfcc2f4 - IOS-5072 Update bad NFC device list
-|/  
-*   18af3a9c - (tag: develop-271) Merge pull request #327 from tangem/IOS-4927_fix_tests
-|\  
-| * 1836e085 - IOS-4927 Try to make tests locale independent
-|/  
-*   d73f7aec - (tag: develop-270) Merge pull request #323 from tangem/IOS-4687-improve-derivation-path-validation
-|\  
-| *   076d92fa - IOS-4687 Merge remote-tracking branch 'origin/develop' into IOS-4687-improve-derivation-path-validation
+| *   b6fadf9e - Merge branch 'develop' into IOS-5674_fix_reader
 | |\  
 | |/  
 |/|   
-* |   ac27e96b - (tag: develop-269) Merge pull request #325 from tangem/IOS-4905_workaround_session_issue
-|\ \  
-| * \   c5755d09 - Merge branch 'develop' into IOS-4905_workaround_session_issue
-| |\ \  
-| |/ /  
-|/| |   
-* | |   c8c18a94 - (tag: develop-268) Merge pull request #326 from tangem/IOS-4799_open_sdk_backup
-|\ \ \  
-| * | | bcadae91 - IOS-4799 beautify
-| * | | 8bbc0935 - IOS-4799 Open config for changes
-|/ / /  
-| * | 29bee07d - IOS-4905 re-indent and fix comment
-| * | 5b2671a3 - IOS-4905 Rename var
-| * | 81dc1c12 - IOS-4905 Change to major ver
-| * | f29f355d - IOS-4905 Check for device
-| * | 7fa353dc - IOS-4905 Fix build
-| * | 224050ce - IOS-4905 Fix iOS 17.0.3 reconnection issues
-|/ /  
-* |   80fd1791 - (tag: develop-267) Merge pull request #324 from tangem/IOS-4741-app-change-ui-alert-controller-tint
-|\ \  
-| * | 0bb86f5b - IOS-4741 Added the ability to set the tint of the UIAlertController popups
-|/ /  
-| * a3b3cf6d - IOS-4687 m' -- must not be valid master node
-| * 8c8b8add - IOS-4687 Refactoring
-| * d6e7b05e - IOS-4687 Considering leading quotes invalid -- `/m/'3/0`
-| * 28573e2b - IOS-4687 Consider `m'` as valid derivation path level
-| * 4ece8c54 - IOS-4687 Added a test for a quote after the 'm' symbol
-| * 3bae301d - IOS-4687 Improved derivation path validation
-|/  
-*   d765cc63 - (tag: develop-266) Merge pull request #322 from tangem/IOS-4541-screen-presented-multiple-times
-|\  
-| * 930443ff - IOS-4541 Ensure that ViewController only presented once
-|/  
-*   af1f9978 - (tag: develop-265) Merge pull request #321 from tangem/tureck1y-patch-1
-|\  
-| * 48b0654e - Update CODEOWNERS
-|/  
-*   71687fa0 - (tag: develop-264) Merge pull request #320 from tangem/IOS-4286
-|\  
-| * 8ae6785e - IOS-4286 Rename method
-| * dcf47dc9 - IOS-4286 Add lib fraemwork for fix tests
-| * 4b2a0b85 - IOS-4286 Refactor public modify
-| * 3c7d1145 - (tag: develop-263-fix) IOS-4286 Make public BLSUtils
-| * 627c6830 - IOS-4286 Set implementation library bls into bls utils
-|/  
-*   56abd16d - (tag: develop-263) Merge pull request #319 from tangem/IOS-4280-fix-bls-link-signature-min-target
-|\  
-| *   67db51bf - Merge branch 'develop' into IOS-4280-fix-bls-link-signature-min-target
-| |\  
-| |/  
-|/|   
-* |   e71775cf - (tag: develop-262) Merge pull request #318 from tangem/IOS-3767_sign_hashes_chunking
-|\ \  
-| * | e385dd4a - IOS-3767 Add more docs
-| * | d63de832 - IOS-3767 Clamp from 1 to max chunk size
-| * | 0ed6b8a9 - IOS-3767 Add explanation
-| * | 9f6138f6 - IOS-3767 Refactor chunking
-|/ /  
-| * 3e914f44 - IOS-4280 fix library bls-signatures
-|/  
-*   49ebe543 - (tag: develop-261) Merge pull request #317 from tangem/IOS-4169-add-bls-signature-lib
-|\  
-| * de9edefa - IOS-4169 Link bls framework for example dev
-| * cbc037ee - IOS-4169 Fix named errors
-| * f7ac0302 - Add valid xcfraemwork for bls-signature
-| *   14e5bfc8 - Merge branch 'develop' into IOS-4169-add-bls-signature-lib
-| |\  
-| |/  
-|/|   
-* |   006c5aec - (tag: develop-260) Merge pull request #316 from tangem/IOS-42131_fix_card_deserialization
-|\ \  
-| * | 4f3b1612 - IOS-42131 Return bip0340
-|/ /  
-* |   8762d4ce - (tag: develop-259) Merge pull request #315 from tangem/IOS-4136_update_fw
-|\ \  
-| * | 958ba0a0 - IOS-4136 Bump up to 6.33
-|/ /  
-* |   e2b8b02d - (tag: develop-258) Merge pull request #313 from tangem/IOS-4136_compatible_ed
-|\ \  
-| * | 6579315f - IOS-4136 Ad verification tests into demo
-| * | 0196f153 - IOS-4136 Make auto tests
-| * | efba46ca - IOS-4136 Return Ikarus back to standart
-| * |   67f35308 - Merge branch 'develop' into IOS-4136_compatible_ed
-| |\ \  
-| |/ /  
-|/| |   
-* | |   a726dd6a - (tag: develop-257) Merge pull request #314 from tangem/save_secp256k1_version
-|\ \ \  
-| * | | 882832e7 - Create secp256k1version.txt
-|/ / /  
-| * | b55689a7 - IOS-4136 improve search
-| * | 8f2d5408 - IOS-4136 Rename curve
-| * | 64f72be7 - IOS-4136 Update tests with snippets
-| * | ee0a3fba - IOS-4136 Add tests
-| * | af316ae9 - IOS-4136 Fix deserialization
-| * | 75f38872 - IOS-4136 Add tests
-| * | 4909ac14 - IOS-4136 Move pkSize into constants
-| * | ef2b8dbd - IOS-4136 add derivation precheck for ed25519slip0010
-| * | aa26c144 - IOS-4136 Add ed25519 full support
-|/ /  
-| * f2a75f9f - (tag: develop-bls-signature) IOS-4169 add bls-signature tag
-|/  
-*   4618a206 - (tag: develop-256) Merge pull request #310 from tangem/IOS-3934-card-sdk-example-app-unusable-layout-on-small-phones
-|\  
-| *   d6da4afe - IOS-3934 Merge remote-tracking branch 'origin/develop' into IOS-3934-card-sdk-example-app-unusable-layout-on-small-phones
-| |\  
-| |/  
-|/|   
-* |   21473465 - (tag: develop-255) Merge pull request #311 from tangem/IOS-4047_wrong_card_type_text
-|\ \  
-| * | 333cf52a - IOS-4047 Change localization for the wrongCardType error
-|/ /  
-| * 6a53dcea - IOS-3934 lowered the priority of the scan log text view
-| * 1f399662 - IOS-3934 Improved example application layout on small phones
-|/  
-*   c5b5a978 - (tag: develop-254) Merge pull request #309 from tangem/IOS-2914-Add-Secp256k1UnmarshalSignature
-|\  
-| * bdaaa5bd - IOS-2914 Add `Secp256k1Signature.Extended`
-|/  
-*   40446415 - (tag: develop-253) Merge pull request #308 from tangem/IOS-3943-additional-sdk-wording-changes
-|\  
-| * d2192b70 - IOS-3943 Updated the wordings following Andrey Lazutkin review
-| * 286db29b - IOS-3943 Removed error_old_firmware
-| * a3ce7609 - IOS-3943 Removed error_no_remaining_signatures
-| * 5c382cb0 - IOS-3943 Removed error_not_activated
-|/  
-*   4eb47ac0 - (tag: develop-252) Merge pull request #307 from tangem/IOS-3747_reset_backup_isactive
-|\  
-| * 8cce90ee - IOS-3747 Check for backupStatus before reset
-|/  
-*   cd77b050 - (tag: develop-251) Merge pull request #306 from tangem/IOS-3906-replace-ок-with-ok
-|\  
-| * 523a1aef - IOS-3906 Changed russian OK text
-|/  
-*   90f99894 - (tag: develop-250) Merge pull request #305 from tangem/IOS-3506_remove_unowned
-|\  
-| * 7a0be59d - IOS-3506 Revert yaml
-| * a0c7bd33 - IOS-3506 Revert yaml
-| * 0ca4e214 - IOS-3506 Fix old swift issues
-| * 5463cc3b - IOS-3506 Update yaml
-| * 07251f07 - IOS-3506 add token
-| * 396beb2f - IOS-3506 use self-hosted runner
-| * ba0f1b5d - IOS-3506 Fix old swift warnings
-| * 104151a2 - IOS-3506 Remove unowned everywhere
-| * aec5fc50 - IOS-3506 Remove unowned from CardSession
-|/  
-*   68441ef9 - (tag: develop-249) Merge pull request #304 from tangem/IOS-3747_fix_backup_islinked
-|\  
-| * 1b67a51f - IOS-3747 Remove excess precheck before reset
-| * fca362ea - IOS-3747 Fix BackupStatus.isActive checks
-|/  
-*   37568512 - (tag: develop-248, tag: 32) Merge pull request #303 from tangem/IOS-3796_fix_ecdh_2
-|\  
-| * a7cacbc3 - IOS-3796 Refactor code
-|/  
-*   8416d9d0 - (tag: develop-247) Merge pull request #302 from tangem/IOS-3796_fix_ecdh
-|\  
-| * 8a5af363 - IOS-3796 Calculate x-only for ECDH
-|/  
-*   fd4fe32f - (tag: develop-246) Merge pull request #301 from tangem/IOS-3776_empy_backed_up
-|\  
-| * 96788435 - IOS-3776 Add doc
-| * 77dee215 - IOS-3776 Handle empty backedup wallet
-|/  
-*   f7f0421e - (tag: develop-245, tag: 31) Merge pull request #300 from tangem/IOS-3607_bls_import
-|\  
-| * 1586af3c - IOS-3607 Code polishing
-| * 9ddab0e9 - IOS-3607 Complete BLS importing
-| * 824f042d - IOS-3607 BLS WIP
-|/  
-*   2d838018 - (tag: develop-244) Merge pull request #297 from tangem/IOS-3606_import_schnorr
-|\  
-| *   3faf9ba8 - Merge branch 'develop' into IOS-3606_import_schnorr
-| |\  
-| |/  
-|/|   
-* |   7c52d621 - (tag: develop-243) Merge pull request #298 from tangem/IOS-3688-card-sdk-clean-up-platform-specific-strings
-|\ \  
-| * \   2bd5a6d6 - IOS-3688 Merge remote-tracking branch 'origin/develop' into IOS-3688-card-sdk-clean-up-platform-specific-strings
-| |\ \  
-| |/ /  
-|/| |   
-| * | 4816cb9e - IOS-3688 Too much info
-| * | 30c94029 - IOS-3688 Added a few missing strings
-| | * 9099e659 - IOS-3606 Remove excess case
-| | * 7cfbc879 - IOS-3606 Add ability to import schnorr keys
-| |/  
-|/|   
-* | 7b2267c9 - (tag: develop-242) Update CODEOWNERS
-* |   6e8537e2 - (tag: develop-241) Merge pull request #296 from tangem/IOS-3605_update_secp256k1_schnorr
-|\ \  
-| * \   1dcf4ae6 - Merge branch 'develop' into IOS-3605_update_secp256k1_schnorr
-| |\ \  
-| |/ /  
-|/| |   
-* | |   0a3cc9fe - (tag: develop-240) Merge pull request #295 from tangem/IOS-3335-missing-l10n
-|\ \ \  
-| |_|/  
-|/| |   
-| * | 578124bd - IOS-3335 Added chinese l10n
-|/ /  
-| * aa71aab9 - IOS-3605 Fix verification
-| * 4d6bdbe5 - IOS-3605 Update secp256k1 with schnorr
-|/  
-*   b102d4c2 - (tag: develop-239) Merge pull request #294 from tangem/IOS-3673_finalize_backup_master
-|\  
-| *   92e76ac3 - Merge branch 'develop' into IOS-3673_finalize_backup_master
-| |\  
-| |/  
-|/|   
-* |   7fcba436 - (tag: develop-238) Merge pull request #293 from tangem/IOS-3672-derivation-path-m-0-000000-is-considered-valid-and-is-equal-to-m-0-0
-|\ \  
-| * | 9cb0e346 - IOS-3672 Normalizing derivation path when parsing from a string
-|/ /  
-| *   fd8b3979 - Merge branch 'develop' into IOS-3673_finalize_backup_master
-| |\  
-| |/  
-|/|   
-* |   a4e4633e - (tag: develop-237) Merge pull request #292 from tangem/IOS-3666_return_cardId
-|\ \  
-| * | 659e8c47 - IOS-3666 Return cardId in backupFailedNotEmptyWallets
-|/ /  
-| * b5a7b204 - IOS-3673 Add FinalizeReadBackupDataCommand
-|/  
-*   0ffb4796 - (tag: develop-236) Merge pull request #291 from tangem/IOS-3531_open_derivatio_other_curves
-|\  
-| * 3eeef45d - IOS-3531 Open derivation for all supported curves
-|/  
-*   f6df2e7e - (tag: develop-235) Merge pull request #287 from tangem/IOS-3603_update_attest_card
-|\  
-| * 0b7f5556 - IOS-3603 Rename to linkedCardPublicKeys
-| * bb217c27 - IOS-3603 refactor handler
-| * 67bfd91f - IOS-3603 Handle full attestation via JSONRPC
-| *   dffe73ac - Merge branch 'develop' into IOS-3603_update_attest_card
-| |\  
-| |/  
-|/|   
-* | 2c3c8cad - (tag: develop-234) Merge pull request #290 from tangem/master
+* | 5d860b54 - (tag: develop-281, origin/release/0.0.2) Merge pull request #339 from tangem/master
  /  
-* 4585e781 - IOS-3603 Add attestation to demo
-* 8b40b85c - IOS-3603 Complete attestation
-* 9650868b - IOS-3603 Fix tests
-* f19f2b4c - IOS-3603 Add linked cards attestation
-* 29cd98e4 - IOS-3603 Bump v6 fw
+* 1517748d - IOS-5674 Refactor code
+* 5c1a6ed1 - (origin/release/0.0.3, origin/release/0.0.1) IOS-5674 Fix reader

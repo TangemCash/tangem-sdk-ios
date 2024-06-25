@@ -670,6 +670,8 @@
 		DC3D98052A7927A2001EEE7A /* SLIP10Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SLIP10Tests.swift; sourceTree = "<group>"; };
 		DC3D98092A792804001EEE7A /* KeysImportTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeysImportTests.swift; sourceTree = "<group>"; };
 		DC44C5892B4DC1B200888BED /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		DC47728C2C2B0C4000D2459D /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		DC47728D2C2B0C4E00D2459D /* uk-UA */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "uk-UA"; path = "uk-UA.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		DC4E442829BF42630088617C /* Base58Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Base58Tests.swift; sourceTree = "<group>"; };
 		DC59CB0329AF597900EC14E1 /* Wordlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wordlist.swift; sourceTree = "<group>"; };
 		DC59CB0929AF6F9C00EC14E1 /* EntropyLength.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntropyLength.swift; sourceTree = "<group>"; };
@@ -1857,6 +1859,8 @@
 				it,
 				ru,
 				"zh-Hant",
+				ja,
+				"uk-UA",
 			);
 			mainGroup = 5DA80C90231D247A00A50A10;
 			packageReferences = (
@@ -2245,6 +2249,8 @@
 				5DD1D62D25557E7F007910EF /* it */,
 				5D384E0F27B5355600869C0D /* ru */,
 				DADB544F298BAFBC00491102 /* zh-Hant */,
+				DC47728C2C2B0C4000D2459D /* ja */,
+				DC47728D2C2B0C4E00D2459D /* uk-UA */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

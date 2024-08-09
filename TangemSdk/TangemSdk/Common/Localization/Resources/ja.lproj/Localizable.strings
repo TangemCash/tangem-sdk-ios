@@ -47,7 +47,7 @@
 "pin2" = "パスコード";
 "pin_change_new_code_format" = "新しい%@";
 "pin_confirm_error_format" = "コードが一致しません";
-"pin_enter" = "%@を入力してください";
+"pin_enter" = "%@を入力";
 "pin_reset_code_format" = "%@をリセット";
 "pin_set_code_confirm_format" = "%@を確認";
 "pin_set_code_format" = "%@を設定";

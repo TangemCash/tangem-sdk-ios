@@ -64,7 +64,7 @@ public class BackupService: ObservableObject {
         updateState()
     }
     
-    public func addBackupCard(completion: @escaping CompletionResult<Void>) {
+    public func addBackupCard(completion: @escaping CompletionResult<Card>) {
         guard let primaryCard = repo.data.primaryCard else {
             completion(.failure(.missingPrimaryCard))
             return
@@ -226,11 +226,13 @@ public class BackupService: ObservableObject {
         return currentState
     }
     
-    private func addBackupCard(_ backupCard: BackupCard, completion: @escaping CompletionResult<Void>) {
+    private func addBackupCard(_ backupCardResponse: StartBackupCardLinkingTaskResponse, completion: @escaping CompletionResult<Card>) {
+        let backupCard = backupCardResponse.backupCard
+
         if let existingIndex = repo.data.backupCards.firstIndex(where: { $0.cardId == backupCard.cardId }) {
             repo.data.backupCards.remove(at: existingIndex)
         }
-        
+
         fetchCertificate(for: backupCard.cardId,
                          cardPublicKey: backupCard.cardPublicKey,
                          firmwareVersion: backupCard.firmwareVersion) { [weak self] result in
@@ -242,14 +244,14 @@ public class BackupService: ObservableObject {
                 backupCard.certificate = certificate
                 self.repo.data.backupCards.append(backupCard)
                 self.updateState()
-                completion(.success(()))
+                completion(.success(backupCardResponse.card))
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
     
-    private func readBackupCard(_ primaryCard: PrimaryCard, completion: @escaping CompletionResult<Void>) {
+    private func readBackupCard(_ primaryCard: PrimaryCard, completion: @escaping CompletionResult<Card>) {
         let command = StartBackupCardLinkingTask(primaryCard: primaryCard,
                                                  addedBackupCards: repo.data.backupCards.map { $0.cardId },
                                                  skipCompatibilityChecks: skipCompatibilityChecks)

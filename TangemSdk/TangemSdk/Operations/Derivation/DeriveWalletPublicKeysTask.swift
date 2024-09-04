@@ -47,9 +47,16 @@ public class DeriveWalletPublicKeysTask: CardSessionRunnable {
             case .failure(let error):
                 switch error {
                 case .nonHardenedDerivationNotSupported, .walletNotFound, .unsupportedCurve:
+                    // continue derivation
                     Log.error(error)
                 default:
-                    completion(.failure(error))
+                    if keys.keys.isEmpty {
+                        completion(.failure(error))
+                    } else {
+                        Log.error(error)
+                        // return partial response
+                        completion(.success(keys))
+                    }
                     return
                 }
             }

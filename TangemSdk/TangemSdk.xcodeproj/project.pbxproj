@@ -762,6 +762,7 @@
 		DCD2D91E2A1CF87200AB00B6 /* libsecp256k1-config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "libsecp256k1-config.h"; sourceTree = "<group>"; };
 		DCD2D9212A1CFA8400AB00B6 /* precomputed_ecmult_gen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = precomputed_ecmult_gen.h; sourceTree = "<group>"; };
 		DCD2D9242A1D15A300AB00B6 /* SchnorrSignature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchnorrSignature.swift; sourceTree = "<group>"; };
+		DCDECB8F2C88A81200E10564 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		DCEA3ABB2875AEBA00B0B0DA /* BiometricsStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsStorage.swift; sourceTree = "<group>"; };
 		DCEA3ABD2875AF0F00B0B0DA /* SecureStorageKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorageKey.swift; sourceTree = "<group>"; };
 		DCF6188329F069DB001BE133 /* AttestCardKey.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = AttestCardKey.json; sourceTree = "<group>"; };
@@ -1861,6 +1862,7 @@
 				"zh-Hant",
 				ja,
 				"uk-UA",
+				es,
 			);
 			mainGroup = 5DA80C90231D247A00A50A10;
 			packageReferences = (
@@ -2251,6 +2253,7 @@
 				DADB544F298BAFBC00491102 /* zh-Hant */,
 				DC47728C2C2B0C4000D2459D /* ja */,
 				DC47728D2C2B0C4E00D2459D /* uk-UA */,
+				DCDECB8F2C88A81200E10564 /* es */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

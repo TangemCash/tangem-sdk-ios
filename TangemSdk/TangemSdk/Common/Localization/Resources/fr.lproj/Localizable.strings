@@ -37,7 +37,7 @@
 "error_wrong_card_number_with_card_id" = "Vous avez tapé une autre carte. Veuillez appuyer sur la carte %@.";
 "error_wrong_card_number_without_card_id" = "Vous avez tapé une autre carte";
 "error_wrong_card_type" = "Cette application n'est pas conçue pour fonctionner avec cette carte ou doit être mise à jour";
-"error_wrong_pin_format" = "Incorrect%@";
+"error_wrong_pin_format" = "Incorrect %@";
 "generic_error_code" = "Une erreur s'est produite lors de l'opération. Code : %@.";
 "issuer_signature_loading_failed" = "Impossible de charger le certificat de la carte. Veuillez réessayer plus tard.";
 "nfc_alert_default_done" = "Exécuté";
@@ -46,11 +46,11 @@
 "pin1" = "Code d'accès";
 "pin2" = "Mot de passe";
 "pin_change_new_code_format" = "Nouveau %@";
-"pin_confirm_error_format" = "Codes ne correspondent pas";
+"pin_confirm_error_format" = "Les codes ne correspondent pas";
 "pin_enter" = "Saisir %@";
 "pin_reset_code_format" = "Réinitialiser %@";
 "pin_set_code_confirm_format" = "Confirmer %@";
-"pin_set_code_format" = "Modifier %@";
+"pin_set_code_format" = "Régler %@";
 "reset_codes_btn_forgot_your_code" = "Vous avez oublié votre code ?";
 "reset_codes_current_card" = "Carte actuelle";
 "reset_codes_linked_card" = "Carte liée";

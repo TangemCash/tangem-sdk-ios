@@ -119,6 +119,13 @@ class FinalizePrimaryCardTask: CardSessionRunnable {
             case .success:
                 completion(.success(card))
             case .failure(let error):
+                // Backup data already finalized, but we didn't catch the original response due to NFC errors or tag lost. Just cover invalid state error
+                if case .invalidState = error {
+                    Log.debug("Got \(error). Ignoring..")
+                    completion(.success(card))
+                    return
+                }
+
                 completion(.failure(error))
             }
             

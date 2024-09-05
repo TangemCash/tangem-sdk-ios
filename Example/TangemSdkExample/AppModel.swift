@@ -816,18 +816,18 @@ extension AppModel {
     @ViewBuilder
     func makeBackupDestination() -> some View {
         if let service = self.backupService {
-            BackupView().environmentObject(service)
+            BackupView(backupService: service)
         } else {
-            BackupView()
+           EmptyView()
         }
     }
     
     @ViewBuilder
     func makePinResetDestination() -> some View {
         if let service = self.resetPinService {
-            ResetPinView().environmentObject(service)
+            ResetPinView(resetPinService: service)
         } else {
-            ResetPinView()
+            EmptyView()
         }
     }
 }

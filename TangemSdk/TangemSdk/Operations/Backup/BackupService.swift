@@ -10,10 +10,10 @@ import Foundation
 import Combine
 
 @available(iOS 13.0, *)
-public class BackupService: ObservableObject {
+public class BackupService {
     public static let maxBackupCardsCount = 2
     
-    @Published public private(set) var currentState: State = .preparing
+    public private(set) var currentState: State = .preparing
     
     public var canAddBackupCards: Bool {
         addedBackupCardsCount < BackupService.maxBackupCardsCount

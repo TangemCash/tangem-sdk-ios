@@ -10,7 +10,7 @@ import SwiftUI
 import TangemSdk
 
 struct BackupView: View {
-    @EnvironmentObject var backupService: BackupService
+    var backupService: BackupService
     
     @State private var count: Int = 2
     @State private var accessCode: String = ""
@@ -158,10 +158,7 @@ struct BackupView: View {
 }
 
 struct BackupView_Previews: PreviewProvider {
-    static let sdk = TangemSdk()
-    
     static var previews: some View {
-        BackupView()
-            .environmentObject(BackupService(sdk: sdk))
+        BackupView(backupService: BackupService(sdk: TangemSdk()))
     }
 }

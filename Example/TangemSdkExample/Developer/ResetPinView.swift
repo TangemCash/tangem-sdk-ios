@@ -10,7 +10,7 @@ import SwiftUI
 import TangemSdk
 
 struct ResetPinView: View {
-    @EnvironmentObject var resetPinService: ResetPinService
+    var resetPinService: ResetPinService
     
     private var stateTitle: String { "Current state is: \(resetPinService.currentState)" }
     @State private var accessCode: String = ""
@@ -80,10 +80,7 @@ struct ResetPinView: View {
 }
 
 struct ResetPinView_Previews: PreviewProvider {
-    static let sdk = TangemSdk()
-    
     static var previews: some View {
-        ResetPinView()
-            .environmentObject(ResetPinService(config: Config()))
+        ResetPinView(resetPinService: ResetPinService(config: Config()))
     }
 }

@@ -45,7 +45,7 @@ public class ResetCodesController {
     
     private func bind() {
         self.resetService
-            .$currentState
+            .currentStatePublisher
             .dropFirst()
             .sink {[weak self] newState in
                 guard let self else { return }

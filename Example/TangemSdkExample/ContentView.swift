@@ -188,25 +188,15 @@ struct ContentView: View {
                     .font(.headline)
                     .bold()
                 
-                if #available(iOS 14.0, *) {
-                    TextEditor(text: $model.editorData)
-                        .frame(height: 100)
-                    
-                    HStack {
-                        Spacer()
-                        Button("Paste json", action: model.pasteEditor)
-                        Spacer()
-                        Button("End editing", action: model.endEditing)
-                        Spacer()
-                    }
-                } else {
-                    HStack {
-                        Spacer()
-                        Button("Print json", action: model.printEditor)
-                        Spacer()
-                        Button("Paste json", action: model.pasteEditor)
-                        Spacer()
-                    }
+                TextEditor(text: $model.editorData)
+                    .frame(height: 100)
+
+                HStack {
+                    Spacer()
+                    Button("Paste json", action: model.pasteEditor)
+                    Spacer()
+                    Button("End editing", action: model.endEditing)
+                    Spacer()
                 }
             }
             .autocapitalization(.none)

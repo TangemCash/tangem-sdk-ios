@@ -9,7 +9,6 @@
 import Foundation
 import Combine
 
-@available(iOS 13.0, *)
 public class ResetPinService {
     public var currentState: State { _currentState.value }
     public var currentStatePublisher: AnyPublisher<State, Never> { _currentState.eraseToAnyPublisher() }
@@ -218,7 +217,6 @@ public class ResetPinService {
     }
 }
 
-@available(iOS 13.0, *)
 extension ResetPinService {
     class ResetPinRepo {
         var confirmationCard: ConfirmationCard? = nil

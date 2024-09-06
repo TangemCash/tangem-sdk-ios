@@ -17,7 +17,6 @@ import Foundation
  * WalletPrivateKey is never revealed by the card and will be used by `SignHash` or `SignHashes` and `AttestWalletKeyCommand`.
  * RemainingSignature is set to MaxSignatures.
  */
-@available(iOS 13.0, *)
 public class CreateWalletTask: CardSessionRunnable {
     private let curve: EllipticCurve
     private let privateKey: ExtendedPrivateKey?

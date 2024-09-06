@@ -10,7 +10,6 @@ import Foundation
 
 /// Holds information about card firmware version included version saved on card `version`,
 /// splitted to `major`, `minor` and `patch` and `FirmwareType`
-@available(iOS 13.0, *)
 public struct FirmwareVersion: Codable {
     /// Version that saved on card
     public let stringValue: String
@@ -65,7 +64,6 @@ public struct FirmwareVersion: Codable {
     }
 }
 
-@available(iOS 13.0, *)
 extension FirmwareVersion: Comparable {
     public static func < (lhs: FirmwareVersion, rhs: FirmwareVersion) -> Bool {
         if lhs.major != rhs.major {
@@ -105,7 +103,6 @@ extension FirmwareVersion: Comparable {
     
 }
 //MARK: - Constants
-@available(iOS 13.0, *)
 public extension FirmwareVersion { //todo: move all doubleValue checks to constants, group production cos
     /// Multi-wallet
     static let multiwalletAvailable = FirmwareVersion(major: 4, minor: 0)
@@ -133,7 +130,6 @@ public extension FirmwareVersion { //todo: move all doubleValue checks to consta
     static let ed25519Slip0010Available = FirmwareVersion(major: 6, minor: 33)
 }
 
-@available(iOS 13.0, *)
 public extension FirmwareVersion {
     enum FirmwareType: String, StringCodable, CaseIterable, JSONStringConvertible {
         case sdk = "d SDK" //todo fix

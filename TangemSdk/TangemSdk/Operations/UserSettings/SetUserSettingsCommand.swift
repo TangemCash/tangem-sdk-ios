@@ -9,7 +9,6 @@
 import Foundation
 
 /// Deserialized response from the Tangem card after `SetUserSettingsCommand`. COS v.6.16+
-@available(iOS 13.0, *)
 struct SetUserSettingsCommandResponse: JSONStringConvertible {
     /// Unique Tangem card ID number.
     let cardId: String
@@ -18,7 +17,6 @@ struct SetUserSettingsCommandResponse: JSONStringConvertible {
 }
 
 /// Set user serrings on a card. COS v.6.16+
-@available(iOS 13.0, *)
 class SetUserSettingsCommand: Command {
     var preflightReadMode: PreflightReadMode { .readCardOnly }
 

@@ -9,7 +9,6 @@
 import Foundation
 
 ///Response for `ReadCommand`. Contains detailed card information.
-@available(iOS 13.0, *)
 public struct Card: Codable, JSONStringConvertible {
     /// Unique Tangem card ID number.
     public let cardId: String
@@ -59,7 +58,6 @@ public struct Card: Codable, JSONStringConvertible {
     var remainingSignatures: Int?
 }
 
-@available(iOS 13.0, *)
 public extension Card {
     struct Manufacturer: Codable {
         /// Card manufacturer name.
@@ -178,7 +176,6 @@ public extension Card {
     }
 }
 
-@available(iOS 13.0, *)
 extension Card {
     /// Status of the card and its wallet.
     enum Status: Int, StatusType { //TODO: TBD

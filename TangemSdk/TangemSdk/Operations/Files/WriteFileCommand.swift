@@ -9,14 +9,12 @@
 import Foundation
 
 /// Deserialized response for `WriteFileCommand`
-@available (iOS 13.0, *)
 public struct WriteFileResponse: JSONStringConvertible {
     let cardId: String
     let fileIndex: Int?
 }
 
 /// Command for writing file on card
-@available (iOS 13.0, *)
 public final class WriteFileCommand: Command {
     var requiresPasscode: Bool { isWritingByUserCodes }
     

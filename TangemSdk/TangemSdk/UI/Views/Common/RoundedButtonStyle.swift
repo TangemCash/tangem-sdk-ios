@@ -9,7 +9,6 @@
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct RoundedButton: ButtonStyle {
     var colors: TangemSdkStyle.ButtonColors
     var isDisabled: Bool = false
@@ -29,11 +28,7 @@ struct RoundedButton: ButtonStyle {
         if isLoading  {
             ZStack {
                 colors.backgroundColor
-                if #available(iOS 14.0, *) {
-                    ActivityIndicatorView(color: colors.foregroundColor)
-                } else {
-                    ActivityIndicatorView(color: UIColor.white)
-                }
+                ActivityIndicatorView(color: colors.foregroundColor)
             }
         } else {
             Color.clear
@@ -54,11 +49,10 @@ struct RoundedButton: ButtonStyle {
         .overlay(loadingOverlay)
         .cornerRadius(8)
         .allowsHitTesting(!isDisabled && !isLoading)
-        .animation(.easeInOut(duration: 0.2))
+        .animation(.easeInOut(duration: 0.2), value: isDisabled)
     }
 }
 
-@available(iOS 13.0, *)
 struct RoundedButton_Previews: PreviewProvider {
     
     @ViewBuilder

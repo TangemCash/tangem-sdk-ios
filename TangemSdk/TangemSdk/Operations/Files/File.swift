@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available (iOS 13, *)
 public struct File: JSONStringConvertible {
     public let name: String?
     public let data: Data
@@ -27,7 +26,6 @@ public struct File: JSONStringConvertible {
     }
 }
 
-@available (iOS 13, *)
 extension File {
     init?(response: ReadFileResponse) {
         guard response.size != nil, let settings = response.settings else {
@@ -51,7 +49,6 @@ extension File {
     }
 }
 
-@available(iOS 13.0, *)
 public struct NamedFile {
     public let name: String
     public let payload: Data
@@ -96,7 +93,6 @@ public struct NamedFile {
 }
 
 /// File data to write by the user or file  owner.
-@available (iOS 13.0, *)
 public enum FileToWrite: Decodable {
     /// Write file protected by the user with security delay or user code if set
     ///   - data: Data to write

@@ -11,7 +11,6 @@ import TangemSdk_secp256k1
 
 typealias Secp256k1SignatureComponents = (r: Data, s: Data, v: Data)
 
-@available(iOS 13.0, *)
 public final class Secp256k1Utils {
     private let context: OpaquePointer
     

@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 extension JSONDecoder {
     public static var tangemSdkDecoder: JSONDecoder  {
         let decoder = JSONDecoder()
@@ -23,7 +22,6 @@ extension JSONDecoder {
     }
 }
 
-@available(iOS 13.0, *)
 extension JSONEncoder {
     public static var tangemSdkEncoder: JSONEncoder  {
         let encoder = JSONEncoder()
@@ -44,7 +42,7 @@ extension JSONEncoder {
     }
 }
 
-@available(iOS 13.0, *)
+
 fileprivate extension DateFormatter {
     static var tangemSdkDateFormatter: DateFormatter {
         let dateFormatter = DateFormatter()

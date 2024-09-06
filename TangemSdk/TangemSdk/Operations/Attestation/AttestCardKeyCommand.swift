@@ -9,7 +9,6 @@
 import Foundation
 
 /// Deserialized response from the Tangem card after `AttestCardKeyCommand`.
-@available(iOS 13.0, *)
 public struct AttestCardKeyResponse: JSONStringConvertible {
     /// Unique Tangem card ID number
     public let cardId: String
@@ -36,7 +35,6 @@ public struct AttestCardKeyResponse: JSONStringConvertible {
     }
 }
 
-@available(iOS 13.0, *)
 public class AttestCardKeyCommand: Command {
     public var preflightReadMode: PreflightReadMode { .readCardOnly }
     
@@ -144,7 +142,6 @@ public class AttestCardKeyCommand: Command {
     }
 }
 
-@available(iOS 13.0, *)
 public extension AttestCardKeyCommand {
     enum Mode: String, StringCodable {
         /// Attest only current card
@@ -163,14 +160,12 @@ public extension AttestCardKeyCommand {
     }
 }
 
-@available(iOS 13.0, *)
 public extension AttestCardKeyResponse {
     enum Constants {
         static let linkedCardsPrefix = "BACKUP_CARDS"
     }
 }
 
-@available(iOS 13.0, *)
 private extension AttestCardKeyCommand.Mode {
     enum RawMode: Byte, InteractionMode {
         case full = 0x01

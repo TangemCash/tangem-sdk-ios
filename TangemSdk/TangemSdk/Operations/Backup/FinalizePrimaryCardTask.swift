@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 class FinalizePrimaryCardTask: CardSessionRunnable {
     var shouldAskForAccessCode: Bool { false }
     
@@ -143,7 +142,6 @@ class FinalizePrimaryCardTask: CardSessionRunnable {
     }
 }
 
-@available(iOS 13.0, *)
 private extension FinalizePrimaryCardTask {
     enum LinkAction {
         case link

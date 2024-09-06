@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct CardView: View {
     let cardColor: Color
     let starsColor: Color
@@ -39,7 +38,6 @@ struct CardView: View {
     }
 }
 
-@available(iOS 13.0, *)
 struct CardView_Previews: PreviewProvider {
     static var cardColor = TangemSdkStyle().colors.cardColor
     

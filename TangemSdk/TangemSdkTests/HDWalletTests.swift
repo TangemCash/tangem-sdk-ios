@@ -10,7 +10,6 @@ import Foundation
 import XCTest
 @testable import TangemSdk
 
-@available(iOS 13.0, *)
 class HDWalletTests: XCTestCase {
     func testDerivation1() {
         let masterKey = ExtendedPublicKey(publicKey: Data(hexString: "0339a36013301597daef41fbe593a02cc513d0b55527ec2df1050e2e8ff49c85c2"),

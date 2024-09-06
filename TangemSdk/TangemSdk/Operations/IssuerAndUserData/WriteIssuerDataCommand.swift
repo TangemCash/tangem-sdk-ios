@@ -14,7 +14,6 @@ import Foundation
  * wallet balance signed by the issuer or additional issuer’s attestation data.
  */
 @available(*, deprecated, message: "Use files instead")
-@available(iOS 13.0, *)
 public final class WriteIssuerDataCommand: Command {
     /// Data provided by issuer
     public let issuerData: Data

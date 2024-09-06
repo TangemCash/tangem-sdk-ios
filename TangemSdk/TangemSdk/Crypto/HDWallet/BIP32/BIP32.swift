@@ -12,8 +12,7 @@ import CryptoKit
 // https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki
 public struct BIP32 {
     public init() {}
-    
-    @available(iOS 13.0, *)
+
     /// Generate an extended private key from the seed.
     /// - Parameters:
     ///   - seed: The seed to use
@@ -65,7 +64,6 @@ extension BIP32 {
     }
 }
 
-@available(iOS 13.0, *)
 fileprivate extension EllipticCurve {
     var hmacKey: BIP32.HMACKey? {
         switch self {

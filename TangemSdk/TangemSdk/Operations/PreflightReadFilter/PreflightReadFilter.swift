@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 /// Use this filter to filter out cards on preflight read stage. If preflight mode is set to `readCardOnly` or `fullCardRead`. `HandleErrors` flag must be switched on.
 public protocol PreflightReadFilter {
     /// This method calls right after public information is read. User code is not required.  If preflight mode is set to `readCardOnly` or `fullCardRead`

@@ -9,7 +9,6 @@
 import Foundation
 import TangemSdk_secp256k1
 
-@available(iOS 13.0, *)
 public struct Secp256k1Key {
     private let secp256k1 = Secp256k1Utils()
     private let secp256k1PubKey: secp256k1_pubkey

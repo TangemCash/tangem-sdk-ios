@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct ChangeUserCodeView: View {
     let type: UserCodeType
     let title: String
@@ -57,7 +56,6 @@ struct ChangeUserCodeView: View {
                                                isDisabled: isContinueDisabled,
                                                isLoading: false))
             }
-            .keyboardAdaptive(animated: .constant(true))
         }
         .padding([.horizontal, .bottom])
     }
@@ -106,7 +104,6 @@ struct ChangeUserCodeView: View {
     }
 }
 
-@available(iOS 13.0, *)
 struct ChangeUserCodeView_Previews: PreviewProvider {
     static var previews: some View {
         Group {

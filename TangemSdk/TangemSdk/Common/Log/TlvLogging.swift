@@ -8,12 +8,10 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 protocol TlvLogging {
     func logTlv<T>(_ tlv: Tlv, _ value: T)
 }
 
-@available(iOS 13.0, *)
 extension TlvLogging {
     func logTlv<T>(_ tlv: Tlv, _ value: T) {
         var tlvString = "\(tlv)"

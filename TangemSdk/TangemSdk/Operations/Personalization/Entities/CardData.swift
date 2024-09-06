@@ -9,7 +9,6 @@
 import Foundation
 
 /// Detailed information about card contents.
-@available(iOS 13.0, *)
 struct CardData {
     /// Tangem internal manufacturing batch ID.
     let batchId: String

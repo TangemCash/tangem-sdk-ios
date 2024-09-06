@@ -20,7 +20,6 @@ import Foundation
 * User_ProtectedCounter and User_ProtectedData additionaly need PIN2 to confirmation.
 */
 @available(*, deprecated, message: "Use files instead")
-@available(iOS 13.0, *)
 public final class WriteUserDataCommand: Command {
     var requiresPasscode: Bool { return true }
     

@@ -9,7 +9,6 @@
 import Foundation
 
 /// Task for deleting files from card.
-@available (iOS 13.0, *)
 public final class DeleteFilesTask: CardSessionRunnable {
     private let indices: [Int]?
     private var deleteRunnable: DeleteAllFilesTask?

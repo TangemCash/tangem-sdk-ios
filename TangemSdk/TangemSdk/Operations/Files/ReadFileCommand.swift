@@ -9,7 +9,6 @@
 import Foundation
 
 /// Deserialized response for `ReadFileCommand`
-@available (iOS 13.0, *)
 struct ReadFileResponse: JSONStringConvertible {
     var cardId: String
     var size: Int?
@@ -55,7 +54,6 @@ struct ReadFileResponse: JSONStringConvertible {
 }
 
 /// Command that read single file at specified index. Reading private file will prompt user to input a passcode.
-@available (iOS 13.0, *)
 final class ReadFileCommand: Command {
     ///If true, user code or security delay will be requested
     var shouldReadPrivateFiles = false

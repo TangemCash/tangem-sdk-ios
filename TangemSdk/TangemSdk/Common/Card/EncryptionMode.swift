@@ -9,7 +9,6 @@
 import Foundation
 
 /// All available encryption modes
-@available(iOS 13.0, *)
 public enum EncryptionMode: String, StringCodable {
     case none
     case fast

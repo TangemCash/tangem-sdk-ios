@@ -11,7 +11,6 @@ import CoreHaptics
 import UIKit
 import AVFoundation
 
-@available(iOS 13.0, *)
 class HapticsEngine {
     private var engine: CHHapticEngine?
     private var engineNeedsStart = true

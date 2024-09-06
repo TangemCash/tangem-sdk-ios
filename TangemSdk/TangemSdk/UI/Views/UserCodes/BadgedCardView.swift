@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct BadgedCardView: View {
     let cardColor: Color
     let starsColor: Color
@@ -39,7 +38,6 @@ struct BadgedCardView: View {
     }
 }
 
-@available(iOS 13.0, *)
 struct BadgedCardView_Previews: PreviewProvider {
     static var previews: some View {
         BadgedCardView(cardColor: .blue, starsColor: .gray,

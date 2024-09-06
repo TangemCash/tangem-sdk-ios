@@ -15,11 +15,7 @@ public class NFCUtils {
     public static var isNFCAvailable: Bool {
         if NSClassFromString("NFCNDEFReaderSession") == nil { return false }
 
-        if #available(iOS 13.0, *) {
-            return NFCNDEFReaderSession.readingAvailable
-        } else {
-            return false
-        }
+        return NFCNDEFReaderSession.readingAvailable
     }
 
     public static var isPoorNfcQualityDevice: Bool {

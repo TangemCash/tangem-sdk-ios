@@ -10,7 +10,6 @@ import Foundation
 import XCTest
 @testable import TangemSdk
 
-@available(iOS 13.0, *)
 class ByteUtilsTests: XCTestCase {
     func testHexConversion() {
         let testData = UInt8(0x1B)

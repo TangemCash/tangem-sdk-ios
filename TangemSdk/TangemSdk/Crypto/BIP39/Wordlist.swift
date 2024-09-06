@@ -8,14 +8,12 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 extension BIP39 {
     public enum Wordlist: CaseIterable {
         case en
     }
 }
 
-@available(iOS 13.0, *)
 extension BIP39.Wordlist {
     /// This var reads a big array from a file
     public var words: [String] {

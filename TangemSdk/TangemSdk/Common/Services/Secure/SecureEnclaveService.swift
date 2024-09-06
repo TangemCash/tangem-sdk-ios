@@ -9,7 +9,6 @@
 import Foundation
 import CryptoKit
 
-@available(iOS 13.0, *)
 struct SecureEnclaveService {
     private let storage = SecureStorage()
     

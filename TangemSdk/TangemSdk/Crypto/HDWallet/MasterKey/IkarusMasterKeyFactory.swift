@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 struct IkarusMasterKeyFactory: MasterKeyFactory {
     private let entropy: Data
     private let passphrase: String

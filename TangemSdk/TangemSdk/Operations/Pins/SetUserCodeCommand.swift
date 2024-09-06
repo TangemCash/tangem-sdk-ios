@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public class SetUserCodeCommand: Command {
     var requiresPasscode: Bool = true
     var shouldRestrictDefaultCodes = true
@@ -223,7 +222,6 @@ public class SetUserCodeCommand: Command {
     }
 }
 // MARK:- Reset codes
-@available(iOS 13.0, *)
 public extension SetUserCodeCommand {
     static var resetAccessCodeCommand: SetUserCodeCommand {
         let command = SetUserCodeCommand(accessCode: UserCodeType.accessCode.defaultValue)
@@ -245,7 +243,6 @@ public extension SetUserCodeCommand {
     }
 }
 
-@available(iOS 13.0, *)
 extension SetUserCodeCommand {
     enum UserCodeAction: Equatable {
         case request

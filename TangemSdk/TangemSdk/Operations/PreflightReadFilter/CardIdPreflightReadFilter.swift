@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 struct CardIdPreflightReadFilter: PreflightReadFilter {
     private let expectedCardId: String
 

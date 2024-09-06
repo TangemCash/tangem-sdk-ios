@@ -9,7 +9,6 @@
 import XCTest
 @testable import TangemSdk
 
-@available(iOS 13.0, *)
 class JsonTests: XCTestCase {
     
     override func setUp() {

@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct MainScreen: View {
     @EnvironmentObject var viewModel: MainViewModel
     @EnvironmentObject var style: TangemSdkStyle
@@ -71,7 +70,6 @@ struct MainScreen: View {
     }
 }
 
-@available(iOS 13.0, *)
 private extension MainScreen {
     enum Constants {
         static let indicatorMaxSize: CGFloat = 280
@@ -80,7 +78,6 @@ private extension MainScreen {
     }
 }
 
-@available(iOS 13.0, *)
 struct MainScreen_Preview: PreviewProvider {
     static var previews: some View {
         MainScreen()
@@ -89,9 +86,7 @@ struct MainScreen_Preview: PreviewProvider {
     }
 }
 
-@available(iOS 13.0, *)
 fileprivate extension SessionViewState {
-    @available(iOS 13.0, *)
     var indicatorState: IndicatorView.ViewState? {
         switch self {
         case .default:

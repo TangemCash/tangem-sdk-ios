@@ -8,7 +8,6 @@
 import XCTest
 @testable import TangemSdk
 
-@available(iOS 13.0, *)
 class DataExtensionTests: XCTestCase {
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

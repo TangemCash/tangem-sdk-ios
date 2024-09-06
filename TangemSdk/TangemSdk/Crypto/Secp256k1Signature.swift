@@ -9,7 +9,6 @@
 import Foundation
 import TangemSdk_secp256k1
 
-@available(iOS 13.0, *)
 public struct Secp256k1Signature {
     private let secp256k1 = Secp256k1Utils()
     private let rawSig: secp256k1_ecdsa_signature
@@ -45,7 +44,6 @@ public struct Secp256k1Signature {
     }
 }
 
-@available(iOS 13.0, *)
 extension Secp256k1Signature {
     public struct Extended {
         public let r: Data

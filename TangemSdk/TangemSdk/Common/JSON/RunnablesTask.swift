@@ -8,10 +8,8 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 typealias RunnablesTaskResponse = [JSONRPCResponse]
 
-@available(iOS 13.0, *)
 final class RunnablesTask: CardSessionRunnable {
     private let runnables: [AnyJSONRPCRunnable]
     private var responses: RunnablesTaskResponse = .init()

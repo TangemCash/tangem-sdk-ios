@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 struct NdefRecord: Codable {
     enum NdefRecordType: String, Codable {
         case uri
@@ -24,7 +23,6 @@ struct NdefRecord: Codable {
     }
 }
 
-@available(iOS 13.0, *)
 extension NdefRecord {
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)

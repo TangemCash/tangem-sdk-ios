@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 /// Deserialize v4 walelts only
 class WalletDeserializer {
     private let isDefaultPermanentWallet: Bool

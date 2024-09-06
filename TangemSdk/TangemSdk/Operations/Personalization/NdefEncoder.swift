@@ -12,7 +12,6 @@ import Foundation
 /**
  * Encodes information that is to be written on the card as an Ndef Tag.
  */
-@available(iOS 13.0, *)
 class NdefEncoder {
     private let ndefRecords: [NdefRecord]
     private let useDynamicNdef: Bool

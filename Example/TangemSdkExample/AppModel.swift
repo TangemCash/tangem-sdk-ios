@@ -192,16 +192,6 @@ extension AppModel {
         }
     }
     
-    func printEditor() {
-        switch method {
-        case .jsonrpc:
-            printJson()
-        case .personalize:
-            printPersonalizationConfig()
-        default: break
-        }
-    }
-    
     func pasteEditor() {
         switch method {
         case .jsonrpc:
@@ -660,15 +650,7 @@ extension AppModel {
     private func pasteJson() {
         if let string = UIPasteboard.general.string {
             json = string
-            
-            if #available(iOS 14.0, *) {} else {
-                printJson()
-            }
         }
-    }
-    
-    private func printJson() {
-        logger.log(json)
     }
 }
 
@@ -677,15 +659,7 @@ extension AppModel {
     private func pastePersonalizationConfig() {
         if let string = UIPasteboard.general.string {
             personalizationConfig = string
-            
-            if #available(iOS 14.0, *) {} else {
-                printPersonalizationConfig()
-            }
         }
-    }
-    
-    private func printPersonalizationConfig() {
-        logger.log(personalizationConfig)
     }
     
     func personalize() {

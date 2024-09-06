@@ -48,7 +48,6 @@ extension UInt16 {
     }
 }
 
-@available(iOS 13.0, *)
 extension Array where Element == UInt8 {
     public func getSha256() -> Data {
         let digest = SHA256.hash(data: self)

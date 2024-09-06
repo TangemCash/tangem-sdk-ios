@@ -11,7 +11,6 @@ import CoreNFC
 import Combine
 
 /// The main interface of Tangem SDK that allows your app to communicate with Tangem cards.
-@available(iOS 13.0, *)
 public final class TangemSdk {
     /// Configuration of the SDK. Do not change the default values unless you know what you are doing
     public var config = Config()
@@ -54,7 +53,6 @@ public final class TangemSdk {
 }
 
 //MARK: - Card operations
-@available(iOS 13.0, *)
 public extension TangemSdk {
     //MARK: - Common
     
@@ -600,7 +598,6 @@ public extension TangemSdk {
 }
 
 //MARK: - Session start
-@available(iOS 13.0, *)
 extension TangemSdk {
     /// Allows running a custom bunch of commands in one NFC Session by creating a custom task. Tangem SDK will start a card session, perform preflight `Read` command,
     /// invoke the `run ` method of `CardSessionRunnable` and close the session.
@@ -756,7 +753,6 @@ extension TangemSdk {
 }
 
 //MARK: - Private
-@available(iOS 13.0, *)
 extension TangemSdk {
     private func checkSession() throws {
         if let existingSession = cardSession, existingSession.state == .active  {

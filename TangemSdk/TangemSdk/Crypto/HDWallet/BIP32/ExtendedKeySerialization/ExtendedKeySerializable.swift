@@ -9,7 +9,6 @@
 import Foundation
 
 /// https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#serialization-format
-@available(iOS 13.0, *)
 public protocol ExtendedKeySerializable {
     init(from extendedKeyString: String, networkType: NetworkType) throws
     func serialize(for networkType: NetworkType) throws -> String

@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public class TrustedCardsRepo {
     private let storage = Storage()
     private let secureStorage = SecureStorage()
@@ -69,7 +68,6 @@ public class TrustedCardsRepo {
     }
 }
 
-@available(iOS 13.0, *)
 private extension TrustedCardsRepo {
     enum Constants {
         static var maxCards = 1000 //todo: Think about it!

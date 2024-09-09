@@ -43,7 +43,12 @@ public class DeriveMultipleWalletPublicKeysTask: CardSessionRunnable {
                 self.response[derivation.0] = derivedKeys
                 self.derive(index: index + 1, in: session, completion: completion)
             case .failure(let error):
-                completion(.failure(error))
+                if self.response.isEmpty {
+                    completion(.failure(error))
+                } else {
+                    // return  partial response
+                    completion(.success(self.response))
+                }
             }
         }
     }

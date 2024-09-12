@@ -10,7 +10,7 @@ import Foundation
 
 /// This command receives from the Tangem Card all the data about the card and the wallet,
 ///  including unique card number (CID or cardId) that has to be submitted while calling all other commands.
-@available(iOS 13.0, *)
+
 public final class ReadCommand: Command {
     public var preflightReadMode: PreflightReadMode { .none }
     

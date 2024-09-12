@@ -10,7 +10,6 @@ import XCTest
 import Foundation
 @testable import TangemSdk
 
-@available(iOS 13.0, *)
 class ExtendedKeyTests: XCTestCase {
     func testRoundTripPub() throws {
         let key = try ExtendedPublicKey(

@@ -12,7 +12,6 @@ import CommonCrypto
 
 /// We can't use CryptoKit's HKDF because of iOS14
 /// https://www.rfc-editor.org/rfc/rfc5869
-@available(iOS 13.0, *)
 enum HKDFUtil<H: HashFunction> {
     
     /// HKDF-Extract(salt, IKM) -> PRK

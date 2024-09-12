@@ -7,7 +7,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 extension Bundle {
     static var sdkBundle: Bundle {
 #if SWIFT_PACKAGE

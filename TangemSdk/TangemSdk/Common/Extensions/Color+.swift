@@ -9,7 +9,6 @@
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, *)
 extension Color {
     static func adaptiveColor(dark: UIColor, light: UIColor) -> Color {
         Color(UIColor.init { $0.userInterfaceStyle == .dark ? dark : light })

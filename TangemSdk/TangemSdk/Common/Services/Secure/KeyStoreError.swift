@@ -22,7 +22,6 @@ struct KeyStoreError: Error, CustomStringConvertible {
     }
 }
 
-@available(iOS 13.0, *)
 extension OSStatus {
     
     /// A human readable message for the status.

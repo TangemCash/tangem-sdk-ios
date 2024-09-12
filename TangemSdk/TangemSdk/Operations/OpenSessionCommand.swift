@@ -17,7 +17,6 @@ struct OpenSessionResponse {
 /// In case of encrypted communication, App should setup a session before calling any further command.
 /// [OpenSessionCommand] generates secret session_key that is used by both host and card
 /// to encrypt and decrypt commands’ payload.
-@available(iOS 13.0, *)
 class OpenSessionCommand: ApduSerializable {
     private let sessionKeyA: Data
     
@@ -50,7 +49,6 @@ protocol EncryptionHelper {
     func generateSecret(keyB: Data) throws -> Data
 }
 
-@available(iOS 13.0, *)
 class EncryptionHelperFactory {
     static func make(for mode: EncryptionMode) throws -> EncryptionHelper {
         switch mode {
@@ -64,7 +62,6 @@ class EncryptionHelperFactory {
     }
 }
 
-@available(iOS 13.0, *)
 final class FastEncryptionHelper: EncryptionHelper {
     let keyA: Data
     
@@ -77,7 +74,6 @@ final class FastEncryptionHelper: EncryptionHelper {
     }
 }
 
-@available(iOS 13.0, *)
 final class StrongEncryptionHelper: EncryptionHelper {
     let keyA: Data
     

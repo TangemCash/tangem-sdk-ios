@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct NFCFieldView: View {
     var isAnimationOn: Bool {
         didSet {
@@ -41,14 +40,14 @@ struct NFCFieldView: View {
                 Circle()
                     .fill(style.colors.tint.opacity(0.2))
                     .scaleEffect(circleScale)
-                    .animation(isAnimationOn ? bigCircleAnimation : nil)
-                
+                    .animation(isAnimationOn ? bigCircleAnimation : nil, value: circleScale)
+
                 Circle()
                     .fill(style.colors.tint.opacity(0.2))
                     .frame(width: 0.6 * geo.size.width,
                            height: 0.6 * geo.size.width)
                     .scaleEffect(circleScale)
-                    .animation(isAnimationOn ? smallCircleAnimation : nil)
+                    .animation(isAnimationOn ? smallCircleAnimation : nil, value: circleScale)
             }
         }
         .onAppear() {
@@ -57,7 +56,6 @@ struct NFCFieldView: View {
     }
 }
 
-@available(iOS 13.0, *)
 struct NFCView_Previews: PreviewProvider {
     @State static var animation: Bool = true
     static var previews: some View {

@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-@available(iOS 13.0, *)
 final class StartBackupCardLinkingCommand: Command {
     var requiresPasscode: Bool { return false }
 

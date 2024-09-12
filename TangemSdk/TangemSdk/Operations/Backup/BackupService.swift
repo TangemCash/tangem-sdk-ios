@@ -9,7 +9,6 @@
 import Foundation
 import Combine
 
-@available(iOS 13.0, *)
 public class BackupService {
     public static let maxBackupCardsCount = 2
     
@@ -437,7 +436,6 @@ public class BackupService {
 
 // MARK: - State
 
-@available(iOS 13.0, *)
 extension BackupService {
     public enum State: Equatable {
         case preparing
@@ -449,7 +447,6 @@ extension BackupService {
 
 // MARK: - Storage entities
 
-@available(iOS 13.0, *)
 public struct PrimaryCard: Codable {
     public let cardId: String
     public let cardPublicKey: Data
@@ -467,7 +464,6 @@ public struct PrimaryCard: Codable {
     var certificate: Data?
 }
 
-@available(iOS 13.0, *)
 struct BackupCard: Codable {
     let cardId: String
     let cardPublicKey: Data
@@ -483,7 +479,6 @@ struct EncryptedBackupData: Codable {
     let salt: Data
 }
 
-@available(iOS 13.0, *)
 struct BackupServiceData: Codable {
     var accessCode: Data? = nil
     var passcode: Data? = nil
@@ -501,7 +496,6 @@ struct BackupServiceData: Codable {
 
 // MARK: - BackupRepo
 
-@available(iOS 13.0, *)
 class BackupRepo {
     private let storage = SecureStorage()
     private var isFetching: Bool = false

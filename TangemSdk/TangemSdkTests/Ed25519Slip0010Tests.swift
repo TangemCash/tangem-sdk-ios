@@ -12,8 +12,8 @@ import XCTest
 class Ed25519Slip0010Tests {
     /// Compare with trustwallet. Test only first part of the long key because second part is equal too
     func testDerivation() {
-        let seed = "gravity machine north sort system female filter attitude volume fold club stay feature office ecology stable narrow fog"
-        let passphrase = "TREZOR"
+        // let seed = "gravity machine north sort system female filter attitude volume fold club stay feature office ecology stable narrow fog"
+        // let passphrase = "TREZOR"
 
         // m/44/501/0/0/0 and m/44/501/0/2/0
         // long key A0D68D1417418A5D80B9BB61F160237597D6DED8582475BCA248C7F0C79D5A01D09EEF00267D028F0FDD6741DE8330A6F54F27DD47C85AAB6945CD1DE501EB4AB59EF7C83690EB70E890CA5DD58BE027C3DED4ECF2496EF06F7D8B0688F3F5C2B57A196F9D6D4C90ADF790D4ABFFBA7E26F3632758774305D6E932C67B7F76E8

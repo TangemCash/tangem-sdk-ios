@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct IndicatorView: View {
     var state: ViewState = .spinner
     
@@ -107,9 +106,7 @@ struct IndicatorView: View {
     }
 }
 
-@available(iOS 13.0, *)
 extension IndicatorView {
-    @available(iOS 13.0, *)
     enum ViewState {
         case spinner
         case delay(currentValue: CGFloat, totalValue: CGFloat)
@@ -117,8 +114,6 @@ extension IndicatorView {
     }
 }
 
-
-@available(iOS 13.0, *)
 struct SpinnerView_Previews: PreviewProvider {
     static var previews: some View {
         Group {

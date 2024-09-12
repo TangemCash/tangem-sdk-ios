@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public final class SetUserCodeRecoveryAllowedTask: CardSessionRunnable {
     public var preflightReadMode: PreflightReadMode { .readCardOnly }
     

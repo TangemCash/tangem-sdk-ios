@@ -11,7 +11,6 @@ import XCTest
 @testable import TangemSdk
 
 /// testcases from https://eips.ethereum.org/EIPS/eip-2333#hkdf_mod_r-1
-@available(iOS 13.0, *)
 class BLSTests: XCTestCase {
     func testCase0() throws {
         let key = try BLSUtils().generateKey(inputKeyMaterial: Data(hexString: "c55257c360c07c72029aebc1b53c05ed0362ada38ead3e3e9efa3708e53495531f09a6987599d18264c1e1c92f2cf141630c7a3c4ab7c81b2f001698e7463b04"))

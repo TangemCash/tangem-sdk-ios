@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 struct EIP2333MasterKeyFactory: MasterKeyFactory {
     private let seed: Data
 

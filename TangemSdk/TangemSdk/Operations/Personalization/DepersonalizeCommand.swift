@@ -17,7 +17,6 @@ public struct DepersonalizeResponse: JSONStringConvertible {
 * This command resets card to initial state,
 * erasing all data written during personalization and usage.
 */
-@available(iOS 13.0, *)
 public class DepersonalizeCommand: Command {
     public var preflightReadMode: PreflightReadMode { .none }
     

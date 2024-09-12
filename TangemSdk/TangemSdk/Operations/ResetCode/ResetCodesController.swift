@@ -9,7 +9,6 @@
 import Foundation
 import Combine
 
-@available(iOS 13.0, *)
 public class ResetCodesController {
     public var cardIdDisplayFormat: CardIdDisplayFormat = .full
     

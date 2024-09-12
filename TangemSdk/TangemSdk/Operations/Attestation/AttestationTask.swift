@@ -9,7 +9,6 @@
 import Foundation
 import Combine
 
-@available(iOS 13.0, *)
 public final class AttestationTask: CardSessionRunnable {
     private let mode: Mode
     private let trustedCardsRepo: TrustedCardsRepo = .init()
@@ -248,7 +247,6 @@ public final class AttestationTask: CardSessionRunnable {
     }
 }
 
-@available(iOS 13.0, *)
 public extension AttestationTask {
     enum Mode: String, StringCodable, CaseIterable, Comparable {
         case offline, normal, full
@@ -268,7 +266,6 @@ public extension AttestationTask {
     }
 }
 
-@available(iOS 13.0, *)
 private extension AttestationTask {
     enum Constants {
         //Attest wallet count or sign command count greater this value is looks suspicious.

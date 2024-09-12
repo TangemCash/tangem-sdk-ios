@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public class DeriveWalletPublicKeyTask: CardSessionRunnable {
     private let walletPublicKey: Data
     private let derivationPath: DerivationPath

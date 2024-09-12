@@ -8,13 +8,11 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public enum SessionFilter {
     case cardId(String)
     case custom(PreflightReadFilter)
 }
 
-@available(iOS 13.0, *)
 extension SessionFilter {
     var preflightReadFilter: PreflightReadFilter {
         switch self {

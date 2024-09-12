@@ -11,7 +11,6 @@ import Combine
 import CommonCrypto
 
 /// Allows interaction with Tangem cards. Should be open before sending commands
-@available(iOS 13.0, *)
 public class CardSession {
     enum CardSessionState {
         case inactive
@@ -585,7 +584,6 @@ public class CardSession {
     }
 }
 //MARK: - JSON RPC
-@available(iOS 13.0, *)
 extension CardSession {
     /// Convinience method for jsonrpc requests running
     /// - Parameters:

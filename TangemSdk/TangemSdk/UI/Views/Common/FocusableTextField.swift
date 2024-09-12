@@ -10,7 +10,6 @@ import Foundation
 import SwiftUI
 import Combine
 
-@available(iOS 15.0, *)
 struct FocusableTextField: View {
     let isSecured: Bool
     let shouldBecomeFirstResponder: Bool
@@ -58,7 +57,6 @@ struct FocusableTextField: View {
 }
 
 
-@available(iOS 15.0, *)
 private extension FocusableTextField {
     enum Field: Hashable {
         case secure
@@ -66,7 +64,6 @@ private extension FocusableTextField {
     }
 }
 
-@available(iOS 15.0, *)
 fileprivate class FocusableTextFieldModel: ObservableObject {
     var focusPublisher: PassthroughSubject<Void, Never> = .init()
     

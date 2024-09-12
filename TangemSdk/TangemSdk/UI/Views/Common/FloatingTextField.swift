@@ -9,12 +9,10 @@
 import SwiftUI
 import Combine
 
-@available(iOS 13.0, *)
 struct FloatingTextField: View {
     let title: String
     let text: Binding<String>
     var onCommit: () -> Void = {}
-    /// iOS15+
     var shouldBecomeFirstResponder: Bool = false
     
     @EnvironmentObject private var style: TangemSdkStyle
@@ -22,23 +20,12 @@ struct FloatingTextField: View {
     
     @ViewBuilder
     private var textField: some View {
-        if #available(iOS 15.0, *) {
-            FocusableTextField(isSecured: isSecured,
-                               shouldBecomeFirstResponder: shouldBecomeFirstResponder,
-                               text: text,
-                               onCommit: onCommit)
-        } else {
-            legacyTextField
-        }
-    }
-    
-    @ViewBuilder
-    private var legacyTextField: some View {
-        if isSecured {
-            SecureField("", text: text, onCommit: onCommit)
-        } else {
-            TextField("", text: text, onCommit: onCommit)
-        }
+        FocusableTextField(
+            isSecured: isSecured,
+            shouldBecomeFirstResponder: shouldBecomeFirstResponder,
+            text: text,
+            onCommit: onCommit
+        )
     }
     
     var body: some View {
@@ -68,7 +55,7 @@ struct FloatingTextField: View {
                 .frame(height: 1)
         }
         .padding(.top, 20)
-        .animation(Animation.easeInOut(duration: 0.1))
+        .animation(Animation.easeInOut(duration: 0.1), value: text.wrappedValue)
     }
     
     private func toggleSecured() {
@@ -77,7 +64,6 @@ struct FloatingTextField: View {
 }
 
 
-@available(iOS 13.0, *)
 struct FloatingTextField_Previews: PreviewProvider {
     @State static var text: String = "002139123"
     

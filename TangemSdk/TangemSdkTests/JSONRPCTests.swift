@@ -10,7 +10,6 @@ import Foundation
 import XCTest
 @testable import TangemSdk
 
-@available(iOS 13.0, *)
 class JSONRPCTests: XCTestCase {
     var testCard: Card {
         get throws {

@@ -9,7 +9,6 @@
 import Foundation
 import Combine
 
-@available(iOS 13.0, *)
 class BackupCertificateProvider {
     private let onlineCardVerifier = OnlineCardVerifier()
     private var cancellable: AnyCancellable? = nil

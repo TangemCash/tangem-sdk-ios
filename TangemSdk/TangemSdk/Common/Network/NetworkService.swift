@@ -46,7 +46,6 @@ public enum NetworkServiceError: Error, LocalizedError {
     }
 }
 
-@available(iOS 13.0, *)
 public class NetworkService {
     private let configuration: URLSessionConfiguration?
     

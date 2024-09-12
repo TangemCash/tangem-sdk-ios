@@ -10,7 +10,6 @@ import Foundation
 import XCTest
 @testable import TangemSdk
 
-@available(iOS 13.0, *)
 class Base58Tests: XCTestCase {
     func testRoundTrip() {
         let data = Data(repeating: UInt8(1), count: 32)

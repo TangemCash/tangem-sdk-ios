@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public final class TlvEncoder {
     public init() {}
     
@@ -134,5 +133,4 @@ public final class TlvEncoder {
     }
 }
 
-@available(iOS 13.0, *)
 extension TlvEncoder: TlvLogging {}

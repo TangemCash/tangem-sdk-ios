@@ -10,7 +10,6 @@ import XCTest
 import Foundation
 @testable import TangemSdk
 
-@available(iOS 13.0, *)
 class WIFTests: XCTestCase {
     func testRoundTrip() {
         let key = Data(hexString: "589aeb596710f33d7ac31598ec10440a7df8808cf2c3d69ba670ff3fae66aafb")

@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 struct CardDeserializer {
     var allowNotPersonalized: Bool = false
     

@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 final class ResetPinCommand: Command {
     var requiresPasscode: Bool { return false }
     var preflightReadMode: PreflightReadMode { .readCardOnly }

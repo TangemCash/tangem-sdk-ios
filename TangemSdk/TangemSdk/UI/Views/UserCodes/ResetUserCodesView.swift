@@ -9,7 +9,6 @@
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct ResetUserCodesView: View {
     let title: String
     let cardId: String
@@ -98,7 +97,6 @@ struct ResetUserCodesView: View {
     }
 }
 
-@available(iOS 13.0, *)
 struct ResetUserCodesView_Previews: PreviewProvider {
     static var previews: some View {
         Group {

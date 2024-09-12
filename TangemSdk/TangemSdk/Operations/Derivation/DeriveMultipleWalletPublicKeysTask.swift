@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public class DeriveMultipleWalletPublicKeysTask: CardSessionRunnable {
     public typealias Response = [Data: DerivedKeys]
     

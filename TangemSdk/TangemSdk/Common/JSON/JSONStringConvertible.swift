@@ -9,12 +9,10 @@
 import Foundation
 
 /// The basic protocol for command response
-@available(iOS 13.0, *)
 public protocol JSONStringConvertible: Encodable {
     var json: String {get}
 }
 
-@available(iOS 13.0, *)
 public extension JSONStringConvertible {
     var json: String {
         let data = (try? JSONEncoder.tangemSdkEncoder.encode(self)) ?? Data()

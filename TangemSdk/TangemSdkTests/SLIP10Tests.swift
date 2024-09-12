@@ -13,7 +13,6 @@ import CryptoKit
 
 /// Tests for firmware 6.33
 /// test vectors for secp356k1 are equal to BIP32 test vectors
-@available(iOS 13.0, *)
 class SLIP10Tests: XCTestCase {
     // MARK: - Test seed retry for nist256p1
 
@@ -26,8 +25,6 @@ class SLIP10Tests: XCTestCase {
 }
 
 // MARK: - SLIP10FWTests
-
-@available(iOS 13.0, *)
 class SLIP10FWTests: FWTestCase {
     @available(iOS 16.0, *)
     func testVector1Secp256r1() {

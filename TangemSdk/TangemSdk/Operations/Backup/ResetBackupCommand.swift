@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 struct ResetBackupResponse {
     let cardId: String
     let backupStatus: Card.BackupRawStatus
@@ -17,7 +16,6 @@ struct ResetBackupResponse {
     let isDefaultPasscode: Bool
 }
 
-@available(iOS 13.0, *)
 public final class ResetBackupCommand: Command {
     public var requiresPasscode: Bool { return true }
     public var preflightReadMode: PreflightReadMode { .fullCardRead }
@@ -93,7 +91,6 @@ public final class ResetBackupCommand: Command {
     }
 }
 
-@available(iOS 13.0, *)
 fileprivate extension Card.BackupStatus {
     var canResetBackup: Bool {
         switch self {

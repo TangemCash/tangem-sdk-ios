@@ -26,7 +26,6 @@ public enum IssuerExtraDataMode: Byte, InteractionMode {
 }
 
 /// Deserialized response from the Tangem card after `ReadIssuerExtraDataCommand`.
-@available(iOS 13.0, *)
 public struct ReadIssuerExtraDataResponse: JSONStringConvertible {
     /// Unique Tangem card ID number
     public let cardId: String
@@ -80,7 +79,6 @@ public struct ReadIssuerExtraDataResponse: JSONStringConvertible {
  * biometric information for ID card product.
  */
 @available(*, deprecated, message: "Use files instead")
-@available(iOS 13.0, *)
 public final class ReadIssuerExtraDataCommand: Command {
     private var issuerPublicKey: Data?
     private var completion: CompletionResult<ReadIssuerExtraDataResponse>?

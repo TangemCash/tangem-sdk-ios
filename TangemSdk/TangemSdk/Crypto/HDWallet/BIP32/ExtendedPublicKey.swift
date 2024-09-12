@@ -9,7 +9,6 @@
 import Foundation
 import CryptoKit
 
-@available(iOS 13.0, *)
 public struct ExtendedPublicKey: Equatable, Hashable, JSONStringConvertible {
     public let publicKey: Data
     public let chainCode: Data
@@ -90,7 +89,6 @@ public struct ExtendedPublicKey: Equatable, Hashable, JSONStringConvertible {
 
 // MARK: - ExtendedKeySerializable
 
-@available(iOS 13.0, *)
 extension ExtendedPublicKey: ExtendedKeySerializable {
     public init(from extendedKeyString: String, networkType: NetworkType) throws {
         guard let data = extendedKeyString.base58CheckDecodedData else {
@@ -156,7 +154,7 @@ extension ExtendedPublicKey: ExtendedKeySerializable {
 }
 
 // MARK: - Decodable
-@available(iOS 13.0, *)
+
 extension ExtendedPublicKey: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

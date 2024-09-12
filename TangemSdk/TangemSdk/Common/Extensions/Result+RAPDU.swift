@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 extension Result where Success == ResponseApdu, Failure == TangemSdkError  {
     func getResponse() throws -> Success {
         switch self {

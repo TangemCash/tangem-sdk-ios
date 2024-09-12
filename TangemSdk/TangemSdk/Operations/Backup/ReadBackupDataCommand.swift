@@ -9,7 +9,6 @@
 import Foundation
 
 // Response from the Tangem card after `ReadBackupDataCommand`.
-@available(iOS 13.0, *)
 struct ReadBackupDataResponse {
     /// Unique Tangem card ID number
     fileprivate(set) var cardId: String = ""
@@ -22,7 +21,6 @@ struct ReadBackupDataResponse {
 }
 
 // Response from the Tangem card after `ReadBackupDataCommand`.
-@available(iOS 13.0, *)
 struct PartialReadBackupDataResponse {
     /// Unique Tangem card ID number
     let cardId: String
@@ -30,7 +28,6 @@ struct PartialReadBackupDataResponse {
     let data: EncryptedBackupData
 }
 
-@available(iOS 13.0, *)
 final class ReadBackupDataCommand: Command {
     var requiresPasscode: Bool { return false }
     

@@ -9,7 +9,6 @@
 import Foundation
 
 /// Deserialized response from the Tangem card after `AttestWalletKeyCommand`.
-@available(iOS 13.0, *)
 public struct AttestWalletKeyResponse: JSONStringConvertible {
     /// Unique Tangem card ID number
     public let cardId: String
@@ -33,7 +32,6 @@ public struct AttestWalletKeyResponse: JSONStringConvertible {
 }
 
 /// This command proves that the wallet private key from the card corresponds to the wallet public key.  Standard challenge/response scheme is used
-@available(iOS 13.0, *)
 public final class AttestWalletKeyCommand: Command {
     private var challenge: Data!
     private let walletPublicKey: Data
@@ -167,7 +165,6 @@ public final class AttestWalletKeyCommand: Command {
     }
 }
 
-@available(iOS 13.0, *)
 public extension AttestWalletKeyCommand {
     enum ConfirmationMode {
         case none

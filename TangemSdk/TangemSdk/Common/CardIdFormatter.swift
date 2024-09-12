@@ -9,7 +9,6 @@
 import Foundation
 
 /// Formatting CID in more readable manner
-@available(iOS 13.0, *)
 public struct CardIdFormatter {
     public var style: CardIdDisplayFormat
     

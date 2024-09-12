@@ -85,7 +85,6 @@ public struct DerivationPath: Equatable, Hashable {
     }
 }
 
-@available(iOS 13.0, *)
 extension DerivationPath {
     init(from tlvData: Data) throws {
         guard tlvData.count % 4 == 0 else {

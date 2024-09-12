@@ -12,7 +12,6 @@ import CryptoKit
 @testable import TangemSdk
 
 /// Test that keys uploaded to a card are equal to locally computed. Firmware 6.31
-@available(iOS 13.0, *)
 class KeysImportTests: XCTestCase {
     private let entropy = Data(hexString: "6610b25967cdcca9d59875f5cb50b0ea75433311869e930b")
     private let mnemonicString = "gravity machine north sort system female filter attitude volume fold club stay feature office ecology stable narrow fog"

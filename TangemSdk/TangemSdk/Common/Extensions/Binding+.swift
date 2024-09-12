@@ -9,7 +9,6 @@
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, *)
 extension Binding {
     
     /// When the `Binding`'s `wrappedValue` changes, the given closure is executed.

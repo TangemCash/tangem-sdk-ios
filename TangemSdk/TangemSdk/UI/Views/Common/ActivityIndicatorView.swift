@@ -9,19 +9,11 @@
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct ActivityIndicatorView: UIViewRepresentable {
     private var isAnimating: Bool
     private var style: UIActivityIndicatorView.Style
     private var color: UIColor
-    
-    init(isAnimating: Bool = true, style: UIActivityIndicatorView.Style = .medium, color: UIColor) {
-        self.isAnimating = isAnimating
-        self.style = style
-        self.color = color
-    }
-    
-    @available(iOS 14.0, *)
+
     init(isAnimating: Bool = true, style: UIActivityIndicatorView.Style = .medium, color: Color) {
         self.isAnimating = isAnimating
         self.style = style

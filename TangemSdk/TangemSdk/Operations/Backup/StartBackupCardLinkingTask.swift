@@ -9,7 +9,6 @@
 import Foundation
 
 /// Response from the Tangem card after `StartBackupCardLinkingTask
-@available(iOS 13.0, *)
 struct StartBackupCardLinkingTaskResponse: JSONStringConvertible {
     /// Backup data frrom the card
     let backupCard: BackupCard
@@ -18,7 +17,6 @@ struct StartBackupCardLinkingTaskResponse: JSONStringConvertible {
     let card: Card
 }
 
-@available(iOS 13.0, *)
 final class StartBackupCardLinkingTask: CardSessionRunnable {
     var shouldAskForAccessCode: Bool { false }
 

@@ -13,7 +13,6 @@ import CoreNFC
  * An error class that represent typical errors that may occur when performing Tangem SDK tasks.
  * Errors are propagated back to the caller in callbacks.
  */
-@available(iOS 13.0, *)
 public enum TangemSdkError: Error, LocalizedError, Encodable {
     //MARK: NFC processing errors
     

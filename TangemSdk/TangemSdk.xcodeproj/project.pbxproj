@@ -38,8 +38,6 @@
 		5D2B798626BC3DBF002A78D4 /* DeriveWalletPublicKeyTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2B798526BC3DBF002A78D4 /* DeriveWalletPublicKeyTask.swift */; };
 		5D2BDF8626DD4869002F7E19 /* TestParseRequest.json in Resources */ = {isa = PBXBuildFile; fileRef = 5D2BDF8526DD4869002F7E19 /* TestParseRequest.json */; };
 		5D2BDF8826DD64DB002F7E19 /* RunnablesTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2BDF8726DD64DB002F7E19 /* RunnablesTask.swift */; };
-		5D2F3EE426CBDAA100779CAC /* KeyboardHeightPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F3EE226CBDAA000779CAC /* KeyboardHeightPublisher.swift */; };
-		5D2F3EE526CBDAA100779CAC /* KeyboardAdaptive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2F3EE326CBDAA000779CAC /* KeyboardAdaptive.swift */; };
 		5D2FE06324DD82750086B5E8 /* AttestCardKeyCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2FE06224DD82750086B5E8 /* AttestCardKeyCommand.swift */; };
 		5D2FE06524DD82BA0086B5E8 /* VerifyCardRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2FE06424DD82BA0086B5E8 /* VerifyCardRequest.swift */; };
 		5D2FE06724DDA3080086B5E8 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D2FE06624DDA3080086B5E8 /* NetworkService.swift */; };
@@ -421,8 +419,6 @@
 		5D2B798526BC3DBF002A78D4 /* DeriveWalletPublicKeyTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeriveWalletPublicKeyTask.swift; sourceTree = "<group>"; };
 		5D2BDF8526DD4869002F7E19 /* TestParseRequest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = TestParseRequest.json; sourceTree = "<group>"; };
 		5D2BDF8726DD64DB002F7E19 /* RunnablesTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnablesTask.swift; sourceTree = "<group>"; };
-		5D2F3EE226CBDAA000779CAC /* KeyboardHeightPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardHeightPublisher.swift; sourceTree = "<group>"; };
-		5D2F3EE326CBDAA000779CAC /* KeyboardAdaptive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardAdaptive.swift; sourceTree = "<group>"; };
 		5D2FE06224DD82750086B5E8 /* AttestCardKeyCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttestCardKeyCommand.swift; sourceTree = "<group>"; };
 		5D2FE06424DD82BA0086B5E8 /* VerifyCardRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCardRequest.swift; sourceTree = "<group>"; };
 		5D2FE06624DDA3080086B5E8 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -870,15 +866,6 @@
 			path = IssuerAndUserData;
 			sourceTree = "<group>";
 		};
-		5D2F3EE126CBDAA000779CAC /* KeyboardAvoidance */ = {
-			isa = PBXGroup;
-			children = (
-				5D2F3EE226CBDAA000779CAC /* KeyboardHeightPublisher.swift */,
-				5D2F3EE326CBDAA000779CAC /* KeyboardAdaptive.swift */,
-			);
-			path = KeyboardAvoidance;
-			sourceTree = "<group>";
-		};
 		5D2F3EE626CBE2E700779CAC /* Scan */ = {
 			isa = PBXGroup;
 			children = (
@@ -1202,7 +1189,6 @@
 				5D2F3EE826CBE31F00779CAC /* UserCodes */,
 				5D2F3EE726CBE30800779CAC /* Common */,
 				5D2F3EE626CBE2E700779CAC /* Scan */,
-				5D2F3EE126CBDAA000779CAC /* KeyboardAvoidance */,
 				5D0243BD26CACACD00B76F37 /* IndicatorView.swift */,
 			);
 			path = Views;
@@ -1836,7 +1822,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1120;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 1540;
 				ORGANIZATIONNAME = "Tangem AG";
 				TargetAttributes = {
 					5DA80C99231D247A00A50A10 = {
@@ -2065,7 +2051,6 @@
 				DC1244E829BB9E0C0037BC05 /* ExtendedKeySerializer.swift in Sources */,
 				5DA5B61C233E12B30058C720 /* Tlv.swift in Sources */,
 				5D0E56032757C11F00D46F54 /* CardDataResponse.swift in Sources */,
-				5D2F3EE526CBDAA100779CAC /* KeyboardAdaptive.swift in Sources */,
 				5D7D5FB223449D4000058D69 /* SessionEnvironment.swift in Sources */,
 				5D2FE06324DD82750086B5E8 /* AttestCardKeyCommand.swift in Sources */,
 				DC7254902A03E20A0003FE1B /* DerivedKeys.swift in Sources */,
@@ -2147,7 +2132,6 @@
 				DCD2D8BF2A1CF64A00AB00B6 /* precomputed_ecmult_gen.c in Sources */,
 				5DAAF3A026E2668500187AA9 /* UIApplication+.swift in Sources */,
 				5D0F8D0626C6C363002E84A4 /* Binding+.swift in Sources */,
-				5D2F3EE426CBDAA100779CAC /* KeyboardHeightPublisher.swift in Sources */,
 				5DE43A5C26D4DC6400ECA36A /* StartBackupCardLinkingCommand.swift in Sources */,
 				5DE5550E2458409E000E1816 /* WriteUserDataCommand.swift in Sources */,
 				5D379C2D268FA53D00C7F473 /* KeyPair.swift in Sources */,
@@ -2315,7 +2299,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MODULEMAP_FILE = "$(SRCROOT)/TangemSdk/module.modulemap";
 				MODULEMAP_PRIVATE_FILE = "";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -2389,7 +2372,6 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MODULEMAP_FILE = "$(SRCROOT)/TangemSdk/module.modulemap";
 				MODULEMAP_PRIVATE_FILE = "";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -2430,7 +2412,7 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2483,7 +2465,7 @@
 				HEADER_SEARCH_PATHS = "";
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2527,6 +2509,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4897UJ6D8C;
 				INFOPLIST_FILE = TangemSdkTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2544,6 +2527,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tangem.tangemSdk.TangemSdkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2556,6 +2543,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4897UJ6D8C;
 				INFOPLIST_FILE = TangemSdkTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2573,6 +2561,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.tangem.tangemSdk.TangemSdkTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

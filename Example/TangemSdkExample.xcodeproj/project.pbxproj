@@ -649,6 +649,7 @@
 				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 4897UJ6D8C;
 				INFOPLIST_FILE = "TangemSdkExample/Info-Development.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -673,6 +674,7 @@
 				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = 4897UJ6D8C;
 				INFOPLIST_FILE = "TangemSdkExample/Info-Development.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

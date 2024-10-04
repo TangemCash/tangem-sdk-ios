@@ -40,8 +40,8 @@ public class BackupService: ObservableObject {
     public var passcodeIsSet: Bool { repo.data.passcode != nil }
     public var primaryCardIsSet: Bool { repo.data.primaryCard != nil }
     public var primaryCard: PrimaryCard? { repo.data.primaryCard }
-    public var backupCardIds: [String] { repo.data.backupCards.map {$0.cardId} }
-    
+    public var backupCards: [BackupCard] { repo.data.backupCards }
+
     /// Perform additional compatibility checks while adding backup cards. Change this setting only if you understand what you do.
     public var skipCompatibilityChecks: Bool = false
     
@@ -455,13 +455,15 @@ public struct PrimaryCard: Codable {
 }
 
 @available(iOS 13.0, *)
-struct BackupCard: Codable {
-    let cardId: String
-    let cardPublicKey: Data
+public struct BackupCard: Codable {
+    public let cardId: String
+    public let cardPublicKey: Data
+    public let firmwareVersion: FirmwareVersion? // Optional for compatibility with interrupted backups
+    public let batchId: String? // Optional for compatibility with interrupted backups
+
     let linkingKey: Data
     let attestSignature: Data
-    let firmwareVersion: FirmwareVersion? // Optional for compatibility with interrupted backups
-    
+
     var certificate: Data?
 }
 

@@ -50,6 +50,10 @@ public class CardSession {
     private var accessCodeRepository: AccessCodeRepository? = nil
     private let filter: SessionFilter?
 
+    private var defaultScanMessage: String {
+        "view_delegate_scan_description_format".localized(environment.config.productType.localizedDescription)
+    }
+
     private var shouldRequestBiometrics: Bool {
         guard let accessCodeRepository = self.accessCodeRepository else {
             return false
@@ -191,7 +195,7 @@ public class CardSession {
                     self.viewDelegate.tagConnected()
                     self.viewDelegate.setState(.default)
                 case .tagLost:
-                    self.viewDelegate.tagLost()
+                    self.viewDelegate.tagLost(message: defaultScanMessage)
                     self.viewDelegate.setState(.scan)
                 }
             })
@@ -227,7 +231,7 @@ public class CardSession {
                 })
             .store(in: &nfcReaderSubscriptions)
         
-        reader.startSession(with: initialMessage?.alertMessage)
+        reader.startSession(with: initialMessage?.alertMessage ?? defaultScanMessage)
     }
     
     // MARK: - Session stop and pause
@@ -511,7 +515,7 @@ public class CardSession {
             func continueRunnable(code: String) {
                 self.updateEnvironment(with: type, code: code)
                 self.viewDelegate.setState(.default)
-                self.viewDelegate.showAlertMessage("view_delegate_scan_description".localized)
+                self.viewDelegate.showAlertMessage(defaultScanMessage)
                 completion(.success(()))
             }
             

@@ -292,6 +292,7 @@
 		DC7254902A03E20A0003FE1B /* DerivedKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC72548F2A03E20A0003FE1B /* DerivedKeys.swift */; };
 		DC8B0E3F286F221D009D64F7 /* BiometricsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B0E3E286F221D009D64F7 /* BiometricsUtil.swift */; };
 		DCA9706628E35EAD0046E62E /* GenerateOTPCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA9706528E35EAD0046E62E /* GenerateOTPCommand.swift */; };
+		DCACA0402CB51FF400A3DD51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCACA03F2CB51FF400A3DD51 /* Assets.xcassets */; };
 		DCB5A4E02A1F969F0021E12D /* HKDFUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB5A4DF2A1F969F0021E12D /* HKDFUtil.swift */; };
 		DCB5A4E32A1FAB330021E12D /* BLSUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB5A4E22A1FAB330021E12D /* BLSUtils.swift */; };
 		DCB5A4E52A1FAC190021E12D /* BLSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB5A4E42A1FAC190021E12D /* BLSTests.swift */; };
@@ -684,6 +685,7 @@
 		DC72548F2A03E20A0003FE1B /* DerivedKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedKeys.swift; sourceTree = "<group>"; };
 		DC8B0E3E286F221D009D64F7 /* BiometricsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsUtil.swift; sourceTree = "<group>"; };
 		DCA9706528E35EAD0046E62E /* GenerateOTPCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateOTPCommand.swift; sourceTree = "<group>"; };
+		DCACA03F2CB51FF400A3DD51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCB5A4DF2A1F969F0021E12D /* HKDFUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKDFUtil.swift; sourceTree = "<group>"; };
 		DCB5A4E22A1FAB330021E12D /* BLSUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLSUtils.swift; sourceTree = "<group>"; };
 		DCB5A4E42A1FAC190021E12D /* BLSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLSTests.swift; sourceTree = "<group>"; };
@@ -1257,6 +1259,7 @@
 		5DA80C9C231D247A00A50A10 /* TangemSdk */ = {
 			isa = PBXGroup;
 			children = (
+				DCACA03E2CB51FDF00A3DD51 /* Assets */,
 				5DA80C9D231D247A00A50A10 /* TangemSdk.h */,
 				5D5369D124461F62002886E0 /* module.modulemap */,
 				DC44C5892B4DC1B200888BED /* PrivacyInfo.xcprivacy */,
@@ -1570,6 +1573,14 @@
 				DC612D6B2AFD58A3005A547F /* CardIdPreflightReadFilter.swift */,
 			);
 			path = PreflightReadFilter;
+			sourceTree = "<group>";
+		};
+		DCACA03E2CB51FDF00A3DD51 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				DCACA03F2CB51FF400A3DD51 /* Assets.xcassets */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 		DCB5A4E12A1FAB190021E12D /* BLS */ = {
@@ -1886,6 +1897,7 @@
 				DC1244B529B60E480037BC05 /* english.txt in Resources */,
 				5DD5368C2476B3FB00F5DE88 /* Error.ahap in Resources */,
 				5D5369D224461F62002886E0 /* module.modulemap in Resources */,
+				DCACA0402CB51FF400A3DD51 /* Assets.xcassets in Resources */,
 				5D6A92D82344E2D700158457 /* Localizable.strings in Resources */,
 				5DD5368B2476B3FB00F5DE88 /* Success.ahap in Resources */,
 			);

@@ -306,11 +306,18 @@ public class BackupService: ObservableObject {
                                                onLink: { self.repo.data.attestSignature = $0 },
                                                onRead: { self.repo.data.backupData[$0.0] = $0.1 })
             
-            let formattedCardId = CardIdFormatter(style: sdk.config.cardIdDisplayFormat).string(from: primaryCard.cardId)
-            
-            let initialMessage = formattedCardId.map {
-                Message(header: nil,
-                        body: "backup_finalize_primary_card_message_format".localized($0))
+
+            var initialMessage: Message? = nil
+
+            if config.productType == .ring {
+                initialMessage = Message(
+                    header: nil,
+                    body:"backup_finalize_primary_ring_message".localized
+                )
+            } else if let formattedCardId = CardIdFormatter(style: sdk.config.cardIdDisplayFormat).string(from: primaryCard.cardId) {
+                initialMessage = Message(
+                    header: nil,
+                    body: "backup_finalize_primary_card_message_format".localized(formattedCardId))
             }
             
             currentCommand = task
@@ -371,11 +378,17 @@ public class BackupService: ObservableObject {
                                                  accessCode: accessCode,
                                                  passcode: passcode)
             
-            let formattedCardId = CardIdFormatter(style: sdk.config.cardIdDisplayFormat).string(from: backupCard.cardId)
-            
-            let initialMessage = formattedCardId.map {
-                Message(header: nil,
-                        body: "backup_finalize_backup_card_message_format".localized($0))
+            var initialMessage: Message? = nil
+
+            if config.productType == .ring {
+                initialMessage = Message(
+                    header: nil,
+                    body:"backup_finalize_backup_ring_message".localized
+                )
+            } else if let formattedCardId = CardIdFormatter(style: sdk.config.cardIdDisplayFormat).string(from: backupCard.cardId) {
+                initialMessage = Message(
+                    header: nil,
+                    body: "backup_finalize_backup_card_message_format".localized(formattedCardId))
             }
             
             currentCommand = command

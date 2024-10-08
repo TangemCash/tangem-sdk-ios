@@ -73,7 +73,6 @@ class AppModel: ObservableObject {
             .bip0340: [try! DerivationPath(rawPath: "m/0'/1")]
         ]
 
-        config.setupForRing()
         _tangemSdk.config = config
         return _tangemSdk
     }

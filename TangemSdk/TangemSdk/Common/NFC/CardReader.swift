@@ -36,7 +36,7 @@ public protocol CardReader: AnyObject {
     var alertMessage: String { get set }
     var tag: CurrentValueSubject<NFCTagType,TangemSdkError> { get }
     var viewEventsPublisher: CurrentValueSubject<CardReaderViewEvent, Never> { get }
-    func startSession(with message: String?)
+    func startSession(with message: String)
     func resumeSession()
     func stopSession(with errorMessage: String?)
     func pauseSession(with errorMessage: String?)
@@ -47,10 +47,6 @@ public protocol CardReader: AnyObject {
 
 @available(iOS 13.0, *)
 public extension CardReader {
-    func startSession(with message: String? = nil) {
-        startSession(with: message)
-    }
-    
     func pauseSession(with errorMessage: String? = nil) {
         pauseSession(with: errorMessage)
     }

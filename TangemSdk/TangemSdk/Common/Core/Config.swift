@@ -40,7 +40,10 @@ public struct Config {
 
     /// Card id display format. Full card id will be displayed by default
     public var cardIdDisplayFormat: CardIdDisplayFormat = .full
-    
+
+    /// Product to work with. Affect animations and texts.
+    public var productType: ProductType = .any
+
     /// Logger configuration
     public var logConfig: Log.Config = .default
     
@@ -67,6 +70,23 @@ public struct Config {
     
     /// Localized reason for Touch ID. DO NOT leave it empty.
     public var biometricsLocalizedReason: String = "touch_id_localized_reason".localized
+
+    public mutating func setupForProduct(_ product: ProductType) {
+        switch product {
+        case .card:
+            productType = .card
+            cardIdDisplayFormat = .full
+            style.scanTagImage = .genericCard
+        case .ring:
+            productType = .ring
+            cardIdDisplayFormat = .none
+            style.scanTagImage = .genericRing
+        case .any:
+            productType = .any
+            cardIdDisplayFormat = .full
+            style.scanTagImage = .genericCard
+        }
+    }
 }
 
 public enum CardIdDisplayFormat {
@@ -89,4 +109,22 @@ public enum AccessCodeRequestPolicy: String, CaseIterable {
     case always
     /// User code will be requested only if set on the card. Need scan the card twice.
     case `default`
+}
+
+public enum ProductType {
+    case any
+    case card
+    case ring
+
+    @available(iOS 13.0, *)
+    var localizedDescription: String {
+        switch self {
+        case .card:
+            "common_card".localized
+        case .ring:
+            "common_ring".localized
+        case .any:
+            "common_card_or_ring".localized
+        }
+    }
 }

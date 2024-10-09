@@ -39,8 +39,7 @@ public class BackupService {
     public var passcodeIsSet: Bool { repo.data.passcode != nil }
     public var primaryCardIsSet: Bool { repo.data.primaryCard != nil }
     public var primaryCard: PrimaryCard? { repo.data.primaryCard }
-    public var backupCardIds: [String] { repo.data.backupCards.map {$0.cardId} }
-
+    public var backupCards: [BackupCard] { repo.data.backupCards }
     /// Perform additional compatibility checks while adding backup cards. Change this setting only if you understand what you do.
     public var skipCompatibilityChecks: Bool = false
 
@@ -318,12 +317,19 @@ public class BackupService {
                 }
             )
 
-            let formattedCardId = CardIdFormatter(style: sdk.config.cardIdDisplayFormat).string(from: primaryCard.cardId)
+            var initialMessage: Message? = nil
 
-            let initialMessage = formattedCardId.map {
-                Message(header: nil,
-                        body: "backup_finalize_primary_card_message_format".localized($0))
+            if config.productType == .ring {
+                initialMessage = Message(
+                    header: nil,
+                    body:"backup_finalize_primary_ring_message".localized
+                )
+            } else if let formattedCardId = CardIdFormatter(style: sdk.config.cardIdDisplayFormat).string(from: primaryCard.cardId) {
+                initialMessage = Message(
+                    header: nil,
+                    body: "backup_finalize_primary_card_message_format".localized(formattedCardId))
             }
+            
 
             currentCommand = task
 
@@ -382,12 +388,18 @@ public class BackupService {
                                                  attestSignature: attestSignature,
                                                  accessCode: accessCode,
                                                  passcode: passcode)
+            
+            var initialMessage: Message? = nil
 
-            let formattedCardId = CardIdFormatter(style: sdk.config.cardIdDisplayFormat).string(from: backupCard.cardId)
-
-            let initialMessage = formattedCardId.map {
-                Message(header: nil,
-                        body: "backup_finalize_backup_card_message_format".localized($0))
+            if config.productType == .ring {
+                initialMessage = Message(
+                    header: nil,
+                    body:"backup_finalize_backup_ring_message".localized
+                )
+            } else if let formattedCardId = CardIdFormatter(style: sdk.config.cardIdDisplayFormat).string(from: backupCard.cardId) {
+                initialMessage = Message(
+                    header: nil,
+                    body: "backup_finalize_backup_card_message_format".localized(formattedCardId))
             }
 
             currentCommand = command
@@ -464,12 +476,14 @@ public struct PrimaryCard: Codable {
     var certificate: Data?
 }
 
-struct BackupCard: Codable {
-    let cardId: String
-    let cardPublicKey: Data
+public struct BackupCard: Codable {
+    public let cardId: String
+    public let cardPublicKey: Data
+    public let firmwareVersion: FirmwareVersion? // Optional for compatibility with interrupted backups
+    public let batchId: String? // Optional for compatibility with interrupted backups
+
     let linkingKey: Data
     let attestSignature: Data
-    let firmwareVersion: FirmwareVersion? // Optional for compatibility with interrupted backups
 
     var certificate: Data?
 }

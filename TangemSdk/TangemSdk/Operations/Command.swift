@@ -161,7 +161,7 @@ extension Command {
                         let totalSd = session.environment.currentSecurityDelay!
                         if totalSd > 0 {
                             session.viewDelegate.setState(.delay(remaining: securityDelayResponse.remainingSeconds, total: totalSd))
-                            session.viewDelegate.showAlertMessage("view_delegate_security_delay_description".localized)
+                            session.viewDelegate.showAlertMessage("view_delegate_security_delay_description_format".localized(session.environment.config.productType.localizedDescription))
                         }
                         
                         if securityDelayResponse.saveToFlash && session.environment.encryptionMode == .none {

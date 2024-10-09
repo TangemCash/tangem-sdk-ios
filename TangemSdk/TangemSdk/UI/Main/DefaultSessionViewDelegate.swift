@@ -62,12 +62,12 @@ extension DefaultSessionViewDelegate: SessionViewDelegate {
         engine.playSuccess()
     }
     
-    func tagLost() {
+    func tagLost(message: String) {
         Log.view("Tag lost")
         if pinnedMessage == nil {
             pinnedMessage = reader.alertMessage
         }
-        showAlertMessage("view_delegate_scan_description".localized)
+        showAlertMessage(message)
     }
     
     func wrongCard(message: String) {

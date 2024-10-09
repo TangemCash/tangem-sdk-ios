@@ -119,7 +119,7 @@ extension NFCReader: CardReader {
     }
 
     /// Start session and try to connect with tag
-    func startSession(with message: String?) {
+    func startSession(with message: String) {
         Log.nfc("Start NFC session")
         bag = Set<AnyCancellable>()
         isPaused = false
@@ -133,8 +133,7 @@ extension NFCReader: CardReader {
         firstConnectionTS = nil
         sessionDidBecomeActiveTS = Date()
 
-        let alertMessage = message ?? "view_delegate_scan_description".localized
-        _alertMessage = alertMessage
+        _alertMessage = message
 
         let isExistingSessionActive = readerSession?.isReady ?? false
         if !isExistingSessionActive {
@@ -248,7 +247,7 @@ extension NFCReader: CardReader {
     func resumeSession() {
         Log.nfc("Resume reader session invoked")
         isPaused = false
-        startSession(with: _alertMessage)
+        startSession(with: _alertMessage ?? "")
     }
 
     func pauseSession(with errorMessage: String? = nil) {

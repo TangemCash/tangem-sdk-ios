@@ -72,6 +72,7 @@ class AppModel: ObservableObject {
             .ed25519_slip0010: [try! DerivationPath(rawPath: "m/0'/1'")],
             .bip0340: [try! DerivationPath(rawPath: "m/0'/1")]
         ]
+
         _tangemSdk.config = config
         return _tangemSdk
     }

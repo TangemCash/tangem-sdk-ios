@@ -47,6 +47,8 @@ struct ReadView: View {
         switch style.scanTagImage {
         case .genericCard:
             CardView(cardColor: style.colors.cardColor, starsColor: style.colors.starsColor)
+        case .genericRing:
+            Image("ring_shape_scan")
         case .image(let uiImage, let verticalOffset):
             Image(uiImage: uiImage)
                 .resizable()

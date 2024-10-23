@@ -1,49 +1,50 @@
-*   5ba5f600 - (HEAD -> release/3.10.0, tag: develop-290, origin/develop, develop) Merge pull request #351 from tangem/IOS-6522_fix_alert_message
+* 80482b11 - (HEAD -> release/3.11.0, tag: develop-315, origin/develop, develop) Bundle update fastlane
+* e8d1df69 - (tag: develop-314) Bundle update
+*   673b4979 - (tag: develop-313) Merge pull request #378 from tangem/306.2_into_develop_sync
 |\  
-| * 89e12add - IOS-6522 Fix alert message
+| * b9175580 - Merge branch 'releases/develop-306' into 306.2_into_develop_sync
+|/| 
+| * fb405124 - (tag: develop-306.2, origin/releases/develop-306) IOS-7734 Ring logic (#377)
+| * fbea81eb - (tag: develop-306.1) IOS-8188 Open backup cards data (#375)
+* | 9647e7b3 - (tag: develop-312) IOS-8114 Fix key window ios15 (#374)
+* | 6e6f6ece - (tag: develop-311) Fix min target for example
+* | 59943dfa - (tag: develop-310, tag: 42) IOS-7818 Bump deployment target up to 15 (#370)
+* | 8df589c7 - (tag: develop-309) IOS-7148 Handle finalized card (#368)
+* | 655fa816 - (tag: develop-308) IOS-7043 Return partial response (#367)
+* | 1bcdef8f - (tag: develop-307) IOS-7867 Remove Published from services (#369)
 |/  
-*   d3f79b59 - (tag: develop-289, tag: 39) Merge pull request #349 from tangem/IOS-6620_update_privacy_manifest
+* b9111e33 - (tag: develop-306) IOS-7810 Add es and sync fr (#366)
+* 1b70a89e - (tag: develop-305) IOS-7652 Return the card in the callback (#365)
+* 22272c7e - (tag: develop-304) Bump rexml from 3.2.8 to 3.3.6 in /Example (#363)
+* 0858064b - (tag: develop-303) Bump rexml from 3.2.8 to 3.3.6 (#364)
+* f999a446 - (tag: develop-302) IOS-7595 Sync localizations (#362)
+* 883381f4 - (tag: develop-301) Feature/ios 7218 localize (#361)
+* c932eefd - (tag: develop-300) Update README.md
+* e011ee6f - (tag: develop-299) Update README.md
+*   d47b7ab6 - (tag: develop-298) Merge pull request #360 from tangem/IOS-6807_add_backupCount
 |\  
-| * 22f5bcd5 - IOS-6620 Remove unsupported devices
-| * 35c8b3d1 - IOS-6620 Add Privacy Manifest into example
-| * 9cde2028 - IOS-6620 Update privacy manifest
+| * 98500c5f - IOS-6807 Add backup cards count
 |/  
-*   7a1ff80a - (tag: develop-288) Merge pull request #347 from tangem/IOS-5193_refactor_extension
+* 564a3c01 - (tag: develop-297) Bunldle update
+*   1f78dc23 - (tag: develop-296) Merge pull request #358 from tangem/IOS-6859_fix_backup_condition
 |\  
-| * 9cab3b95 - IOS-5193 Refactor extensions
+| * 743c1aff - IOS-6859 Check for cards count
 |/  
-*   b2b15a41 - (tag: develop-287) Merge pull request #346 from tangem/IOS-5193_add_convenience_method
+*   d098ce04 - (tag: develop-295) Merge pull request #357 from tangem/IOS-6764_write_backup_data_update
 |\  
-| * 5a77a2f3 - IOS-5193 Add convenience method
+| * f66edef6 - IOS-6764 typo
+| * 5a847ea9 - IOS-6764 Fix write backup data logic
 |/  
-*   151522de - (tag: develop-286) Merge pull request #344 from tangem/feature/IOS-6296_backup_errors_update
+*   659e6ee9 - (tag: develop-294) Merge pull request #356 from tangem/IOS-6784_add_interface_for_key_recovery
 |\  
-| * 36fc8529 - Show separate messages for backupFailedAlreadyCreated and noActiveBackup errors
+| * 40207a39 - IOS-6784 Add public key recovery interface
 |/  
-*   24d07f57 - (tag: develop-285, tag: 37) Merge pull request #343 from tangem/IOS-6210_add_logs_backup
+*   bf339b48 - (tag: develop-293) Merge pull request #355 from tangem/tureck1y-patch-1
 |\  
-| * d2fb40ea - IOS-6210 Add backup logs
+| * f33afdcc - Update CODEOWNERS
 |/  
-*   68fcf888 - (tag: develop-284) Merge pull request #341 from tangem/IOS-5986_skip_derivation_errors
-|\  
-| *   a205aca6 - Merge branch 'develop' into IOS-5986_skip_derivation_errors
-| |\  
-| |/  
-|/|   
-* |   94c1a699 - (tag: develop-283) Merge pull request #342 from tangem/feature/IOS-6085-seed-make-words-count-public
-|\ \  
-| * | 63546fbf - IOS-6085: Make EntropyLength words count public
-|/ /  
-| * 25e83ac5 - IOS-5986 Ignore only concrete errors
-| * 2ffb346e - IOS-5986 Skip derivation errors
-|/  
-*   7ddce67f - (tag: develop-282) Merge pull request #338 from tangem/IOS-5674_fix_reader
-|\  
-| *   b6fadf9e - Merge branch 'develop' into IOS-5674_fix_reader
-| |\  
-| |/  
-|/|   
-* | 5d860b54 - (tag: develop-281, origin/release/0.0.2) Merge pull request #339 from tangem/master
- /  
-* 1517748d - IOS-5674 Refactor code
-* 5c1a6ed1 - (origin/release/0.0.3, origin/release/0.0.1) IOS-5674 Fix reader
+* ddb32bec - (tag: develop-292) Merge pull request #354 from tangem/master
+* 7af7d454 - (tag: develop-291) Merge pull request #353 from tangem/bugfix/IOS-6680_backup_error_text
+* 8303991c - Move internalCode check login into main switch
+* a58f93f1 - Update noActiveBackup error display logic
+* 60602b07 - Update error text for ru locale

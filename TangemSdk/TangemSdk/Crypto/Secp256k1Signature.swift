@@ -9,7 +9,6 @@
 import Foundation
 import TangemSdk_secp256k1
 
-@available(iOS 13.0, *)
 public struct Secp256k1Signature {
     private let secp256k1 = Secp256k1Utils()
     private let rawSig: secp256k1_ecdsa_signature
@@ -40,12 +39,11 @@ public struct Secp256k1Signature {
     
     public func unmarshal(with publicKey: Data, hash: Data) throws -> Extended {
         var sig = rawSig
-        let (r, s, v) = try secp256k1.unmarshalSignature(&sig, publicKey: publicKey, hash: hash)
-        return Extended(r: r, s: s, v: v)
+        let components = try secp256k1.unmarshalSignature(&sig, publicKey: publicKey, hash: hash)
+        return Extended(r: components.r, s: components.s, v: components.v)
     }
 }
 
-@available(iOS 13.0, *)
 extension Secp256k1Signature {
     public struct Extended {
         public let r: Data
@@ -57,6 +55,10 @@ extension Secp256k1Signature {
             return r + s + v
         }
         
+        var components: Secp256k1SignatureComponents {
+            (r,s,v)
+        }
+
         public init(r: Data, s: Data, v: Data) {
             self.r = r
             self.s = s

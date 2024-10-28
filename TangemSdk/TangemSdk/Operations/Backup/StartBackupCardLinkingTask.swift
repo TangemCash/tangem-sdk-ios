@@ -8,7 +8,15 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
+/// Response from the Tangem card after `StartBackupCardLinkingTask
+struct StartBackupCardLinkingTaskResponse: JSONStringConvertible {
+    /// Backup data frrom the card
+    let backupCard: BackupCard
+
+    /// Card being added
+    let card: Card
+}
+
 final class StartBackupCardLinkingTask: CardSessionRunnable {
     var shouldAskForAccessCode: Bool { false }
 
@@ -27,7 +35,7 @@ final class StartBackupCardLinkingTask: CardSessionRunnable {
         Log.debug("StartBackupCardLinkingTask deinit")
     }
 
-    func run(in session: CardSession, completion: @escaping CompletionResult<BackupCard>) {
+    func run(in session: CardSession, completion: @escaping CompletionResult<StartBackupCardLinkingTaskResponse>) {
         if session.environment.config.handleErrors {
             guard let card = session.environment.card else {
                 completion(.failure(.missingPreflightRead))
@@ -86,7 +94,19 @@ final class StartBackupCardLinkingTask: CardSessionRunnable {
         }
 
         linkingCommand = StartBackupCardLinkingCommand(primaryCardLinkingKey: primaryCard.linkingKey)
-        linkingCommand!.run(in: session, completion: completion)
+        linkingCommand!.run(in: session) { result in
+            switch result {
+            case .success(let backupCard):
+                guard let card = session.environment.card else {
+                    completion(.failure(.missingPreflightRead))
+                    return
+                }
+                
+                completion(.success(.init(backupCard: backupCard, card: card)))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 
     private func isBatchIdCompatible(_ batchId: String) -> Bool {

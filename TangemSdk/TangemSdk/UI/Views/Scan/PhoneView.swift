@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct PhoneView: View {
     @EnvironmentObject var style: TangemSdkStyle
     
@@ -35,7 +34,6 @@ struct PhoneView: View {
     }
 }
 
-@available(iOS 13.0, *)
 struct PhoneView_Previews: PreviewProvider {
     static var previews: some View {
         Group {

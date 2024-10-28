@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public extension Card {
     /// Describing wallets created on card
     struct Wallet: Codable {
@@ -39,7 +38,6 @@ public extension Card {
     }
 }
 
-@available(iOS 13.0, *)
 public extension Card.Wallet {
     struct Settings: Codable {
         /// if true, erasing the wallet will be prohibited
@@ -47,7 +45,6 @@ public extension Card.Wallet {
     }
 }
 
-@available(iOS 13.0, *)
 public extension Card.Wallet {
     /// Status of the wallet. 
     enum Status: Int, StatusType, JSONStringConvertible { //TODO: Specify
@@ -70,7 +67,6 @@ public extension Card.Wallet {
     }
 }
 
-@available(iOS 13.0, *)
 extension Card.Wallet.Status {
     var isBackedUp: Bool {
         switch self {
@@ -100,7 +96,6 @@ extension Card.Wallet.Status {
     }
 }
 
-@available(iOS 13.0, *)
 extension Card.Wallet.Settings {
     /// Stores and maps Wallet settings
     /// - Note: Available only for cards with COS v.4.0
@@ -116,17 +111,14 @@ extension Card.Wallet.Settings {
     }
 }
 
-@available(iOS 13.0, *)
 extension Card.Wallet.Settings {
     init(mask: WalletSettingsMask) {
         self.isPermanent = mask.contains(.isPermanent)
     }
 }
 
-@available(iOS 13.0, *)
 typealias WalletSettingsMask = Card.Wallet.Settings.Mask
 
-@available(iOS 13.0, *)
 extension WalletSettingsMask: OptionSetCodable {
     enum OptionKeys: String, OptionKey {
         case isPermanent

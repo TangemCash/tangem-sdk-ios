@@ -9,7 +9,6 @@
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, *)
 class ViewModel<ViewState>: ObservableObject {
     @Published var viewState: ViewState
     

@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import SwiftUI
 
-@available(iOS 13.0, *)
 final class ResetCodesViewDelegate: BaseViewDelegate {
     private let viewModel: ResetCodesViewModel = .init(viewState: .empty)
     private let style: TangemSdkStyle

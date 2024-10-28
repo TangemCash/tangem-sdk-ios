@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 /// BIP32 extended private key
 public struct ExtendedPrivateKey: Equatable, Hashable, JSONStringConvertible, Codable {
     public let privateKey: Data
@@ -61,7 +60,6 @@ public struct ExtendedPrivateKey: Equatable, Hashable, JSONStringConvertible, Co
 
 // MARK: - ExtendedKeySerializable
 
-@available(iOS 13.0, *)
 extension ExtendedPrivateKey: ExtendedKeySerializable {
     public init(from extendedKeyString: String, networkType: NetworkType) throws {
         guard let data = extendedKeyString.base58CheckDecodedData else {

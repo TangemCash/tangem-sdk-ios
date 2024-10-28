@@ -9,7 +9,8 @@
 import Foundation
 import TangemSdk_secp256k1
 
-@available(iOS 13.0, *)
+typealias Secp256k1SignatureComponents = (r: Data, s: Data, v: Data)
+
 public final class Secp256k1Utils {
     private let context: OpaquePointer
     
@@ -174,7 +175,7 @@ public final class Secp256k1Utils {
         return Data(der[0..<Int(length)])
     }
     
-    func unmarshalSignature(_ signature: inout secp256k1_ecdsa_signature, publicKey: Data, hash: Data) throws -> (r: Data, s: Data, v: Data) {
+    func unmarshalSignature(_ signature: inout secp256k1_ecdsa_signature, publicKey: Data, hash: Data) throws -> Secp256k1SignatureComponents {
         guard hash.count == 32 else { throw TangemSdkError.cryptoUtilsError("Hash size must be 32 bytes length") }
         
         guard try verifySignature(&signature, publicKey: publicKey, hash: hash) else {
@@ -245,6 +246,15 @@ public final class Secp256k1Utils {
         }
         
         return pubkey
+    }
+
+    func recoverPublicKey(signatureCoponents: Secp256k1SignatureComponents, hash: Data) throws -> secp256k1_pubkey {
+        guard let intV = Int32(hexData: signatureCoponents.v) else {
+            throw TangemSdkError.cryptoUtilsError("Failed to parse v")
+        }
+
+        var recoverableSignature = try parseRecoverableSignature(signatureCoponents.r + signatureCoponents.s, v: intV)
+        return try recoverPublicKey(hash: hash, recoverableSignature: &recoverableSignature)
     }
 
     func parseXOnlyPublicKey(_ publicKey: Data) throws -> secp256k1_xonly_pubkey {

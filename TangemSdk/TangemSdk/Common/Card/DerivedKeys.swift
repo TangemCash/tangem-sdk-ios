@@ -9,7 +9,6 @@
 import Foundation
 
 // We can't use CodingKeyRepresentable because of iOS 15 version
-@available(iOS 13.0, *)
 public struct DerivedKeys: JSONStringConvertible {
     public private(set) var keys: [DerivationPath:ExtendedPublicKey]
 
@@ -27,7 +26,6 @@ public struct DerivedKeys: JSONStringConvertible {
     }
 }
 
-@available(iOS 13.0, *)
 extension DerivedKeys: Codable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.singleValueContainer()
@@ -51,8 +49,6 @@ extension DerivedKeys: Codable {
     }
 }
 
-
-@available(iOS 13.0, *)
 extension DerivedKeys: ExpressibleByDictionaryLiteral {
     public init(dictionaryLiteral elements: (DerivationPath, ExtendedPublicKey)...) {
         let dictionary = elements.reduce(into: [:]) { partialResult, item in

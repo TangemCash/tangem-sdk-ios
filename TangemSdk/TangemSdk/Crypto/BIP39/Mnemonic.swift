@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 /// The `BIP-39` facade
 public struct Mnemonic {
     public let mnemonicComponents: [String]

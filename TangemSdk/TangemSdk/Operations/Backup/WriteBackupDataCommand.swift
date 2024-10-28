@@ -9,14 +9,12 @@
 import Foundation
 
 // Response from the Tangem card after `WriteBackupDataCommand`.
-@available(iOS 13.0, *)
 struct WriteBackupDataResponse {
     /// Unique Tangem card ID number
     let cardId: String
     let backupStatus: Card.BackupRawStatus
 }
 
-@available(iOS 13.0, *)
 final class WriteBackupDataCommand: Command {
     var requiresPasscode: Bool { return false }
     
@@ -45,10 +43,6 @@ final class WriteBackupDataCommand: Command {
         
         if card.backupStatus == .noBackup {
             return .backupFailedCardNotLinked
-        }
-        
-        if !card.wallets.isEmpty {
-            return .backupFailedNotEmptyWallets(cardId: card.cardId)
         }
 
         return nil

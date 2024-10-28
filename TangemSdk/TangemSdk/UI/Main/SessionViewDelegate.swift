@@ -11,7 +11,6 @@ import UIKit
 
 /// Allows interaction with users and shows visual elements.
 /// Its default implementation, `DefaultSessionViewDelegate`, is in our SDK.
-@available(iOS 13.0, *)
 public protocol SessionViewDelegate: AnyObject {
     func showAlertMessage(_ text: String)
     
@@ -19,7 +18,7 @@ public protocol SessionViewDelegate: AnyObject {
     func tagConnected()
     
     /// It is called when tag was lost
-    func tagLost()
+    func tagLost(message: String)
     
     func wrongCard(message: String)
     
@@ -37,7 +36,6 @@ public protocol SessionViewDelegate: AnyObject {
 }
 
 /// Current state of the sdk's UI
-@available(iOS 13.0, *)
 public enum SessionViewState {
     case delay(remaining: Float, total: Float) //seconds
     case progress(percent: Int)
@@ -57,7 +55,6 @@ public enum SessionViewState {
     }
 }
 
-@available(iOS 13.0, *)
 extension UIAlertController {
     static func showShouldContinue(from controller: UIViewController, title: String, message: String, tint: UIColor, onContinue: @escaping () -> Void, onCancel: @escaping () -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)

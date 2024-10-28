@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct UserCodeHeaderView: View {
     let title: String
     let cardId: String
@@ -34,7 +33,6 @@ struct UserCodeHeaderView: View {
     }
 }
 
-@available(iOS 13.0, *)
 struct UserCodeHeaderView_Previews: PreviewProvider {
     static var previews: some View {
         Group {

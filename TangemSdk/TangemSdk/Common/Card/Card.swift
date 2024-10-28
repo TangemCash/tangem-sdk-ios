@@ -9,7 +9,6 @@
 import Foundation
 
 ///Response for `ReadCommand`. Contains detailed card information.
-@available(iOS 13.0, *)
 public struct Card: Codable, JSONStringConvertible {
     /// Unique Tangem card ID number.
     public let cardId: String
@@ -59,7 +58,6 @@ public struct Card: Codable, JSONStringConvertible {
     var remainingSignatures: Int?
 }
 
-@available(iOS 13.0, *)
 public extension Card {
     struct Manufacturer: Codable {
         /// Card manufacturer name.
@@ -121,7 +119,16 @@ public extension Card {
                 return 0
             }
         }
-        
+
+        public var backupCardsCount: Int {
+            switch self {
+            case .active(let cardsCount):
+                return cardsCount
+            default:
+                return 0
+            }
+        }
+
         public init(from decoder: Decoder) throws {
             let codableStruct = try BackupStatusCodable(from: decoder)
             try self.init(from: codableStruct.status, cardsCount: codableStruct.cardsCount )
@@ -169,7 +176,6 @@ public extension Card {
     }
 }
 
-@available(iOS 13.0, *)
 extension Card {
     /// Status of the card and its wallet.
     enum Status: Int, StatusType { //TODO: TBD

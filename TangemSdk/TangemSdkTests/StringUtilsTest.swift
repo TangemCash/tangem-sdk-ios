@@ -9,7 +9,6 @@
 import XCTest
 @testable import TangemSdk
 
-@available(iOS 13.0, *)
 class StringUtilsTest: XCTestCase {
     func testRemove() {
         let testString = "This is a test string"

@@ -9,7 +9,6 @@
 import Foundation
 
 /// Deserialized response from the Tangem card after `GenerateOTPCommand`.
-@available(iOS 13.0, *)
 public struct GenerateOTPResponse: JSONStringConvertible {
     /// Unique Tangem card ID number.
     public let cardId: String
@@ -22,7 +21,6 @@ public struct GenerateOTPResponse: JSONStringConvertible {
 }
 
 /// Generate OTP on the card.
-@available(iOS 13.0, *)
 public class GenerateOTPCommand: Command {
     public init() {}
     

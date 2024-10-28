@@ -72,6 +72,7 @@ class AppModel: ObservableObject {
             .ed25519_slip0010: [try! DerivationPath(rawPath: "m/0'/1'")],
             .bip0340: [try! DerivationPath(rawPath: "m/0'/1")]
         ]
+
         _tangemSdk.config = config
         return _tangemSdk
     }
@@ -189,16 +190,6 @@ extension AppModel {
                 personalizationConfig = newValue
             default: break
             }
-        }
-    }
-    
-    func printEditor() {
-        switch method {
-        case .jsonrpc:
-            printJson()
-        case .personalize:
-            printPersonalizationConfig()
-        default: break
         }
     }
     
@@ -660,15 +651,7 @@ extension AppModel {
     private func pasteJson() {
         if let string = UIPasteboard.general.string {
             json = string
-            
-            if #available(iOS 14.0, *) {} else {
-                printJson()
-            }
         }
-    }
-    
-    private func printJson() {
-        logger.log(json)
     }
 }
 
@@ -677,15 +660,7 @@ extension AppModel {
     private func pastePersonalizationConfig() {
         if let string = UIPasteboard.general.string {
             personalizationConfig = string
-            
-            if #available(iOS 14.0, *) {} else {
-                printPersonalizationConfig()
-            }
         }
-    }
-    
-    private func printPersonalizationConfig() {
-        logger.log(personalizationConfig)
     }
     
     func personalize() {
@@ -816,18 +791,18 @@ extension AppModel {
     @ViewBuilder
     func makeBackupDestination() -> some View {
         if let service = self.backupService {
-            BackupView().environmentObject(service)
+            BackupView(backupService: service)
         } else {
-            BackupView()
+           EmptyView()
         }
     }
     
     @ViewBuilder
     func makePinResetDestination() -> some View {
         if let service = self.resetPinService {
-            ResetPinView().environmentObject(service)
+            ResetPinView(resetPinService: service)
         } else {
-            ResetPinView()
+            EmptyView()
         }
     }
 }

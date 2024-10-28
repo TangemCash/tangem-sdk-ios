@@ -9,7 +9,6 @@
 import Foundation
 
 ///// Contains information about the user code
-@available(iOS 13.0, *)
 struct UserCode {
     let type: UserCodeType
     let value: Data?
@@ -52,7 +51,6 @@ extension UserCodeType {
     private static let defaultPasscode = "000"
 }
 
-@available(iOS 13.0, *)
 extension UserCodeType {
     var name: String {
         switch self {

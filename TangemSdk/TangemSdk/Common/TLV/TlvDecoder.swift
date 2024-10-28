@@ -10,7 +10,6 @@ import Foundation
 
 /// Decode value fields in `Tlv` from raw bytes to concrete types
 /// according to their `TlvTag` and corresponding `TlvValueType`.
-@available(iOS 13.0, *)
 public final class TlvDecoder {
     let tlv: [Tlv]
     
@@ -233,5 +232,4 @@ public final class TlvDecoder {
     }
 }
 
-@available(iOS 13.0, *)
 extension TlvDecoder: TlvLogging { }

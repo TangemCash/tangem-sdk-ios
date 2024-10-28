@@ -25,3 +25,4 @@ public extension HexConvertible where Self: FixedWidthInteger {
 
 extension Int: HexConvertible {}
 extension UInt64: HexConvertible {}
+extension Int32: HexConvertible {}

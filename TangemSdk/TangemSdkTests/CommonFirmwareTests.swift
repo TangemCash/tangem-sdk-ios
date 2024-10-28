@@ -104,11 +104,11 @@ class CommonFirmwareTests: FWTestCase {
             "ac188745db0b9442313bc027118214f007ffc06c43a2eb4020a1d47cd1422480190639e7775b133fc999e8dccd8ba26c",
             "8793a32f2bf261acabcbfc67f33c0c5278463826e677438b7801136ffd0c8aeb22626a3abb57da9d414a58bae16a2096",
         ]
-        let pass = "TREZOR"
+        let passphrase = "TREZOR"
 
         let cmds = mnemonics.map {
             let mnemonic = try! Mnemonic(with: $0)
-            let factory = AnyMasterKeyFactory(mnemonic: mnemonic, passphrase: "TREZOR")
+            let factory = AnyMasterKeyFactory(mnemonic: mnemonic, passphrase: passphrase)
             let prvKey = try! factory.makeMasterKey(for: .bls12381_G2_AUG)
             let cmd = CreateWalletTask(curve: .bls12381_G2_AUG, privateKey: prvKey)
             return (cmd, prvKey)
@@ -197,7 +197,6 @@ class CommonFirmwareTests: FWTestCase {
             "010e304751311432c4ffb107cee6a4fc56fa3fbd43e7f354da5166c3915400feff",
             "01539f7909fe0243b862dd4395d2c8575bf070d22931952e94fb46d9aa557fa46a",
         ]
-        let pass = "TREZOR"
 
         let cmds = mnemonics.map {
             let mnemonic = try! Mnemonic(with: $0)

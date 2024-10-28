@@ -11,14 +11,8 @@ The Tangem card is a self-custodial hardware wallet that works via NFC. The main
 
 Tangem SDK is needed to facilitate support for Tangem cards in third-party applications.
 
-Supported platforms: **iOS** | [Android](https://github.com/tangem/tangem-sdk-android) | [JVM](https://github.com/tangem/tangem-sdk-android) | [Flutter](https://github.com/tangem/tangem-sdk-flutter) | [React Native ](https://github.com/tangem/tangem-sdk-react-native) | [Cordova](https://github.com/tangem/tangem-sdk-cordova) | [Capacitor](https://github.com/tangem/tangem-sdk-cordova)
+Supported platforms: **iOS** | [Android](https://github.com/tangem/tangem-sdk-android) | [JVM](https://github.com/tangem/tangem-sdk-android)
  
-# Documentation
-
-For exhaustive documentation, see [Tangem Developers Portal](https://developers.tangem.com).
-
-To kick off the development process you can start with [Getting started](https://developers.tangem.com/getting-started/ios) page.
-
 # License
 
 Tangem SDK is available under the MIT license. See the [LICENSE](LICENSE) file for more info.

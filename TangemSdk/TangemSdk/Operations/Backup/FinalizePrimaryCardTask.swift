@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 class FinalizePrimaryCardTask: CardSessionRunnable {
     var shouldAskForAccessCode: Bool { false }
     
@@ -18,6 +17,7 @@ class FinalizePrimaryCardTask: CardSessionRunnable {
     private var attestSignature: Data? //We already have attestSignature
     private let onLink: (Data) -> Void
     private let onRead: ((String, [EncryptedBackupData])) -> Void
+    private let onFinalize: () -> Void
     private let readBackupStartIndex: Int
     
     init(backupCards: [BackupCard],
@@ -26,16 +26,18 @@ class FinalizePrimaryCardTask: CardSessionRunnable {
          readBackupStartIndex: Int, //for restore
          attestSignature: Data?,
          onLink: @escaping (Data) -> Void,
-         onRead: @escaping ((String,[EncryptedBackupData])) -> Void) {
+         onRead: @escaping ((String,[EncryptedBackupData])) -> Void,
+         onFinalize: @escaping () -> Void) {
         self.backupCards = backupCards
         self.accessCode = accessCode
         self.passcode = passcode
         self.attestSignature = attestSignature
         self.onLink = onLink
         self.onRead = onRead
+        self.onFinalize = onFinalize
         self.readBackupStartIndex = readBackupStartIndex
     }
-    
+
     deinit {
         Log.debug("FinalizePrimaryCardTask deinit")
     }
@@ -108,6 +110,7 @@ class FinalizePrimaryCardTask: CardSessionRunnable {
         }
         
         guard card.firmwareVersion >= .keysImportAvailable else {
+            onFinalize()
             completion(.success(card))
             return
         }
@@ -117,8 +120,17 @@ class FinalizePrimaryCardTask: CardSessionRunnable {
         command?.run(in: session) { result in
             switch result {
             case .success:
+                self.onFinalize()
                 completion(.success(card))
             case .failure(let error):
+                // Backup data already finalized, but we didn't catch the original response due to NFC errors or tag lost. Just cover invalid state error
+                if case .invalidState = error {
+                    Log.debug("Got \(error). Ignoring..")
+                    self.onFinalize()
+                    completion(.success(card))
+                    return
+                }
+
                 completion(.failure(error))
             }
             
@@ -143,7 +155,6 @@ class FinalizePrimaryCardTask: CardSessionRunnable {
     }
 }
 
-@available(iOS 13.0, *)
 private extension FinalizePrimaryCardTask {
     enum LinkAction {
         case link

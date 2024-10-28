@@ -7,16 +7,19 @@
 //
 
 import Foundation
+import Combine
 
-@available(iOS 13.0, *)
-public class ResetPinService: ObservableObject {
-    @Published public private(set) var currentState: State = .needCode
-    @Published public private(set) var error: TangemSdkError? = nil
+public class ResetPinService {
+    public var currentState: State { _currentState.value }
+    public var currentStatePublisher: AnyPublisher<State, Never> { _currentState.eraseToAnyPublisher() }
+
+    public private(set) var error: TangemSdkError? = nil
     
     private var session: CardSession?
     private let config: Config
     private var repo: ResetPinRepo = .init()
     private var currentCommand: AnyObject? = nil
+    private var _currentState: CurrentValueSubject<State, Never> = .init(.needCode)
 
     public init(config: Config) {
         self.config = config
@@ -47,7 +50,7 @@ public class ResetPinService: ObservableObject {
         repo.accessCode = code.sha256()
         
         if currentState == .needCode {
-            currentState = currentState.next()
+            _currentState.value = currentState.next()
         }
     }
     
@@ -72,7 +75,7 @@ public class ResetPinService: ObservableObject {
         repo.passcode = code.sha256()
 
         if currentState == .needCode {
-            currentState = currentState.next()
+            _currentState.value = currentState.next()
         }
     }
     
@@ -92,7 +95,7 @@ public class ResetPinService: ObservableObject {
     private func handleCompletion(_ result: Result<Void, TangemSdkError>) -> Void {
         switch result {
         case .success:
-            currentState = currentState.next()
+            _currentState.value = currentState.next()
         case .failure(let error):
             self.error = error
         }
@@ -214,7 +217,6 @@ public class ResetPinService: ObservableObject {
     }
 }
 
-@available(iOS 13.0, *)
 extension ResetPinService {
     class ResetPinRepo {
         var confirmationCard: ConfirmationCard? = nil

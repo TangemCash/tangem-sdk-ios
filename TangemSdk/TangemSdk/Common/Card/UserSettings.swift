@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public extension Card {
     struct UserSettings: Codable {
         /// Is allowed to recover user codes
@@ -16,7 +15,6 @@ public extension Card {
     }
 }
 
-@available(iOS 13.0, *)
 extension Card.UserSettings {
     var mask: UserSettingsMask {
         let builder = MaskBuilder<UserSettingsMask>()
@@ -35,7 +33,6 @@ extension Card.UserSettings {
 
 // MARK: - UserSettingsMask
 
-@available(iOS 13.0, *)
 struct UserSettingsMask: OptionSet, OptionSetCustomStringConvertible {
     let rawValue: Int
 
@@ -44,14 +41,12 @@ struct UserSettingsMask: OptionSet, OptionSetCustomStringConvertible {
     }
 }
 
-@available(iOS 13.0, *)
 extension UserSettingsMask {
     static let forbidResetPIN = UserSettingsMask(rawValue: 0x00000001)
 }
 
 // MARK: - OptionSetCodable conformance
 
-@available(iOS 13.0, *)
 extension UserSettingsMask: OptionSetCodable {
     enum OptionKeys: String, OptionKey {
         case forbidResetPIN

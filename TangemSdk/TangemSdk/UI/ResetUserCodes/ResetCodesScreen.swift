@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct ResetCodesScreen: View {
     @EnvironmentObject var viewModel: ResetCodesViewModel
     @EnvironmentObject var style: TangemSdkStyle
@@ -46,7 +45,6 @@ struct ResetCodesScreen: View {
 }
 
 
-@available(iOS 13.0, *)
 struct ResetUserCodesScreen_Preview: PreviewProvider {
     static var previews: some View {
         ResetCodesScreen()

@@ -9,7 +9,6 @@
 import Foundation
 
 /// Deserialized response from the Tangem card after `GetEntropyCommand`.
-@available(iOS 13.0, *)
 public struct GetEntropyResponse: JSONStringConvertible {
     /// Unique Tangem card ID number.
     public let cardId: String
@@ -18,7 +17,6 @@ public struct GetEntropyResponse: JSONStringConvertible {
 }
 
 /// Get entropy from the card
-@available(iOS 13.0, *)
 public class GetEntropyCommand: Command {
     public var preflightReadMode: PreflightReadMode { .readCardOnly }
 

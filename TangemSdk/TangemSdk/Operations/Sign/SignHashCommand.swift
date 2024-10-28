@@ -18,7 +18,6 @@ public struct SignHashResponse: JSONStringConvertible {
     public let totalSignedHashes: Int?
 }
 
-@available(iOS 13.0, *)
 public final class SignHashCommand: CardSessionRunnable {
     private let walletPublicKey: Data
     private let hash: Data

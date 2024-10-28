@@ -9,7 +9,6 @@
 import Foundation
 
 /// Task for deleting all files from card.
-@available (iOS 13.0, *)
 final class DeleteAllFilesTask: CardSessionRunnable {
     func run(in session: CardSession, completion: @escaping CompletionResult<SuccessResponse>) {
         deleteFile(session: session, completion: completion)

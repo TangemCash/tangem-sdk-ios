@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public struct Attestation: JSONStringConvertible, Equatable {
     /// Attestation status of card's public key
     public internal(set) var cardKeyAttestation: Status
@@ -55,14 +54,12 @@ public struct Attestation: JSONStringConvertible, Equatable {
     }
 }
 
-@available(iOS 13.0, *)
 public extension Attestation {
     enum Status: String, StringCodable {
         case failed, warning, skipped, verifiedOffline, verified
     }
 }
 
-@available(iOS 13.0, *)
 public extension Attestation {
     static var empty: Attestation {
         .init(cardKeyAttestation: .skipped,
@@ -72,7 +69,6 @@ public extension Attestation {
     }
 }
 
-@available(iOS 13.0, *)
 extension Attestation {
     var rawRepresentation: String {
         return "\(index),\(cardKeyAttestation.intRepresentation),\(walletKeysAttestation.intRepresentation),\(firmwareAttestation.intRepresentation),\(cardUniquenessAttestation.intRepresentation)"
@@ -97,7 +93,6 @@ extension Attestation {
     }
 }
 
-@available(iOS 13.0, *)
 extension Attestation.Status {
     var intRepresentation: Int {
         switch self {
@@ -127,7 +122,6 @@ extension Attestation.Status {
     }
 }
 
-@available(iOS 13.0, *)
 extension Attestation: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

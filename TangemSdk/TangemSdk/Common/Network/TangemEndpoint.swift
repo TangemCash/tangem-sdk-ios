@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public enum TangemEndpoint: NetworkEndpoint {
     case verifyAndGetInfo(request: CardVerifyAndGetInfoRequest)
     case artwork(cid: String, cardPublicKey: Data, artworkId: String)

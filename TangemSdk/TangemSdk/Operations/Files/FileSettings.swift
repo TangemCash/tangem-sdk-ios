@@ -8,13 +8,11 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public struct FileSettings: Codable {
     public let isPermanent: Bool
     public let visibility: FileVisibility
 }
 
-@available(iOS 13.0, *)
 extension FileSettings {
     init?(_ data: Data?) throws {
         guard let data = data else { return nil }
@@ -35,7 +33,6 @@ extension FileSettings {
 }
 
 ///File visibility. Private files can be read only with security delay or user code if set
-@available(iOS 13.0, *)
 public enum FileVisibility: String, Codable {
     /// User can read public files without any codes
     case `public`

@@ -39,7 +39,6 @@ extension Data {
         return calendar.date(from: components)
     }
 
-    @available(iOS 13.0, *)
     public var sha256Ripemd160: Data {
         var md = RIPEMD160()
         let hash = getSha256()
@@ -120,19 +119,16 @@ extension Data {
         self = Data(bytes)
     }
 
-    @available(iOS 13.0, *)
     public func getSha256() -> Data {
         let digest = SHA256.hash(data: self)
         return Data(digest)
     }
-    
-    @available(iOS 13.0, *)
+
     public func getSha512() -> Data {
         let digest = SHA512.hash(data: self)
         return Data(digest)
     }
 
-    @available(iOS 13.0, *)
     public func getDoubleSha256() -> Data {
         return getSha256().getSha256()
     }
@@ -144,8 +140,7 @@ extension Data {
     func toBits() -> [String] {
         return flatMap { $0.toBits() }
     }
-    
-    @available(iOS 13.0, *)
+
     func decodeTlv<T>(tag: TlvTag) -> T? {
         guard let tlv = Tlv.deserialize(self) else{
             return nil
@@ -154,8 +149,7 @@ extension Data {
         let decoder = TlvDecoder(tlv: tlv)
         return try? decoder.decode(tag)
     }
-    
-    @available(iOS 13.0, *)
+
     public func pbkdf2(hash: CCPBKDFAlgorithm,
                        salt: Data,
                        keyByteCount: Int,
@@ -189,13 +183,11 @@ extension Data {
         
         throw TangemSdkError.cryptoUtilsError("Failed to pbkdf2")
     }
-    
-    @available(iOS 13.0, *)
+
     public func pbkdf2sha256(salt: Data, rounds: Int, keyByteCount: Int = 32) throws -> Data {
         return try pbkdf2(hash: CCPBKDFAlgorithm(kCCPRFHmacAlgSHA256), salt: salt, keyByteCount: keyByteCount, rounds: rounds)
     }
 
-    @available(iOS 13.0, *)
     public func pbkdf2sha512(salt: Data, rounds: Int, keyByteCount: Int = 64) throws -> Data {
         return try pbkdf2(hash: CCPBKDFAlgorithm(kCCPRFHmacAlgSHA512), salt: salt, keyByteCount: keyByteCount, rounds: rounds)
     }
@@ -219,7 +211,6 @@ extension Data {
     /// - Parameter encryptionKey: key to encrypt
     /// - Throws: encription errors
     /// - Returns: Encripted data
-    @available(iOS 13.0, *)
     public func encrypt(with encryptionKey: Data) throws -> Data {
         return try CryptoUtils.crypt(operation: kCCEncrypt,
                                      algorithm: kCCAlgorithmAES,
@@ -232,7 +223,6 @@ extension Data {
     /// - Parameter encryptionKey: key to decrypt
     /// - Throws: decryption errors
     /// - Returns: Decrypted data
-    @available(iOS 13.0, *)
     public func decrypt(with encryptionKey: Data) throws -> Data {
         return try CryptoUtils.crypt(operation: kCCDecrypt,
                                      algorithm: kCCAlgorithmAES,
@@ -242,7 +232,6 @@ extension Data {
         
     }
     
-    @available(iOS 13.0, *)
     public func sign(privateKey: Data, curve: EllipticCurve = .secp256k1) throws -> Data {
         switch curve {
         case .secp256k1:

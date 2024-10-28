@@ -7,7 +7,7 @@ let package = Package(
     name: "TangemSdk",
     defaultLocalization: "en",
     platforms: [
-        .iOS(.v11)
+        .iOS("15.0")
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
@@ -39,6 +39,7 @@ let package = Package(
                 .copy("Haptics"),
                 .copy("Crypto/BIP39/Wordlists/english.txt"),
                 .copy("PrivacyInfo.xcprivacy"),
+                .copy("Assets"),
             ]
         ),
         .target(

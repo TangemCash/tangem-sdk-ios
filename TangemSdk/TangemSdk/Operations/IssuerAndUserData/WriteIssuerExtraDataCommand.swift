@@ -14,7 +14,6 @@ import Foundation
  * For example, this field may contain a photo or biometric information for ID card products.
  */
 @available(*, deprecated, message: "Use files instead") //todo: text
-@available(iOS 13.0, *)
 public final class WriteIssuerExtraDataCommand: Command {
     private static let singleWriteSize = 900
     private static let maxSize = 32 * 1024

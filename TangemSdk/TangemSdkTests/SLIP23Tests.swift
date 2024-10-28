@@ -11,7 +11,6 @@ import XCTest
 @testable import TangemSdk
 
 /// https://github.com/satoshilabs/slips/blob/master/slip-0023.md
-@available(iOS 13.0, *)
 class SLIP23Tests: XCTestCase {
     // compare with TrustWallet's WalletCore implementaion
     func testIkarus() throws {

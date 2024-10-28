@@ -10,7 +10,6 @@ import Foundation
 
 /// https://github.com/satoshilabs/slips/blob/master/slip-0023.md
 /// https://github.com/cardano-foundation/CIPs/blob/09d7d8ee1bd64f7e6b20b5a6cae088039dce00cb/CIP-0003/Icarus.md
-@available(iOS 13.0, *)
 public struct SLIP23 {
     public init() {}
 
@@ -34,7 +33,6 @@ public struct SLIP23 {
     }
 }
 
-@available(iOS 13.0, *)
 extension SLIP23 {
     enum SLIP23Error: Error {
         case passphraseToUTF8Failed

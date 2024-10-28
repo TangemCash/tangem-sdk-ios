@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public enum WIF {
     public static func encodeToWIFCompressed(_ privateKey: Data, networkType: NetworkType) -> String {
         let extended = networkType.prefix + privateKey + Constants.compressedSuffix
@@ -30,7 +29,6 @@ public enum WIF {
     }
 }
 
-@available(iOS 13.0, *)
 fileprivate extension WIF {
     enum Constants {
         static let prefixMainnet = Data(hexString: "0x80")
@@ -41,7 +39,6 @@ fileprivate extension WIF {
     }
 }
 
-@available(iOS 13.0, *)
 fileprivate extension NetworkType {
     var prefix: Data {
         switch self {

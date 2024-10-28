@@ -8,14 +8,12 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 struct ReadWalletResponse: JSONStringConvertible {
     let cardId: String
     let wallet: Card.Wallet
 }
 
 /// Read single wallet on card. This command executes before interacting with specific wallet to retrieve information about it and perform prechecks
-@available(iOS 13.0, *)
 class ReadWalletCommand: Command {
     
     var preflightReadMode: PreflightReadMode { .readCardOnly }

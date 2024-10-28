@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public extension Error {
     func toTangemSdkError() -> TangemSdkError {
         return TangemSdkError.parse(self)

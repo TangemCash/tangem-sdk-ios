@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 class IssuerDataVerifier {
     static func verify(cardId: String,
                        issuerData: Data,

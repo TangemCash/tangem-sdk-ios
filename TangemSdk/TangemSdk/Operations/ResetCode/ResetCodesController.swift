@@ -9,7 +9,6 @@
 import Foundation
 import Combine
 
-@available(iOS 13.0, *)
 public class ResetCodesController {
     public var cardIdDisplayFormat: CardIdDisplayFormat = .full
     
@@ -45,7 +44,7 @@ public class ResetCodesController {
     
     private func bind() {
         self.resetService
-            .$currentState
+            .currentStatePublisher
             .dropFirst()
             .sink {[weak self] newState in
                 guard let self else { return }

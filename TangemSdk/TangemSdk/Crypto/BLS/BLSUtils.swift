@@ -10,7 +10,6 @@ import Foundation
 import CryptoKit
 import Bls_Signature
 
-@available(iOS 13.0, *)
 public struct BLSUtils {
     // MARK: - Init
     
@@ -49,7 +48,6 @@ public struct BLSUtils {
     }
 }
 
-@available(iOS 13.0, *)
 extension BLSUtils {
     enum Constants {
         /// Version of  keygen algorithm prior to number 4
@@ -72,7 +70,6 @@ extension BLSUtils {
 
 // MARK: - Bls_Signature Implementation
 
-@available(iOS 13.0, *)
 public extension BLSUtils {
     /// Obtain G2 point for bls curve
     /// - Parameters:

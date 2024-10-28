@@ -8,7 +8,6 @@
 
 import SwiftUI
 
-@available(iOS 13.0, *)
 struct ReadView: View {
     @EnvironmentObject var style: TangemSdkStyle
     
@@ -24,11 +23,14 @@ struct ReadView: View {
                 tagView
                     .frame(minWidth: 210, maxWidth: 210)
                     .offset(cardOffset)
-                    .animation(Animation
-                                .easeInOut(duration: 1)
-                                .delay(1)
-                                .repeatForever())
-                
+                    .animation(
+                        Animation
+                            .easeInOut(duration: 1)
+                            .delay(1)
+                            .repeatForever(),
+                        value: cardOffset
+                    )
+
                 PhoneView()
                     .frame(width: 180, height: 360)
             }
@@ -45,6 +47,8 @@ struct ReadView: View {
         switch style.scanTagImage {
         case .genericCard:
             CardView(cardColor: style.colors.cardColor, starsColor: style.colors.starsColor)
+        case .genericRing:
+            Image("ring_shape_scan")
         case .image(let uiImage, let verticalOffset):
             Image(uiImage: uiImage)
                 .resizable()
@@ -54,7 +58,6 @@ struct ReadView: View {
     }
 }
 
-@available(iOS 13.0, *)
 struct ReadView_Previews: PreviewProvider {
     static var previews: some View {
         Group {

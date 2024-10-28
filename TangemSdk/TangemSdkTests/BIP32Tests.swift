@@ -13,7 +13,6 @@ import CryptoKit
 
 /// Tests for firmware 6.33
 /// https://github.com/bitcoin/bips/blob/master/bip-0032.mediawiki#user-content-Test_Vectors
-@available(iOS 13.0, *)
 class BIP32Tests: XCTestCase {
     // MARK: - Test vector 5
 
@@ -72,7 +71,6 @@ class BIP32Tests: XCTestCase {
 
 // MARK: - SLIP10FWTests
 
-@available(iOS 13.0, *)
 class BIP32FWTests: FWTestCase {
     func testVector1() {
         let sdk = TangemSdk()

@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public class DeriveWalletPublicKeysTask: CardSessionRunnable {
     private let walletPublicKey: Data
     private let derivationPaths: [DerivationPath]
@@ -47,9 +46,16 @@ public class DeriveWalletPublicKeysTask: CardSessionRunnable {
             case .failure(let error):
                 switch error {
                 case .nonHardenedDerivationNotSupported, .walletNotFound, .unsupportedCurve:
+                    // continue derivation
                     Log.error(error)
                 default:
-                    completion(.failure(error))
+                    if keys.keys.isEmpty {
+                        completion(.failure(error))
+                    } else {
+                        Log.error(error)
+                        // return partial response
+                        completion(.success(keys))
+                    }
                     return
                 }
             }

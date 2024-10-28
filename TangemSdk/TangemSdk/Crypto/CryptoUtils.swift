@@ -10,7 +10,6 @@ import Foundation
 import CommonCrypto
 import CryptoKit
 
-@available(iOS 13.0, *)
 public enum CryptoUtils {
     
     /**
@@ -179,7 +178,6 @@ public enum CryptoUtils {
     }
 }
 
-@available(iOS 13.0, *)
 fileprivate struct CustomSha256Digest: Digest {
     static var byteCount: Int { 32 }
     
@@ -191,7 +189,6 @@ fileprivate struct CustomSha256Digest: Digest {
 }
 
 // MARK: - Constants
-@available(iOS 13.0, *)
 private extension CryptoUtils {
     enum Constants {
         static let p256CompressedKeySize = 33

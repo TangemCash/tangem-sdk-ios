@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 class FinalizeBackupCardTask: CardSessionRunnable {
     var shouldAskForAccessCode: Bool { false }
     
@@ -43,14 +42,15 @@ class FinalizeBackupCardTask: CardSessionRunnable {
             completion(.failure(.missingPreflightRead))
             return
         }
-        
-        if case .noBackup = card.backupStatus {
+
+        switch card.backupStatus {
+        case .noBackup: // The direct case
             let command = LinkPrimaryCardCommand(primaryCard: primaryCard,
                                                  backupCards: backupCards,
                                                  attestSignature: attestSignature,
                                                  accessCode: accessCode,
                                                  passcode: passcode)
-            
+
             command.run(in: session) { linkResult in
                 switch linkResult {
                 case .success:
@@ -59,7 +59,9 @@ class FinalizeBackupCardTask: CardSessionRunnable {
                     completion(.failure(error))
                 }
             }
-        } else {
+        case .active: // Inconsistence case. The card status is ok, but sdk status is incompleted. We should check all wallets later on the app side.
+            readWallets(in: session, completion: completion)
+        default: // only an interrupted case is possible
             writeBackupData(in: session, completion: completion)
         }
     }

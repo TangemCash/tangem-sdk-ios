@@ -11,7 +11,6 @@ import XCTest
 import CoreNFC
 @testable import TangemSdk
 
-@available(iOS 13.0, *)
 class ApduTests: XCTestCase {
     func testInitialization() {
         let commandApdu1 = CommandApdu(Instruction.read, tlv: Data())
@@ -92,8 +91,6 @@ class ApduTests: XCTestCase {
     }
 }
 
-
-@available(iOS 13.0, *)
 fileprivate extension CommandApdu {
     var NFCISO7816APDUDATA: Data {
         let nfcApdu = NFCISO7816APDU(data: self.serialize())!

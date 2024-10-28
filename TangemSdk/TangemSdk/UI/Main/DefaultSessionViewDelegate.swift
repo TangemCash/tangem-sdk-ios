@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import SwiftUI
 
-@available(iOS 13.0, *)
 final class DefaultSessionViewDelegate: BaseViewDelegate {
     private let reader: CardReader
     private let engine: HapticsEngine
@@ -37,7 +36,6 @@ final class DefaultSessionViewDelegate: BaseViewDelegate {
     }
 }
 
-@available(iOS 13.0, *)
 extension DefaultSessionViewDelegate: SessionViewDelegate {
     func setState(_ state: SessionViewState) {
         Log.view("Set state: \(state)")
@@ -64,12 +62,12 @@ extension DefaultSessionViewDelegate: SessionViewDelegate {
         engine.playSuccess()
     }
     
-    func tagLost() {
+    func tagLost(message: String) {
         Log.view("Tag lost")
         if pinnedMessage == nil {
             pinnedMessage = reader.alertMessage
         }
-        showAlertMessage("view_delegate_scan_description".localized)
+        showAlertMessage(message)
     }
     
     func wrongCard(message: String) {

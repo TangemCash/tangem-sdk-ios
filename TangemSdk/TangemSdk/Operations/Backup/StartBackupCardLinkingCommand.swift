@@ -8,8 +8,6 @@
 
 import Foundation
 
-
-@available(iOS 13.0, *)
 final class StartBackupCardLinkingCommand: Command {
     var requiresPasscode: Bool { return false }
 
@@ -63,10 +61,13 @@ final class StartBackupCardLinkingCommand: Command {
         
         let decoder = TlvDecoder(tlv: tlv)
 
-        return BackupCard(cardId: try decoder.decode(.cardId),
-                          cardPublicKey: card.cardPublicKey,
-                          linkingKey: try decoder.decode(.backupCardLinkingKey),
-                          attestSignature: try decoder.decode(.cardSignature),
-                          firmwareVersion: card.firmwareVersion)
+        return BackupCard(
+            cardId: try decoder.decode(.cardId),
+            cardPublicKey: card.cardPublicKey,
+            firmwareVersion: card.firmwareVersion,
+            batchId: card.batchId,
+            linkingKey: try decoder.decode(.backupCardLinkingKey),
+            attestSignature: try decoder.decode(.cardSignature)
+        )
     }
 }

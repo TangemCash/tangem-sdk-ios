@@ -11,7 +11,6 @@ import Combine
 import CommonCrypto
 
 /// Allows interaction with Tangem cards. Should be open before sending commands
-@available(iOS 13.0, *)
 public class CardSession {
     enum CardSessionState {
         case inactive
@@ -49,6 +48,10 @@ public class CardSession {
     /// Allows access codes to be stored in a secure location
     private var accessCodeRepository: AccessCodeRepository? = nil
     private let filter: SessionFilter?
+
+    private var defaultScanMessage: String {
+        "view_delegate_scan_description_format".localized(environment.config.productType.localizedDescription)
+    }
 
     private var shouldRequestBiometrics: Bool {
         guard let accessCodeRepository = self.accessCodeRepository else {
@@ -191,7 +194,7 @@ public class CardSession {
                     self.viewDelegate.tagConnected()
                     self.viewDelegate.setState(.default)
                 case .tagLost:
-                    self.viewDelegate.tagLost()
+                    self.viewDelegate.tagLost(message: defaultScanMessage)
                     self.viewDelegate.setState(.scan)
                 }
             })
@@ -227,7 +230,7 @@ public class CardSession {
                 })
             .store(in: &nfcReaderSubscriptions)
         
-        reader.startSession(with: initialMessage?.alertMessage)
+        reader.startSession(with: initialMessage?.alertMessage ?? defaultScanMessage)
     }
     
     // MARK: - Session stop and pause
@@ -511,7 +514,7 @@ public class CardSession {
             func continueRunnable(code: String) {
                 self.updateEnvironment(with: type, code: code)
                 self.viewDelegate.setState(.default)
-                self.viewDelegate.showAlertMessage("view_delegate_scan_description".localized)
+                self.viewDelegate.showAlertMessage(defaultScanMessage)
                 completion(.success(()))
             }
             
@@ -585,7 +588,6 @@ public class CardSession {
     }
 }
 //MARK: - JSON RPC
-@available(iOS 13.0, *)
 extension CardSession {
     /// Convinience method for jsonrpc requests running
     /// - Parameters:

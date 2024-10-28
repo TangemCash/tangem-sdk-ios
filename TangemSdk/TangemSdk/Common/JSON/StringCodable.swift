@@ -8,10 +8,8 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 protocol StringCodable: Codable & RawRepresentable where RawValue == String {}
 
-@available(iOS 13.0, *)
 extension StringCodable {
     public init(from decoder: Decoder) throws {
         let values = try decoder.singleValueContainer()

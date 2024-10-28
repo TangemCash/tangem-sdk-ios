@@ -10,7 +10,6 @@ import Foundation
 
 /// Contains data relating to a Tangem card. It is used in constructing all the commands,
 /// and commands can return modified `SessionEnvironment`.
-@available(iOS 13.0, *)
 public struct SessionEnvironment {
     /// Current card, read by preflight `Read` command
     public internal(set) var card: Card? = nil

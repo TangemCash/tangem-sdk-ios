@@ -10,7 +10,6 @@ import Foundation
 import XCTest
 @testable import TangemSdk
 
-@available(iOS 13.0, *)
 class CommonTests: XCTestCase {
     func testAtetstModeCompare() {
         XCTAssertTrue(AttestationTask.Mode.normal < AttestationTask.Mode.full)

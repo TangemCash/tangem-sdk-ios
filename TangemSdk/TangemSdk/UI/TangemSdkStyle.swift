@@ -9,7 +9,6 @@
 import Foundation
 import SwiftUI
 
-@available(iOS 13.0, *)
 public class TangemSdkStyle: ObservableObject {
     public var colors: Colors = .default
     public var textSizes: TextSizes = .default
@@ -19,7 +18,6 @@ public class TangemSdkStyle: ObservableObject {
     public static var `default`: TangemSdkStyle = .init()
 }
 
-@available(iOS 13.0, *)
 public extension TangemSdkStyle {
     struct Colors {
         /// Tint color of the interface. Note that due to the inability to convert SwiftUI.Color to UIKit.UIColor you have to set the two separately
@@ -61,7 +59,6 @@ public extension TangemSdkStyle {
     }
 }
 
-@available(iOS 13.0, *)
 public extension TangemSdkStyle {
     struct TextSizes {
         public var indicatorLabel: CGFloat = 50
@@ -70,13 +67,15 @@ public extension TangemSdkStyle {
     }
 }
 
-@available(iOS 13.0, *)
 public extension TangemSdkStyle {
     /// Options for displaying different tags on the scanning screen
     enum ScanTagImage {
         /// Generic card provided by the SDK
         case genericCard
-        
+
+        /// Generic ring provided by the SDK
+        case genericRing
+
         /// A custom tag made out of a UIImage instance.
         /// The image can be shifted vertically from the standard position by specifying `verticalOffset`.
         /// Note that the width of the image will be limited to a certain size, while the height will be determined by the aspect ratio of the image.

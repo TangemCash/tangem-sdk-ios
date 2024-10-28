@@ -19,7 +19,6 @@ public struct SignResponse: JSONStringConvertible {
 }
 
 /// Signs transaction hashes using a wallet private key, stored on the card.
-@available(iOS 13.0, *)
 class SignCommand: Command {
     var requiresPasscode: Bool { return true }
     
@@ -271,8 +270,6 @@ class SignCommand: Command {
     }
 }
 
-
-@available(iOS 13.0, *)
 private extension SignCommand {
     enum Constants {
         /// The max answer is 1152 bytes (unencrypted) and 1120 (encrypted). The worst case is 8 hashes * 64 bytes for ed + 512 bytes of signatures + cardId, SignedHashes + TLV + SW is ok.

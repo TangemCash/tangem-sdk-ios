@@ -9,7 +9,6 @@
 import Foundation
 
 // https://github.com/bitcoin/bips/blob/master/bip-0039.mediawiki
-@available(iOS 13.0, *)
 public struct BIP39 {
 
     public init() {}
@@ -228,7 +227,6 @@ public struct BIP39 {
 
 // MARK: - Constants
 
-@available(iOS 13.0, *)
 private extension BIP39 {
     enum Constants {
         static let seedSaltPrefix = "mnemonic"

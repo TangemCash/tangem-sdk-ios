@@ -28,7 +28,6 @@ extension GenericPasswordConvertible {
     }
 }
 
-@available(iOS 13.0, *)
 extension SecureEnclave.P256.Signing.PrivateKey: GenericPasswordConvertible {
     init<D>(rawRepresentation data: D) throws where D: ContiguousBytes {
         try self.init(dataRepresentation: data.dataRepresentation)

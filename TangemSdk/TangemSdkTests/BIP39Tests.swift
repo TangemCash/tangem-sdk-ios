@@ -10,7 +10,6 @@ import Foundation
 import XCTest
 @testable import TangemSdk
 
-@available(iOS 13.0, *)
 class BIP39Tests: XCTestCase {
     func testReadWords() {
         let langs = BIP39.Wordlist.allCases
@@ -121,7 +120,6 @@ class BIP39Tests: XCTestCase {
     }
 }
 
-@available(iOS 13.0, *)
 private extension BIP39Tests {
     enum Constants {
         static let englishTestVectors = "english"

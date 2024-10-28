@@ -42,7 +42,10 @@ extension UIWindow {
 
 extension UIApplication {
     var topMostViewController : UIViewController? {
-        let keyWindow = UIApplication.shared.windows.filter {$0.isKeyWindow}.first
-        return keyWindow?.topmostViewController
+        let scene = UIApplication.shared.connectedScenes
+            .filter { $0.activationState == .foregroundActive || $0.activationState == .foregroundInactive }
+            .first as? UIWindowScene
+
+        return scene?.keyWindow?.topmostViewController
     }
 }

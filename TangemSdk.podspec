@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name = 'TangemSdk'
-  s.version = '3.10.0'
+  s.version = '3.11.0'
   s.summary = 'Use TangemSdk for Tangem cards integration'
   s.description = <<-DESC
 Tangem is a Swiss-based secure hardware wallet manufacturer that enables blockchain-based assets to be kept in custody within smart physical banknotes and accessed via NFC technology. Tangem’s mission is to make digital assets accessible, affordable and convenient for consumers.
@@ -20,7 +20,7 @@ Tangem is a Swiss-based secure hardware wallet manufacturer that enables blockch
   s.source = { :git => 'https://github.com/Tangem/tangem-sdk-ios.git', :tag => s.version.to_s }
   s.social_media_url = 'https://twitter.com/Tangem'
   s.platform = :ios
-  s.ios.deployment_target = '11.0'
+  s.ios.deployment_target = '15.0'
   s.swift_version = '5.0'
 
   s.source_files = 'TangemSdk/TangemSdk/**/*.{swift}', 
@@ -48,6 +48,7 @@ Tangem is a Swiss-based secure hardware wallet manufacturer that enables blockch
       'TangemSdk/TangemSdk/Haptics/*.ahap',
       'TangemSdk/TangemSdk/**/Wordlists/*.txt',
       'TangemSdk/TangemSdk/PrivacyInfo.xcprivacy',
+      'TangemSdk/TangemSdk/Assets/*.xcassets',
     ]
   }
 

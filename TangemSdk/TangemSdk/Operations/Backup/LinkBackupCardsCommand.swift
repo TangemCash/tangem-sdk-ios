@@ -9,14 +9,12 @@
 import Foundation
 
 // Response from the Tangem card after `LinkBackupCardsCommand`.
-@available(iOS 13.0, *)
 struct LinkBackupCardsResponse {
     /// Unique Tangem card ID number
     let cardId: String
     let attestSignature: Data
 }
 
-@available(iOS 13.0, *)
 final class LinkBackupCardsCommand: Command {
     var requiresPasscode: Bool { return true }
     

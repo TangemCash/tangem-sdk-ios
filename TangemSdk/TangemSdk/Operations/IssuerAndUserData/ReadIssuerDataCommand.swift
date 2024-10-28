@@ -9,7 +9,6 @@
 import Foundation
 
 /// Deserialized response from the Tangem card after `ReadIssuerDataCommand`.
-@available(iOS 13.0, *)
 public struct ReadIssuerDataResponse: JSONStringConvertible {
     /// Unique Tangem card ID number
     public let cardId: String
@@ -44,7 +43,6 @@ public struct ReadIssuerDataResponse: JSONStringConvertible {
  * wallet balance signed by the issuer or additional issuer’s attestation data.
  */
 @available(*, deprecated, message: "Use files instead")
-@available(iOS 13.0, *)
 public final class ReadIssuerDataCommand: Command {
     private var issuerPublicKey: Data?
     

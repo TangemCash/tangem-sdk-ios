@@ -11,7 +11,6 @@ import XCTest
 import CryptoKit
 @testable import TangemSdk
 
-@available(iOS 13.0, *)
 /// https://www.rfc-editor.org/rfc/rfc5869 without SHA1
 class HKDFTests: XCTestCase {
     func testCase1() {

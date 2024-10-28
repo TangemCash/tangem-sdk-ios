@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(iOS 13.0, *)
 public class AccessCodeRepository {
     var isEmpty: Bool {
         getCards().isEmpty

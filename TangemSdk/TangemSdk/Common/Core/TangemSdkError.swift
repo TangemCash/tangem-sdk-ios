@@ -125,10 +125,7 @@ public enum TangemSdkError: Error, LocalizedError, Encodable {
     
     /// This error is returned when a `SignCommand` receives only empty hashes for signature.
     case emptyHashes
-    
-    /// This error is returned when a `SignCommand` receives hashes of different lengths for signature.
-    case hashSizeMustBeEqual
-    
+
     case signHashesNotAvailable
     
     // Write Extra Issuer Data Errors
@@ -370,7 +367,6 @@ public enum TangemSdkError: Error, LocalizedError, Encodable {
             
         case .noRemainingSignatures: return 40901
         case .emptyHashes: return 40902
-        case .hashSizeMustBeEqual: return 40903
         case .signHashesNotAvailable: return 40905
         case .oldCard: return 40907
             

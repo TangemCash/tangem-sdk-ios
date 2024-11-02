@@ -288,6 +288,10 @@
 		DC70AD652A80FC9F00928836 /* CommonFirmwareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC70AD642A80FC9F00928836 /* CommonFirmwareTests.swift */; };
 		DC70AD672A8115BB00928836 /* FWTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC70AD662A8115BB00928836 /* FWTestCase.swift */; };
 		DC7254902A03E20A0003FE1B /* DerivedKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC72548F2A03E20A0003FE1B /* DerivedKeys.swift */; };
+		DC77F24D2CD42610001B2929 /* ChunkHashesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC77F24C2CD4260A001B2929 /* ChunkHashesTests.swift */; };
+		DC77F24F2CD426B6001B2929 /* ChunkedHashesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC77F24E2CD426B6001B2929 /* ChunkedHashesContainer.swift */; };
+		DC77F2512CD426E3001B2929 /* SignDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC77F2502CD426E3001B2929 /* SignDTO.swift */; };
+		DC77F2532CD430A3001B2929 /* ChunkHashesUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC77F2522CD43099001B2929 /* ChunkHashesUtil.swift */; };
 		DC8B0E3F286F221D009D64F7 /* BiometricsUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC8B0E3E286F221D009D64F7 /* BiometricsUtil.swift */; };
 		DCA9706628E35EAD0046E62E /* GenerateOTPCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA9706528E35EAD0046E62E /* GenerateOTPCommand.swift */; };
 		DCACA0402CB51FF400A3DD51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCACA03F2CB51FF400A3DD51 /* Assets.xcassets */; };
@@ -679,6 +683,10 @@
 		DC70AD642A80FC9F00928836 /* CommonFirmwareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFirmwareTests.swift; sourceTree = "<group>"; };
 		DC70AD662A8115BB00928836 /* FWTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FWTestCase.swift; sourceTree = "<group>"; };
 		DC72548F2A03E20A0003FE1B /* DerivedKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DerivedKeys.swift; sourceTree = "<group>"; };
+		DC77F24C2CD4260A001B2929 /* ChunkHashesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChunkHashesTests.swift; sourceTree = "<group>"; };
+		DC77F24E2CD426B6001B2929 /* ChunkedHashesContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChunkedHashesContainer.swift; sourceTree = "<group>"; };
+		DC77F2502CD426E3001B2929 /* SignDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignDTO.swift; sourceTree = "<group>"; };
+		DC77F2522CD43099001B2929 /* ChunkHashesUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChunkHashesUtil.swift; sourceTree = "<group>"; };
 		DC8B0E3E286F221D009D64F7 /* BiometricsUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricsUtil.swift; sourceTree = "<group>"; };
 		DCA9706528E35EAD0046E62E /* GenerateOTPCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateOTPCommand.swift; sourceTree = "<group>"; };
 		DCACA03F2CB51FF400A3DD51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -986,7 +994,10 @@
 		5D46F156268105A500DC6447 /* Sign */ = {
 			isa = PBXGroup;
 			children = (
+				DC77F2522CD43099001B2929 /* ChunkHashesUtil.swift */,
+				DC77F24E2CD426B6001B2929 /* ChunkedHashesContainer.swift */,
 				5D6A92E42345F2B200158457 /* SignCommand.swift */,
+				DC77F2502CD426E3001B2929 /* SignDTO.swift */,
 				5D46F1542681032B00DC6447 /* SignHashCommand.swift */,
 				5D46F157268105BF00DC6447 /* SignHashesCommand.swift */,
 			);
@@ -1290,6 +1301,7 @@
 				DC0665562A7AC8F500CFFCC6 /* Ed25519Slip0010Tests.swift */,
 				DC70AD642A80FC9F00928836 /* CommonFirmwareTests.swift */,
 				DC70AD662A8115BB00928836 /* FWTestCase.swift */,
+				DC77F24C2CD4260A001B2929 /* ChunkHashesTests.swift */,
 			);
 			path = TangemSdkTests;
 			sourceTree = "<group>";
@@ -2052,6 +2064,7 @@
 				5D6A92E72345F2D600158457 /* AttestWalletKeyCommand.swift in Sources */,
 				5D73FC2926B8140200DF1BB4 /* DerivationPath.swift in Sources */,
 				B06EBBC12534794100B0FEEA /* ChangeFileSettingsCommand.swift in Sources */,
+				DC77F24F2CD426B6001B2929 /* ChunkedHashesContainer.swift in Sources */,
 				5DDD6C6C25D30B0D00E48D7B /* SuccessResponse.swift in Sources */,
 				DC59CB0429AF597900EC14E1 /* Wordlist.swift in Sources */,
 				5D8666622731687A0095CC82 /* ResetCodesViewModel.swift in Sources */,
@@ -2108,6 +2121,7 @@
 				5DA5B618233E124A0058C720 /* StatusWord.swift in Sources */,
 				5D866658273163BB0095CC82 /* BaseViewDelegate.swift in Sources */,
 				B0A9447B256546DE00A7958E /* Card.swift in Sources */,
+				DC77F2512CD426E3001B2929 /* SignDTO.swift in Sources */,
 				DCFCA17728F5629F0037586C /* FocusableTextField.swift in Sources */,
 				B06EBBC525347B7800B0FEEA /* ChangeFileSettingsTask.swift in Sources */,
 				5D0F8D0226C6A80F002E84A4 /* UserCodeHeaderView.swift in Sources */,
@@ -2168,6 +2182,7 @@
 				5D705B5B23DAF2BB002CCD7A /* Config.swift in Sources */,
 				DC612D722AFD60C2005A547F /* SessionFilter.swift in Sources */,
 				5D6A92EC2346069700158457 /* TangemSdk.swift in Sources */,
+				DC77F2532CD430A3001B2929 /* ChunkHashesUtil.swift in Sources */,
 				DC1244B329B60B6F0037BC05 /* BIP39.swift in Sources */,
 				5DFFC49F233B9D69004964E8 /* NFCReader.swift in Sources */,
 				5DE43A6626D515B100ECA36A /* FinalizePrimaryCardTask.swift in Sources */,
@@ -2209,6 +2224,7 @@
 				DC1244C929B778750037BC05 /* BIP32Tests.swift in Sources */,
 				DC70AD652A80FC9F00928836 /* CommonFirmwareTests.swift in Sources */,
 				DC3D980A2A792804001EEE7A /* KeysImportTests.swift in Sources */,
+				DC77F24D2CD42610001B2929 /* ChunkHashesTests.swift in Sources */,
 				DC1244E429BB806E0037BC05 /* WIFTests.swift in Sources */,
 				DC1244B929B610550037BC05 /* BIP39Tests.swift in Sources */,
 				5DD127A224F3D1A0009ACA29 /* JsonTests.swift in Sources */,

@@ -6,6 +6,8 @@
 //  Copyright © 2024 Tangem AG. All rights reserved.
 //
 
+import Foundation
+
 struct ChunkHashesUtil {
     func chunkHashes(_ hashes: [Data]) -> [Chunk] {
         let hashes = hashes.enumerated().map { Hash(index: $0.offset, data: $0.element) }

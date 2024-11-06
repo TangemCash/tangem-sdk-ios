@@ -12,13 +12,13 @@
 "backup_prepare_primary_card_message_format" = "Verbinde dein Telefon und die primäre Karte mit der Nummer %@ genau wie oben gezeigt.";
 "cid_format" = "Karte Nr.%@";
 "common_cancel" = "Abbrechen";
-"common_card" = "card";
-"common_card_or_ring" = "card or ring";
+"common_card" = "Karte";
+"common_card_or_ring" = "Karte oder Ring";
 "common_continue" = "Fortsetzen";
 "common_error" = "Fehler";
 "common_ok" = "OK";
 "common_retry" = "Wiederholen";
-"common_ring" = "ring";
+"common_ring" = "Ring";
 "common_success" = "Erfolg";
 "common_understand" = "Ich verstehe";
 "common_warning" = "Warnung";
@@ -46,7 +46,7 @@
 "generic_error_code" = "Während des Vorgangs ist ein Fehler aufgetreten. Code: %@.";
 "issuer_signature_loading_failed" = "Das Zertifikat der Karte konnte nicht geladen werden. Bitte versuche es später erneut.";
 "nfc_alert_default_done" = "Erledigt";
-"nfc_session_timeout" = "Unvollständiger Prozess. Um den Vorgang abzuschließen,halte die Karte bitte erneut an.";
+"nfc_session_timeout" = "Unvollständiger Prozess. Um den Vorgang abzuschließen,halte die Karte oder Ring bitte erneut an.";
 "nfc_stuck_error" = "Es scheint, dass NFC auf deinem iPhone nicht richtig funktioniert. Versuche, dein Telefon neu zu starten.";
 "pin1" = "Zugangscode";
 "pin2" = "Passcode";
@@ -71,7 +71,7 @@
 "sign_multiple_chunks_part" = "Unterzeichnung von Teil %1$li von %2$li";
 "touch_id_localized_reason" = "Verwende Touch ID, um Zugangscodes in der App zu speichern";
 "view_delegate_scan_description" = "Halte die Karte oder den Ring bis zum Ende des Vorgangs gedrückt, wie oben gezeigt";
-"view_delegate_scan_description_format" = "Tap the %@ as shown above and hold until the end of the operation";
+"view_delegate_scan_description_format" = "Halte die %@ wie oben gezeigt auf und halten diese gedrückt, bis der Vorgang abgeschlossen ist.";
 "view_delegate_security_delay_description" = "Um die Sicherheit zu gewährleisten, halte die Karte oder den Ring bitte bis zum Abschluss des Vorgangs angedrückt.";
-"view_delegate_security_delay_description_format" = "To ensure security please hold the %@ until the operation is complete";
+"view_delegate_security_delay_description_format" = "Um die Sicherheit zu gewährleisten, halte die %@ bis zum Ende des Vorgangs gedrückt.";
 "wallet_not_found" = "Sieht so aus, als hättest du die falsche Karte. Der Vorgang kann mit dieser Karte nicht durchgeführt werden.";

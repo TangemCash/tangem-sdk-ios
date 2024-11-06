@@ -10,11 +10,6 @@ on:
         type: string
         default: "en,fr,de,ja,ru,es,uk_UA,zh-Hant,it"
 
-  # TODO: Test only, remove
-  push:
-    branches:
-      - 'feature/IOS-8302_cardsdk_localise_workflow'
-
 jobs:
   update-localizations:
     runs-on: macos-14

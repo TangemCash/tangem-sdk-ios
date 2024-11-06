@@ -10,17 +10,22 @@ on:
         type: string
         default: "en,fr,de,ja,ru,es,uk_UA,zh-Hant,it"
 
+  # TODO: Test only, remove
+  push:
+    branches:
+      - 'feature/IOS-8302_cardsdk_localise_workflow'
+
 jobs:
   update-localizations:
     runs-on: macos-14
     env:
-      APP_LOCALIZATIONS_DESTINATION: "TangemSdk/TangemSdk/Common/Localization/Resources"
+      SDK_LOCALIZATIONS_DESTINATION: "TangemSdk/TangemSdk/Common/Localization/Resources"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Import GPG key
-        if: false # TODO: Test only, remove
+        #if: false # TODO: Test only, remove
         uses: crazy-max/ghaction-import-gpg@01dd5d3ca463c7f10f7f4f7b4f177225ac661ee4  # v6.1.0
         with:
           gpg_private_key: ${{ secrets.PGP_PRIVATE_SERVICE }}
@@ -34,12 +39,12 @@ jobs:
 
       - name: Fetch and update SDK localizations
         env:
-          LOKALISE_PROJECT_ID: ${{ secrets.LOKALISE_APP_PROJECT_ID }}
+          LOKALISE_PROJECT_ID: ${{ secrets.LOKALISE_CARD_SDK_PROJECT_ID }}
           LOKALISE_API_TOKEN: ${{ secrets.LOKALISE_ACCESS_TOKEN }}
         run: |
           bundle exec fastlane update_translations \
           languages:${{ github.event.inputs.langs }} \
-          destination:${{ env.APP_LOCALIZATIONS_DESTINATION }}
+          destination:${{ env.SDK_LOCALIZATIONS_DESTINATION }}
 
       - name: Push changes and open a pull-request
         env:
@@ -53,8 +58,7 @@ jobs:
           git config --global user.email "gitservice@tangem.com"
 
           git checkout -b $SOURCE_BRANCH $TARGET_BRANCH
-          git add "${APP_LOCALIZATIONS_DESTINATION}"
-          git add "${BSDK_LOCALIZATIONS_DESTINATION}"
+          git add "${SDK_LOCALIZATIONS_DESTINATION}"
 
           : "${LANGUAGES:="all"}"
           commit_message="Sync translations for \`${LANGUAGES}\` languages"

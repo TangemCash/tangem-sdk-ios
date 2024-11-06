@@ -19,7 +19,7 @@ jobs:
   update-localizations:
     runs-on: macos-14
     env:
-      APP_LOCALIZATIONS_DESTINATION: "TangemSdk/TangemSdk/Common/Localization/Resources"
+      SDK_LOCALIZATIONS_DESTINATION: "TangemSdk/TangemSdk/Common/Localization/Resources"
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -44,7 +44,7 @@ jobs:
         run: |
           bundle exec fastlane update_translations \
           languages:${{ github.event.inputs.langs }} \
-          destination:${{ env.APP_LOCALIZATIONS_DESTINATION }}
+          destination:${{ env.SDK_LOCALIZATIONS_DESTINATION }}
 
       - name: Push changes and open a pull-request
         env:
@@ -58,8 +58,7 @@ jobs:
           git config --global user.email "gitservice@tangem.com"
 
           git checkout -b $SOURCE_BRANCH $TARGET_BRANCH
-          git add "${APP_LOCALIZATIONS_DESTINATION}"
-          git add "${BSDK_LOCALIZATIONS_DESTINATION}"
+          git add "${SDK_LOCALIZATIONS_DESTINATION}"
 
           : "${LANGUAGES:="all"}"
           commit_message="Sync translations for \`${LANGUAGES}\` languages"

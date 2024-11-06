@@ -1,33 +1,65 @@
-name: Tests
+name: Fetch and update translations (Lokalise)
 
 on:
-  pull_request:
-    branches:
-    - 'release/**'
-    - 'develop'
   workflow_dispatch:
-
-env:
-  SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_DVELOPMENT_IOS }}
+    inputs:
+      langs:
+        description: >
+          Optional filter of languages to fetch and update. Pass a comma-delimited string of language codes, 
+          like `en,fr,de` to fetch and update translations for the selected languages only.
+        type: string
+        default: "en,fr,de,ja,ru,es,uk_UA,zh-Hant,it"
 
 jobs:
-  test:
-    name: Test
-    runs-on: macOS-latest
+  update-localizations:
+    runs-on: macos-14
+    env:
+      APP_LOCALIZATIONS_DESTINATION: "TangemSdk/TangemSdk/Common/Localization/Resources"
     steps:
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Bundle Install
-      run: bundle install
-    - name: Tests
-      run: bundle exec fastlane test
-    - name: Build notification
-      if: failure()
-      uses: adamkdean/simple-slack-notify@master
-      with:
-        xcode-version: latest-stable
-        channel: '#development-ios'
-        text: 'Card SDK tests #${{ github.run_number }} failed'
-        color: 'danger'
-        fields: |
-          [{ "title": "Action URL", "value": "${env.GITHUB_SERVER_URL}/${env.GITHUB_REPOSITORY}/actions/runs/${env.GITHUB_RUN_ID}"}]
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Import GPG key
+        if: false # TODO: Test only, remove
+        uses: crazy-max/ghaction-import-gpg@01dd5d3ca463c7f10f7f4f7b4f177225ac661ee4  # v6.1.0
+        with:
+          gpg_private_key: ${{ secrets.PGP_PRIVATE_SERVICE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+
+      - name: Bundle install
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Fetch and update SDK localizations
+        env:
+          LOKALISE_PROJECT_ID: ${{ secrets.LOKALISE_APP_PROJECT_ID }}
+          LOKALISE_API_TOKEN: ${{ secrets.LOKALISE_ACCESS_TOKEN }}
+        run: |
+          bundle exec fastlane update_translations \
+          languages:${{ github.event.inputs.langs }} \
+          destination:${{ env.APP_LOCALIZATIONS_DESTINATION }}
+
+      - name: Push changes and open a pull-request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_BRANCH: lokalise-translations-sync
+          TARGET_BRANCH: ${{ github.ref_name }}
+          LANGUAGES: ${{ github.event.inputs.langs }}
+          GH_RUN_ID: ${{ github.run_id }}
+        run: |
+          git config --global user.name "Tangem Service"
+          git config --global user.email "gitservice@tangem.com"
+
+          git checkout -b $SOURCE_BRANCH $TARGET_BRANCH
+          git add "${APP_LOCALIZATIONS_DESTINATION}"
+          git add "${BSDK_LOCALIZATIONS_DESTINATION}"
+
+          : "${LANGUAGES:="all"}"
+          commit_message="Sync translations for \`${LANGUAGES}\` languages"
+          pr_message="[Localise] ${commit_message} (${GH_RUN_ID})"
+
+          git commit -S -m "${commit_message}"
+          git push --set-upstream origin $SOURCE_BRANCH --force
+          gh pr create --base $TARGET_BRANCH --head $SOURCE_BRANCH --title "${pr_message}" --body ""

@@ -39,7 +39,7 @@ jobs:
 
       - name: Fetch and update SDK localizations
         env:
-          LOKALISE_PROJECT_ID: ${{ secrets.LOKALISE_APP_PROJECT_ID }}
+          LOKALISE_PROJECT_ID: ${{ secrets.LOKALISE_CARD_SDK_PROJECT_ID }}
           LOKALISE_API_TOKEN: ${{ secrets.LOKALISE_ACCESS_TOKEN }}
         run: |
           bundle exec fastlane update_translations \

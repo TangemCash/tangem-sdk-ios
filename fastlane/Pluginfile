@@ -1,2 +1,2 @@
-# TODO: Replace with tag
-gem "fastlane-plugin-lokalise", :git => "https://github.com/tangem/lokalise-fastlane-actions.git", :branch => "feature/IOS-8302_cardsdk_localise_workflow"
+# Fetches and updates localization bundles using Lokalise
+gem "fastlane-plugin-lokalise", :git => "https://github.com/tangem/lokalise-fastlane-actions.git", :tag => "2.0.6-tangem1"

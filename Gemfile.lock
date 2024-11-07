@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/tangem/lokalise-fastlane-actions.git
-  revision: 47f763e1dee6983a161bff990faee2f18b13b57c
-  branch: feature/IOS-8302_cardsdk_localise_workflow
+  revision: 5dfcfe606cdfe54f4f2f4d45470f27bfc4574895
+  tag: 2.0.6-tangem1
   specs:
     fastlane-plugin-lokalise (2.0.6.pre.tangem1)
 

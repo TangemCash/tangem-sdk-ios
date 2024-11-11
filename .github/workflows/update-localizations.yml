@@ -1,0 +1,63 @@
+name: Fetch and update translations (Lokalise)
+
+on:
+  workflow_dispatch:
+    inputs:
+      langs:
+        description: >
+          Optional filter of languages to fetch and update. Pass a comma-delimited string of language codes, 
+          like `en,fr,de` to fetch and update translations for the selected languages only.
+        type: string
+        default: "en,fr,de,ja,ru,es,uk_UA,zh-Hant,it"
+
+jobs:
+  update-localizations:
+    runs-on: macos-14
+    env:
+      SDK_LOCALIZATIONS_DESTINATION: "TangemSdk/TangemSdk/Common/Localization/Resources"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Import GPG key
+        uses: crazy-max/ghaction-import-gpg@01dd5d3ca463c7f10f7f4f7b4f177225ac661ee4  # v6.1.0
+        with:
+          gpg_private_key: ${{ secrets.PGP_PRIVATE_SERVICE }}
+          git_user_signingkey: true
+          git_commit_gpgsign: true
+
+      - name: Bundle install
+        run: |
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
+
+      - name: Fetch and update SDK localizations
+        env:
+          LOKALISE_PROJECT_ID: ${{ secrets.LOKALISE_CARD_SDK_PROJECT_ID }}
+          LOKALISE_API_TOKEN: ${{ secrets.LOKALISE_ACCESS_TOKEN }}
+        run: |
+          bundle exec fastlane update_translations \
+          languages:${{ github.event.inputs.langs }} \
+          destination:${{ env.SDK_LOCALIZATIONS_DESTINATION }}
+
+      - name: Push changes and open a pull-request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_BRANCH: lokalise-translations-sync
+          TARGET_BRANCH: ${{ github.ref_name }}
+          LANGUAGES: ${{ github.event.inputs.langs }}
+          GH_RUN_ID: ${{ github.run_id }}
+        run: |
+          git config --global user.name "Tangem Service"
+          git config --global user.email "gitservice@tangem.com"
+
+          git checkout -b $SOURCE_BRANCH $TARGET_BRANCH
+          git add "${SDK_LOCALIZATIONS_DESTINATION}"
+
+          : "${LANGUAGES:="all"}"
+          commit_message="Sync translations for \`${LANGUAGES}\` languages"
+          pr_message="[Localise] ${commit_message} (${GH_RUN_ID})"
+
+          git commit -S -m "${commit_message}"
+          git push --set-upstream origin $SOURCE_BRANCH --force
+          gh pr create --base $TARGET_BRANCH --head $SOURCE_BRANCH --title "${pr_message}" --body ""

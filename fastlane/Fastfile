@@ -1,7 +1,26 @@
 lane :test do
-run_tests(
-  project: "TangemSdk/TangemSdk.xcodeproj",
-  clean: true
-)
+  run_tests(
+    project: "TangemSdk/TangemSdk.xcodeproj",
+    clean: true
+  )
 end
 
+lane :update_translations do |options|
+  # Can't pass an array as a param for a lane, see https://github.com/fastlane-community/fastlane-plugin-appicon/issues/41 for details
+  languages = options[:languages]&.split(",")
+
+  destination = options[:destination]
+  UI.user_error!("Invalid destination path '#{destination}' for localization files") unless (destination and not destination.empty?)
+
+  bundle_install
+
+  lokalise(
+    destination: destination,
+    replace_breaks: true,
+    add_newline_eof: true,
+    use_original: true,
+    languages: languages,
+    export_sort: "a_z",
+    export_empty_as: "base"
+  )
+end

@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/tangem/lokalise-fastlane-actions.git
+  revision: 5dfcfe606cdfe54f4f2f4d45470f27bfc4574895
+  tag: 2.0.6-tangem1
+  specs:
+    fastlane-plugin-lokalise (2.0.6.pre.tangem1)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -163,7 +170,8 @@ GEM
       xcpretty-travis-formatter (>= 0.0.3, < 2.0.0)
     fastlane-sirp (1.0.0)
       sysrandom (~> 1.0)
-    ffi (1.17.0)
+    ffi (1.17.0-arm64-darwin)
+    ffi (1.17.0-x86_64-linux-gnu)
     fourflusher (2.3.1)
     fuzzy_match (2.0.4)
     gh_inspector (1.1.3)
@@ -286,6 +294,7 @@ PLATFORMS
 DEPENDENCIES
   cocoapods (~> 1.15.2)
   fastlane (~> 2.225.0)
+  fastlane-plugin-lokalise!
 
 BUNDLED WITH
    2.4.22

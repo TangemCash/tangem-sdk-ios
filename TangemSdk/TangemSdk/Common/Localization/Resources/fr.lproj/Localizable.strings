@@ -69,6 +69,7 @@
 "reset_codes_scan_to_reset" = "Scannez la carte pour réinitialiser les codes utilisateur";
 "reset_codes_success_message" = "Le code a été réinitialisé avec succès";
 "sign_multiple_chunks_part" = "Signature de la partie %1$li de %2$li";
+"tangem_never_pregenerate_code_alert" = "Tangem never sells wallets along with the pre-generated access code";
 "touch_id_localized_reason" = "Utilisez Touch ID pour enregistrer les codes d'accès dans l'application";
 "view_delegate_scan_description" = "Appuyez sur la carte comme indiqué ci-dessus et maintenez jusqu'à la fin de l'opération";
 "view_delegate_scan_description_format" = "Tap the %@ as shown above and hold until the end of the operation";

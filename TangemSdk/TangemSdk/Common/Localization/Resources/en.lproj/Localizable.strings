@@ -69,6 +69,7 @@
 "reset_codes_scan_to_reset" = "Scan card or ring to reset user codes";
 "reset_codes_success_message" = "Code was reset successfully";
 "sign_multiple_chunks_part" = "Signing part %1$li of %2$li";
+"tangem_never_pregenerate_code_alert" = "Tangem never sells wallets along with the pre-generated access code";
 "touch_id_localized_reason" = "Use Touch ID to save access codes in the app";
 "view_delegate_scan_description" = "Tap the card or ring as shown above and hold until the end of the operation";
 "view_delegate_scan_description_format" = "Tap the %@ as shown above and hold until the end of the operation";

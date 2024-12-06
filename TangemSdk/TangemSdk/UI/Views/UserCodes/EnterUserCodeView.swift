@@ -36,7 +36,11 @@ struct EnterUserCodeView: View {
                               onCommit: onDone,
                               shouldBecomeFirstResponder: true)
                 .padding(.top, 16)
-            
+
+            Text("tangem_never_pregenerate_code_alert".localized)
+                .foregroundColor(.gray)
+                .font(.system(size: 16))
+
             VStack(spacing: 16) {
                 
                 Spacer()

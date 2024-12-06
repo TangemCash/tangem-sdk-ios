@@ -69,6 +69,7 @@
 "reset_codes_scan_to_reset" = "Escanee la tarjeta para restablecer los códigos de usuario";
 "reset_codes_success_message" = "El código se restableció correctamente";
 "sign_multiple_chunks_part" = "Parte de firma %1$li de %2$li";
+"tangem_never_pregenerate_code_alert" = "Tangem never sells wallets along with the pre-generated access code";
 "touch_id_localized_reason" = "Use Touch ID para guardar códigos de acceso en la aplicación";
 "view_delegate_scan_description" = "Presione la tarjeta como se muestra arriba y manténgala presionada hasta que se complete la operación.";
 "view_delegate_scan_description_format" = "Tap the %@ as shown above and hold until the end of the operation";

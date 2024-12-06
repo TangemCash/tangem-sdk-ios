@@ -69,6 +69,7 @@
 "reset_codes_scan_to_reset" = "カードをスキャンしてユーザーコードをリセットしてください";
 "reset_codes_success_message" = "コードは正常にリセットされました";
 "sign_multiple_chunks_part" = "%2$liのうち%1$li部分に署名しています";
+"tangem_never_pregenerate_code_alert" = "Tangem never sells wallets along with the pre-generated access code";
 "touch_id_localized_reason" = "Touch IDを使用して、アプリにアクセスコードを保存します";
 "view_delegate_scan_description" = "上記のようにカードをタップし、操作が完了するまでホールドし続けます。";
 "view_delegate_scan_description_format" = "Tap the %@ as shown above and hold until the end of the operation";

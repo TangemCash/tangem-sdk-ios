@@ -69,6 +69,7 @@
 "reset_codes_scan_to_reset" = "Відскануйте картку, щоб скинути код";
 "reset_codes_success_message" = "Код успішно скинуто";
 "sign_multiple_chunks_part" = "Підпис частини %1$li з %2$li";
+"tangem_never_pregenerate_code_alert" = "Tangem never sells wallets along with the pre-generated access code";
 "touch_id_localized_reason" = "Використовуйте Touch ID для збереження кодів доступу в додатку";
 "view_delegate_scan_description" = "Піднесіть картку, як показано вище, і утримуйте до кінця операції";
 "view_delegate_scan_description_format" = "Tap the %@ as shown above and hold until the end of the operation";

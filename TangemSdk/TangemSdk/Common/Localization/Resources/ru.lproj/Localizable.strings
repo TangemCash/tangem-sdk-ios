@@ -69,6 +69,7 @@
 "reset_codes_scan_to_reset" = "Отсканируйте карту или кольцо для сброса кода";
 "reset_codes_success_message" = "Код успешно сброшен";
 "sign_multiple_chunks_part" = "Подпись части %1$li из %2$li";
+"tangem_never_pregenerate_code_alert" = "Tangem никогда не продает кошельки вместе с кодом доступа";
 "touch_id_localized_reason" = "Используйте Touch ID для сохранения кодов доступа в приложении";
 "view_delegate_scan_description" = "Поднесите карту или кольцо, как показано выше, и удерживайте до конца операции";
 "view_delegate_scan_description_format" = "Поднесите %@, как показано выше, и удерживайте до конца операции";

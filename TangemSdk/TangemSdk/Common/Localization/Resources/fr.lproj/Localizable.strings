@@ -1,4 +1,5 @@
 "attestation_failed_card" = "Cette carte peut être un échantillon de production ou une contrefaçon. Vous pouvez continuer à vos propres risques.";
+"attestation_failed_card_title" = "Erreur de validation de la carte";
 "attestation_failed_dev_card" = "Ceci est une carte de développement. Son authenticité ne peut être vérifiée. N'acceptez pas cette carte comme moyen de paiement.";
 "attestation_online_failed_body" = "Pour le moment, l'attestation en ligne de la carte ne peut pas être effectuée. Vous pouvez continuer à vos propres risques ou réessayer plus tard.";
 "attestation_online_failed_title" = "L'attestation en ligne a échoué";
@@ -27,7 +28,7 @@
 "error_backup_failed_already_created" = "Cette carte ne peut être utilisée comme sauvegarde car elle contient déjà un portefeuille. Assurez-vous qu'aucun fonds n'est stocké sur la carte en la scannant dans l'application. Ensuite, réinitialisez-le aux paramètres d'usine.";
 "error_backup_not_empty_wallets" = "Cette carte possède déjà un portefeuille. Si vous souhaitez continuer, vous devez d'abord le réinitialiser aux paramètres d'usine.";
 "error_backup_wrong_card" = "Cette carte ne peut être utilisée comme carte de secours. Code d'erreur: %@.";
-"error_card_verification_failed" = "Erreur de validation de la carte";
+"error_card_verification_failed" = "This card is a production sample or a counterfeit";
 "error_file_not_found" = "Fichier introuvable";
 "error_no_active_backup" = "La carte sélectionnée ne peut être utilisée pour réinitialiser le code d'accès de la carte, car elle ne contient aucune sauvegarde. Veuillez contacter l'équipe d'assistance.";
 "error_old_card" = "Les cartes Tangem émises avant septembre 2019 ne peuvent pas signer de données à l'aide d'un iPhone en raison des restrictions iOS";

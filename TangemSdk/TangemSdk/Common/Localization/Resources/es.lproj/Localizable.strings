@@ -1,4 +1,5 @@
 "attestation_failed_card" = "Esta tarjeta puede ser una muestra de producción o una falsificación. Puede continuar usándola bajo su propio riesgo.";
+"attestation_failed_card_title" = "Error de validación de tarjeta";
 "attestation_failed_dev_card" = "Esta es una tarjeta en desarrollo. No se puede verificar su autenticidad. No acepte esta tarjeta como medio de pago.";
 "attestation_online_failed_body" = "En estos momentos no es posible realizar la certificación online de la tarjeta. Puede continuar por su cuenta y riesgo o volver a intentarlo más tarde.";
 "attestation_online_failed_title" = "La certificación en línea falló";
@@ -27,7 +28,7 @@
 "error_backup_failed_already_created" = "Esta tarjeta no se puede usar como respaldo porque ya contiene una billetera. Asegúrese de que no haya fondos almacenados en la tarjeta escaneándola en la aplicación. Luego, restáurela a la configuración de fábrica.";
 "error_backup_not_empty_wallets" = "Esta tarjeta ya tiene billetera. Si quiere continuar, primero deba restablecerlo a la configuración de fábrica.";
 "error_backup_wrong_card" = "Esta tarjeta no se puede utilizar como tarjeta de respaldo. Código de error: %@.";
-"error_card_verification_failed" = "Error de validación de tarjeta";
+"error_card_verification_failed" = "This card is a production sample or a counterfeit";
 "error_file_not_found" = "Archivo no encontrado";
 "error_no_active_backup" = "La tarjeta seleccionada no se puede utilizar para restablecer el código de acceso de la tarjeta porque no tiene una copia de seguridad. Comuníquese con el equipo de soporte.";
 "error_old_card" = "Las tarjetas Tangem emitidas antes de septiembre de 2019 no pueden firmar datos usando un iPhone debido a restricciones de iOS";

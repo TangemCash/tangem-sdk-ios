@@ -8,7 +8,7 @@ on:
           Optional filter of languages to fetch and update. Pass a comma-delimited string of language codes, 
           like `en,fr,de` to fetch and update translations for the selected languages only.
         type: string
-        default: "en,fr,de,ja,ru,es,uk_UA,zh-Hant,it"
+        default: "en,fr,de,ja,ru,es,uk_UA,zh_TW,it"
 
 jobs:
   update-localizations:

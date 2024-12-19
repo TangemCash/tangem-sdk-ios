@@ -1,4 +1,5 @@
 "attestation_failed_card" = "This card may be production sample or counterfeit. You can continue at your own risk.";
+"attestation_failed_card_title" = "卡驗證失敗";
 "attestation_failed_dev_card" = "這是一張開發卡。其真實性無從考證。不接受此卡作為付款方式。";
 "attestation_online_failed_body" = "At the moment, online attestation of the card cannot be performed. You can continue at your own risk or try again later.";
 "attestation_online_failed_title" = "在線認證失敗";
@@ -27,7 +28,7 @@
 "error_backup_failed_already_created" = "This card cannot be used as a backup because it already contains a wallet. Ensure that no funds are stored on the card by scanning it in the app. Then, reset it to factory settings.";
 "error_backup_not_empty_wallets" = "這張卡已經有錢包了。如果要繼續，您必須先將其重置為出廠設置";
 "error_backup_wrong_card" = "此卡不能作為備用卡使用。錯誤代碼：%@。";
-"error_card_verification_failed" = "卡驗證失敗";
+"error_card_verification_failed" = "This card is a production sample or a counterfeit";
 "error_file_not_found" = "文件未找到";
 "error_no_active_backup" = "The selected card cannot be used to reset the card access code, because there is no backup on it. Please contact support team.";
 "error_old_card" = "由於 iOS 限制，2019 年 9 月之前發行的 Tangem 卡無法使用 iPhone 簽署數據";

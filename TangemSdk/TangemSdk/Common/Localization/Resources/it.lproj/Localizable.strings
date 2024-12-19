@@ -1,4 +1,5 @@
 "attestation_failed_card" = "This card may be production sample or counterfeit. You can continue at your own risk.";
+"attestation_failed_card_title" = "Non è stata eseguita la verifica della carta";
 "attestation_failed_dev_card" = "This is a development card. Its authenticity cannot be verified. Do not accept this card as a means of payment.";
 "attestation_online_failed_body" = "At the moment, online attestation of the card cannot be performed. You can continue at your own risk or try again later.";
 "attestation_online_failed_title" = "Online attestation failed";
@@ -27,7 +28,7 @@
 "error_backup_failed_already_created" = "This card cannot be used as a backup because it already contains a wallet. Ensure that no funds are stored on the card by scanning it in the app. Then, reset it to factory settings.";
 "error_backup_not_empty_wallets" = "This card already has a wallet. If you want to proceed you have to reset it to factory settings first.";
 "error_backup_wrong_card" = "This card can't be used as a backup card. Error code: %@.";
-"error_card_verification_failed" = "Non è stata eseguita la verifica della carta";
+"error_card_verification_failed" = "This card is a production sample or a counterfeit";
 "error_file_not_found" = "File not found";
 "error_no_active_backup" = "The selected card cannot be used to reset the card access code, because there is no backup on it. Please contact support team.";
 "error_old_card" = "Tangem cards issued before September 2019 cannot sign data using an iPhone due to iOS restrictions";

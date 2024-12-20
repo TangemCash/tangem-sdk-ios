@@ -54,11 +54,9 @@ public final class AttestationTask: CardSessionRunnable {
                 self.currentAttestationStatus.cardKeyAttestation = .verifiedOffline
                 self.continueAttestation(session, completion)
             case .failure(let error):
-                //Card attestation failed. Update status and continue attestation
+                //Card attestation failed. Update status and fail attestation
                 if case TangemSdkError.cardVerificationFailed = error {
                     self.currentAttestationStatus.cardKeyAttestation = .failed
-                    self.continueAttestation(session, completion)
-                    return
                 }
                 
                 completion(.failure(error))
@@ -87,11 +85,9 @@ public final class AttestationTask: CardSessionRunnable {
                 self.currentAttestationStatus.walletKeysAttestation = hasWarnings ? .warning : .verified
                 self.runExtraAttestation(session, completion)
             case .failure(let error):
-                //Wallets attestation failed. Update status and continue attestation
+                //Wallets attestation failed. Update status and fail attestation
                 if case TangemSdkError.cardVerificationFailed = error {
                     self.currentAttestationStatus.walletKeysAttestation = .failed
-                    self.runExtraAttestation(session, completion)
-                    return
                 }
                 
                 completion(.failure(error))

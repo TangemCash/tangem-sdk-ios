@@ -99,7 +99,7 @@ extension DefaultSessionViewDelegate: SessionViewDelegate {
             return
         }
         
-        let title = TangemSdkError.cardVerificationFailed.localizedDescription
+        let title = "attestation_failed_card_title".localized
         let message = isDevelopmentCard ? "attestation_failed_dev_card".localized
             : "attestation_failed_card".localized
         let tint = style.colors.tintUIColor

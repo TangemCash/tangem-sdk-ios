@@ -292,9 +292,7 @@ public class CardSession {
             completion(.failure(.sessionInactive))
             return
         }
-        
-        Log.apdu("Not encrypted apdu: \(apdu)")
-        
+
         reader.tag
             .filter { $0 != .none }
             .filter {[weak self] tag in

@@ -205,8 +205,6 @@ public enum TlvTag: Byte {
             return true
         case .unknown,
                 .cardId,
-                .pin,
-                .pin2,
                 .transactionOutHash,
                 .transactionOutHashSize,
                 .walletSignature,

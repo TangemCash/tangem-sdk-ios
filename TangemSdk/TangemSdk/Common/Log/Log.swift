@@ -150,7 +150,7 @@ public extension Log {
             case .release:
                 return [.error]
             case .verbose:
-                return Log.Level.allCases
+                return [.warning, .error, .command, .debug, .nfc, .session]
             }
         }
         

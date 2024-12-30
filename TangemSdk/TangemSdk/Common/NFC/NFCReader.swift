@@ -356,7 +356,6 @@ extension NFCReader: CardReader {
                         guard let self = self else { return }
 
                         Log.nfc("Success response from card received")
-                        Log.apdu(rApdu)
                         self.sendRetryCount = Constants.retryCount
                         self.startIdleTimer()
                     })

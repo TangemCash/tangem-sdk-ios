@@ -201,7 +201,8 @@ public enum TlvTag: Byte {
                 .newPin2,
                 .newPin3,
                 .walletPublicKey,
-                .walletPrivateKey:
+                .walletPrivateKey,
+                .walletHDChain:
             return true
         case .unknown,
                 .cardId,
@@ -295,7 +296,6 @@ public enum TlvTag: Byte {
                 .fileCounter,
                 .fileOwnerIndex,
                 .walletHDPath,
-                .walletHDChain,
                 .certificate,
                 .backupStatus,
                 .backupCount,

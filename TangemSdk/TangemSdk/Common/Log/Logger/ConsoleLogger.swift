@@ -20,10 +20,12 @@ public class ConsoleLogger: TangemSdkLogger {
     }()
     
     public func log(_ message: String, level: Log.Level) {
+    #if DEBUG
         guard Log.filter(level) else { return }
         
         loggerSerialQueue.async {
             print("\(level.emoji) \(self.dateFormatter.string(from: Date())):\(level.prefix) \(message)")
         }
+    #endif //DEBUG
     }
 }

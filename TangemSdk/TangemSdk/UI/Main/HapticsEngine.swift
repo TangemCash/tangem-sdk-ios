@@ -117,28 +117,32 @@ class HapticsEngine {
             return
         }
         
-        do {
-            engine = try CHHapticEngine()
-            engine!.playsHapticsOnly = true
-            engine!.stoppedHandler = {[weak self] reason in
-                Log.debug("CHHapticEngine stop handler: The engine stopped for reason: \(reason.rawValue)")
-                self?.engineNeedsStart = true
-            }
-            engine!.resetHandler = {[weak self] in
-                Log.debug("Reset Handler: Restarting the engine.")
-                do {
-                    // Try restarting the engine.
-                    try self?.engine?.start()
-                    
-                    // Indicate that the next time the app requires a haptic, the app doesn't need to call engine.start().
-                    self?.engineNeedsStart = false
-                    
-                } catch {
-                    Log.error("Failed to start the engine with error: \(error)")
+        /// We need to instantiate `CHHapticEngine` on a background thread
+        /// because on the Main thread I/O operations can cause UI unresponsiveness
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                self.engine = try CHHapticEngine()
+                self.engine!.playsHapticsOnly = true
+                self.engine!.stoppedHandler = { [weak self] reason in
+                    Log.debug("CHHapticEngine stop handler: The engine stopped for reason: \(reason.rawValue)")
+                    self?.engineNeedsStart = true
                 }
+                self.engine!.resetHandler = { [weak self] in
+                    Log.debug("Reset Handler: Restarting the engine.")
+                    do {
+                        // Try restarting the engine.
+                        try self?.engine?.start()
+                        
+                        // Indicate that the next time the app requires a haptic, the app doesn't need to call engine.start().
+                        self?.engineNeedsStart = false
+                        
+                    } catch {
+                        Log.error("Failed to start the engine with error: \(error)")
+                    }
+                }
+            } catch {
+                Log.error("CHHapticEngine error: \(error)")
             }
-        } catch {
-            Log.error("CHHapticEngine error: \(error)")
         }
     }
 

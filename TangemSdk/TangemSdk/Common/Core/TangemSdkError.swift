@@ -55,10 +55,6 @@ public enum TangemSdkError: Error, LocalizedError, Encodable {
     /// This error is returned when the `TlvDecoder` failed to decode value. Please let us know
     case decodingFailed(_ message: String)
     
-    case failedToEncryptApdu
-    
-    case failedToDecryptApdu
-    
     case failedToEstablishEncryption
     
     case invalidResponseApdu
@@ -95,9 +91,6 @@ public enum TangemSdkError: Error, LocalizedError, Encodable {
     
     // Personalization Errors
     case alreadyPersonalized
-    
-    // Depersonalization Errors
-    case cannotBeDepersonalized
     
     // Read Errors
     case accessCodeRequired
@@ -260,7 +253,6 @@ public enum TangemSdkError: Error, LocalizedError, Encodable {
     case noBackupDataForCard
     case backupFailedEmptyWallets
     case backupFailedNotEmptyWallets(cardId: String)
-    case certificateSignatureRequired
     case issuerSignatureLoadingFailed
     case accessCodeOrPasscodeRequired
     case noActiveBackup
@@ -283,8 +275,7 @@ public enum TangemSdkError: Error, LocalizedError, Encodable {
     case hdWalletDisabled
     case keysImportDisabled
     case userCodeRecoveryDisabled
-    
-    case resetPinNoCardToReset
+
     case resetPinWrongCard(internalCode: Int? = nil)
     
     public var code: Int {
@@ -307,8 +298,6 @@ public enum TangemSdkError: Error, LocalizedError, Encodable {
         case .decodingFailedMissingTag: return 20005
         case .decodingFailedTypeMismatch: return 20006
         case .decodingFailed: return 20007
-        case .failedToEncryptApdu: return 20008
-        case .failedToDecryptApdu: return 20009
         case .failedToEstablishEncryption: return 20010
         case .invalidResponseApdu: return 20011
         case .failedToBuildCommandApdu: return 20012
@@ -342,8 +331,6 @@ public enum TangemSdkError: Error, LocalizedError, Encodable {
         case .wrongPasscode: return 40013
             
         case .alreadyPersonalized: return 40101
-            
-        case .cannotBeDepersonalized: return 40201
             
         case .accessCodeRequired: return 40401
         case .nonHardenedDerivationNotSupported: return 40402
@@ -382,7 +369,6 @@ public enum TangemSdkError: Error, LocalizedError, Encodable {
         case .noBackupDataForCard: return 41208
         case .backupFailedEmptyWallets: return 41209
         case .backupFailedNotEmptyWallets: return 41210
-        case .certificateSignatureRequired: return 41211
         case .accessCodeOrPasscodeRequired: return 41212
         case .noActiveBackup: return 41220
         case .resetBackupFailedHasBackedUpWallets: return 41221
@@ -400,7 +386,6 @@ public enum TangemSdkError: Error, LocalizedError, Encodable {
         case .backupFailedKeysImportSettings: return 41233
         case .backupFailedAlreadyCreated: return 41234
             
-        case .resetPinNoCardToReset: return 41300
         case .resetPinWrongCard(let internalCode): return internalCode ?? 41301
             
         case .fileSettingsUnsupported: return 42000
@@ -561,7 +546,7 @@ public enum TangemSdkError: Error, LocalizedError, Encodable {
             case .readerErrorInvalidParameterLength:
                 return .readerErrorInvalidParameterLength
             case .readerErrorParameterOutOfBound:
-                return readerErrorParameterOutOfBound
+                return .readerErrorParameterOutOfBound
             case .readerTransceiveErrorTagConnectionLost:
                 return .readerTransceiveErrorTagConnectionLost
             case .readerTransceiveErrorRetryExceeded:
@@ -573,7 +558,7 @@ public enum TangemSdkError: Error, LocalizedError, Encodable {
             case .readerTransceiveErrorTagNotConnected:
                 return .readerTransceiveErrorTagNotConnected
             case .readerSessionInvalidationErrorSessionTimeout:
-                return readerSessionInvalidationErrorSessionTimeout
+                return .readerSessionInvalidationErrorSessionTimeout
             case .readerSessionInvalidationErrorSessionTerminatedUnexpectedly:
                 return .readerSessionInvalidationErrorSessionTerminatedUnexpectedly
             case .readerSessionInvalidationErrorFirstNDEFTagRead:

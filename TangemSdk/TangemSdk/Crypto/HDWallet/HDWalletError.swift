@@ -11,7 +11,6 @@ import Foundation
 enum HDWalletError: String, Error, LocalizedError {
     case hardenedNotSupported
     case wrongPath
-    case wrongIndex
     case invalidSeed
     case invalidHMACKey
     

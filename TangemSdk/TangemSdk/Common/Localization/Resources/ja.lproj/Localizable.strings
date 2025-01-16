@@ -28,7 +28,7 @@
 "error_backup_failed_already_created" = "このカードにはすでにウォレットが含まれているため、バックアップとして使用することはできません。アプリでカードをスキャンして、カードに資金が保存されていないことを確認してください。その後、工場出荷時の設定にリセットしてください。";
 "error_backup_not_empty_wallets" = "このカードにはすでにウォレットがあります。続行するには、まず工場出荷時の設定にリセットする必要があります。";
 "error_backup_wrong_card" = "このカードはバックアップカードとして使用できません。エラー コード: %@ 。";
-"error_card_verification_failed" = "This card is a production sample or a counterfeit";
+"error_card_verification_failed" = "このカードは製造サンプルまたは偽造品です";
 "error_file_not_found" = "ファイルが見つかりません";
 "error_no_active_backup" = "選択したカードにはバックアップがないため、カードのアクセスコードをリセットすることはできません。サポートチームにお問い合わせください。";
 "error_old_card" = "2019年9月以前に発行されたTangemカードは、iOSの制限によりiPhoneを使用してデータに署名できません。";
@@ -70,7 +70,7 @@
 "reset_codes_scan_to_reset" = "カードをスキャンしてユーザーコードをリセットしてください";
 "reset_codes_success_message" = "コードは正常にリセットされました";
 "sign_multiple_chunks_part" = "%2$liのうち%1$li部分に署名しています";
-"tangem_never_pregenerate_code_alert" = "Tangem never sells wallets along with the pre-generated access code";
+"tangem_never_pregenerate_code_alert" = "Tangemは、事前に生成されたアクセスコードと一緒にウォレットを販売することはありません";
 "touch_id_localized_reason" = "Touch IDを使用して、アプリにアクセスコードを保存します";
 "view_delegate_scan_description" = "上記のようにカードをタップし、操作が完了するまでホールドし続けます。";
 "view_delegate_scan_description_format" = "上記のように%@タップし、操作が終了するまで押し続けます。";

@@ -8,7 +8,7 @@
 "backup_finalize_backup_card_message_format" = "Tap the card with number %@ to your phone exactly as shown above.";
 "backup_finalize_backup_ring_message" = "Tap the ring to your phone exactly as shown above.";
 "backup_finalize_primary_card_message_format" = "Connect your phone and the primary card with number %@ exactly as it shown above.";
-"backup_finalize_primary_ring_message" = "Connect your phone and the primary ring as it shown above.";
+"backup_finalize_primary_ring_message" = "Connect your phone and the primary ring as shown above.";
 "backup_prepare_primary_card_message" = "Connect your phone and the primary card exactly as it shown above.";
 "backup_prepare_primary_card_message_format" = "Connect your phone and the primary card with number %@ exactly as it shown above.";
 "cid_format" = "Card #%@";

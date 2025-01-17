@@ -23,7 +23,6 @@ final class StartBackupCardLinkingTask: CardSessionRunnable {
     private let primaryCard: PrimaryCard
     private let addedBackupCards: [String]
     private let skipCompatibilityChecks: Bool
-    private var linkingCommand: StartBackupCardLinkingCommand? = nil
 
     init(primaryCard: PrimaryCard, addedBackupCards: [String], skipCompatibilityChecks: Bool = false) {
         self.primaryCard = primaryCard
@@ -93,19 +92,36 @@ final class StartBackupCardLinkingTask: CardSessionRunnable {
             }
         }
 
-        linkingCommand = StartBackupCardLinkingCommand(primaryCardLinkingKey: primaryCard.linkingKey)
-        linkingCommand!.run(in: session) { result in
+        let linkingCommand = StartBackupCardLinkingCommand(primaryCardLinkingKey: primaryCard.linkingKey)
+        linkingCommand.run(in: session) { result in
             switch result {
             case .success(let backupCard):
                 guard let card = session.environment.card else {
                     completion(.failure(.missingPreflightRead))
                     return
                 }
-                
-                completion(.success(.init(backupCard: backupCard, card: card)))
+
+                let response = StartBackupCardLinkingTaskResponse(backupCard: backupCard, card: card)
+                self.runAttestation(session, response: response, completion: completion)
             case .failure(let error):
                 completion(.failure(error))
             }
+
+            withExtendedLifetime(linkingCommand) {}
+        }
+    }
+
+    private func runAttestation(_ session: CardSession, response: StartBackupCardLinkingTaskResponse, completion: @escaping CompletionResult<StartBackupCardLinkingTaskResponse>) {
+        let attestationTask = AttestationTask(mode: session.environment.config.attestationMode)
+        attestationTask.run(in: session) { result in
+            switch result {
+            case .success:
+                completion(.success(response))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+
+            withExtendedLifetime(attestationTask) {}
         }
     }
 

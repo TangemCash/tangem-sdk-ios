@@ -52,4 +52,9 @@ public struct SessionEnvironment {
             return passcode.value != type.defaultValue.sha256()
         }
     }
+
+    mutating func resetCodes() {
+        accessCode = .init(.accessCode)
+        passcode = .init(.passcode)
+    }
 }

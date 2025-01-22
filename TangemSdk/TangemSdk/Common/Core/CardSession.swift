@@ -33,7 +33,7 @@ public class CardSession {
     }
 
     // initial environment to be able to reset a current one
-    private let _environment: SessionEnvironment
+    private var _environment: SessionEnvironment
     public internal(set) var environment: SessionEnvironment
 
     private let reader: CardReader
@@ -350,6 +350,7 @@ public class CardSession {
     
     private func sessionDidStop(completion: (() -> Void)?) {
         nfcReaderSubscriptions = []
+        resetEnvironment()
         preflightReadMode = .fullCardRead
         sendSubscription = []
         viewDelegate.sessionStopped(completion: completion)
@@ -422,7 +423,7 @@ public class CardSession {
                 case .preflightFiltered:
                     self.viewDelegate.wrongCard(message: error.localizedDescription)
                     // We have to return environment to initial state to reset all the changes
-                    self.environment = self._environment
+                    self.resetEnvironment()
                     DispatchQueue.global().asyncAfter(deadline: .now() + 2) {
                         guard self.reader.isReady else {
                             onSessionStarted(self, .userCancelled)
@@ -584,6 +585,11 @@ public class CardSession {
         resetCodesController!.cardIdDisplayFormat = config.cardIdDisplayFormat
         resetCodesController!.start(codeType: type, cardId: cardId, completion: completion)
     }
+
+    private func resetEnvironment() {
+        _environment.resetCodes()
+        environment = _environment
+    }
 }
 //MARK: - JSON RPC
 extension CardSession {
@@ -596,7 +602,10 @@ extension CardSession {
         do {
             request = try JSONRPCRequest(jsonString: jsonRequest)
             let runnable = try jsonConverter.convert(request: request)
-            runnable.run(in: self) { completion($0.toJsonResponse(id: request.id).json) }
+            runnable.run(in: self) {
+                completion($0.toJsonResponse(id: request.id).json)
+                self.resetEnvironment()
+            }
         } catch {
             completion(error.toJsonResponse(id: request?.id).json)
         }

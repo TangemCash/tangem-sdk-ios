@@ -11,48 +11,33 @@ import SwiftUI
 import Combine
 
 struct FocusableTextField: View {
-    let isSecured: Bool
     let shouldBecomeFirstResponder: Bool
     let text: Binding<String>
     var onCommit: () -> Void = {}
-    
+
     @FocusState private var focusedField: Field?
     @StateObject private var model: FocusableTextFieldModel = .init()
-    
+
     var body: some View {
-        ZStack {
-            if isSecured {
-                SecureField("", text: text, onCommit: onCommit)
-                    .focused($focusedField, equals: .secure)
-            } else {
-                TextField("", text: text, onCommit: onCommit)
-                    .focused($focusedField, equals: .plain)
+        SecureField("", text: text, onCommit: onCommit)
+            .textContentType(.oneTimeCode) // to prevent passwords suggestion. Tested on ios 15-18
+            .focused($focusedField, equals: .secure)
+            .keyboardType(.asciiCapable)
+            .onAppear(perform: model.onAppear)
+            .onReceive(model.focusPublisher) { _ in
+                if shouldBecomeFirstResponder {
+                    focusedField = .secure
+                }
             }
-        }
-        .keyboardType(.default)
-        .onAppear(perform: model.onAppear)
-        .onChange(of: isSecured) { newValue in
-            setFocus(for: newValue)
-        }
-        .onReceive(model.focusPublisher) { _ in
-            if shouldBecomeFirstResponder {
-                setFocus(for: isSecured)
-            }
-        }
     }
-    
-    init(isSecured: Bool,
-         shouldBecomeFirstResponder: Bool,
+
+    init(shouldBecomeFirstResponder: Bool,
          text: Binding<String>,
-         onCommit: @escaping () -> Void = {}) {
-        self.isSecured = isSecured
+         onCommit: @escaping () -> Void = {}
+    ) {
         self.shouldBecomeFirstResponder = shouldBecomeFirstResponder
         self.text = text
         self.onCommit = onCommit
-    }
-    
-    private func setFocus(for value: Bool) {
-        focusedField = value ? .secure : .plain
     }
 }
 
@@ -60,24 +45,23 @@ struct FocusableTextField: View {
 private extension FocusableTextField {
     enum Field: Hashable {
         case secure
-        case plain
     }
 }
 
 fileprivate class FocusableTextFieldModel: ObservableObject {
     var focusPublisher: PassthroughSubject<Void, Never> = .init()
-    
+
     private var appearPublisher: CurrentValueSubject<Bool, Never> = .init(false)
     private var activePublisher: CurrentValueSubject<Bool, Never> = .init(UIApplication.shared.isActive)
     private var bag: Set<AnyCancellable> = .init()
-    
+
     private var becomeActivePublisher: AnyPublisher<Void, Never> {
         NotificationCenter.default
             .publisher(for: UIApplication.didBecomeActiveNotification)
             .map { _ in () }
             .eraseToAnyPublisher()
     }
-    
+
     /// This is the minimum allowable delay, calculated empirically for all iOS versions prior 16.
     private var appearDelay: Int {
         if #available(iOS 16.0, *) {
@@ -86,22 +70,22 @@ fileprivate class FocusableTextFieldModel: ObservableObject {
             return 500
         }
     }
-    
+
     init() {
         bind()
     }
-    
+
     func onAppear() {
         appearPublisher.send(true)
     }
-    
+
     private func bind() {
         becomeActivePublisher
             .sink { [weak self] _ in
                 self?.activePublisher.send(true)
             }
             .store(in: &bag)
-        
+
         appearPublisher
             .filter { $0 }
             .delay(for: .milliseconds(appearDelay), scheduler: DispatchQueue.main)

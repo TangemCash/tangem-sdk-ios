@@ -58,12 +58,17 @@ class AppModel: ObservableObject {
         config.handleErrors = self.handleErrors
         config.filter.allowedCardTypes = FirmwareVersion.FirmwareType.allCases
         config.accessCodeRequestPolicy = accessCodeRequestPolicy
+
+        var loggers: [TangemSdkLogger] = [ConsoleLogger()]
+
         if displayLogs {
-            config.logConfig = .custom(logLevel: Log.Level.allCases,
-                                       loggers: [ConsoleLogger(), logger])
-        } else {
-            config.logConfig = .verbose
+            loggers.append(logger)
         }
+
+        config.logConfig = .custom(
+            logLevel: Log.Level.allCases,
+            loggers: [ConsoleLogger(), logger]
+        )
 
         config.defaultDerivationPaths = [
             .secp256k1: [try! DerivationPath(rawPath: "m/0'/1")],

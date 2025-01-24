@@ -281,6 +281,7 @@ public class CardSession {
     ///   - completion: Completion handler. Invoked by nfc-reader
     public final func send(apdu: CommandApdu, completion: @escaping CompletionResult<ResponseApdu>) {
         Log.session("Send")
+
         guard sendSubscription.isEmpty else {
             Log.error(TangemSdkError.busy)
             completion(.failure(.busy))
@@ -361,8 +362,10 @@ public class CardSession {
     private func prepareSession<T: CardSessionRunnable>(for runnable: T, completion: @escaping CompletionResult<Void>) {
         Log.session("Prepare card session")
         preflightReadMode = runnable.preflightReadMode
+        environment.encryptionMode = runnable.encryptionMode
 
-        Log.session("Current policy is \(environment.config.accessCodeRequestPolicy)")
+        Log.session("Access code policy is \(environment.config.accessCodeRequestPolicy)")
+        Log.session("Encryption mode is \(environment.encryptionMode)")
 
         guard runnable.shouldAskForAccessCode else {
             Log.session("Skip an access codes request")
@@ -477,6 +480,8 @@ public class CardSession {
                     let secret = try encryptionHelper.generateSecret(keyB: response.sessionKeyB)
                     let sessionKey = (secret + protocolKey).getSha256()
                     self.environment.encryptionKey = sessionKey
+
+                    Log.session("The encryption established")
                     return ()
                 }
                 .mapError{$0.toTangemSdkError()}

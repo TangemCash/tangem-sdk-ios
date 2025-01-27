@@ -16,12 +16,10 @@ struct FloatingTextField: View {
     var shouldBecomeFirstResponder: Bool = false
     
     @EnvironmentObject private var style: TangemSdkStyle
-    @State private var isSecured: Bool = true
     
     @ViewBuilder
     private var textField: some View {
         FocusableTextField(
-            isSecured: isSecured,
             shouldBecomeFirstResponder: shouldBecomeFirstResponder,
             text: text,
             onCommit: onCommit
@@ -44,11 +42,7 @@ struct FloatingTextField: View {
                         .font(.system(size: 17))
                         .frame(height: 17)
                 }
-                
-                Button(action: toggleSecured) {
-                    Image(systemName: isSecured ? "eye" : "eye.slash")
-                        .foregroundColor(.gray)
-                }
+
             }
             
             Color(UIColor.opaqueSeparator)
@@ -56,10 +50,6 @@ struct FloatingTextField: View {
         }
         .padding(.top, 20)
         .animation(Animation.easeInOut(duration: 0.1), value: text.wrappedValue)
-    }
-    
-    private func toggleSecured() {
-        isSecured.toggle()
     }
 }
 

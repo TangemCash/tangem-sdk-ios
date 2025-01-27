@@ -20,9 +20,8 @@ struct FocusableTextField: View {
 
     var body: some View {
         SecureField("", text: text, onCommit: onCommit)
-            .textContentType(.oneTimeCode) // to prevent passwords suggestion. Tested on ios 15-18
             .focused($focusedField, equals: .secure)
-            .keyboardType(.asciiCapable)
+            .keyboardType(.default)
             .onAppear(perform: model.onAppear)
             .onReceive(model.focusPublisher) { _ in
                 if shouldBecomeFirstResponder {

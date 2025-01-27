@@ -22,6 +22,9 @@ struct FocusableTextField: View {
         SecureField("", text: text, onCommit: onCommit)
             .focused($focusedField, equals: .secure)
             .keyboardType(.default)
+            .writingToolsBehaviorDisabled()
+            .autocorrectionDisabled()
+            .textInputAutocapitalization(.never)
             .onAppear(perform: model.onAppear)
             .onReceive(model.focusPublisher) { _ in
                 if shouldBecomeFirstResponder {
@@ -100,5 +103,16 @@ fileprivate class FocusableTextFieldModel: ObservableObject {
 fileprivate extension UIApplication {
     var isActive: Bool {
         applicationState == .active
+    }
+}
+
+fileprivate extension View {
+    @ViewBuilder
+    func writingToolsBehaviorDisabled() -> some View {
+        if #available(iOS 18.0, *) {
+            self.writingToolsBehavior(.disabled)
+        } else {
+            self
+        }
     }
 }

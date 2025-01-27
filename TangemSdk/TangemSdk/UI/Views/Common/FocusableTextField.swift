@@ -99,7 +99,6 @@ fileprivate class FocusableTextFieldModel: ObservableObject {
     }
 }
 
-
 fileprivate extension UIApplication {
     var isActive: Bool {
         applicationState == .active

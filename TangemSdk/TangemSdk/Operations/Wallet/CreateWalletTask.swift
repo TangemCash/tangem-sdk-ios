@@ -18,6 +18,10 @@ import Foundation
  * RemainingSignature is set to MaxSignatures.
  */
 public class CreateWalletTask: CardSessionRunnable {
+    public var encryptionMode: EncryptionMode {
+        privateKey == nil ? .none : .strong
+    }
+
     private let curve: EllipticCurve
     private let privateKey: ExtendedPrivateKey?
     private var derivationTask: DeriveWalletPublicKeysTask? = nil

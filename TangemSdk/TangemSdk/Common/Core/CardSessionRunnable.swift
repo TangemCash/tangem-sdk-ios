@@ -15,7 +15,10 @@ public protocol CardSessionRunnable {
     
     /// Allow SDK to fetch access code from the local encrypted repository when running the command
     var shouldAskForAccessCode: Bool { get }
-    
+
+    /// An enforced encryption mode. Managed by a card if none. None by default.
+    var encryptionMode: EncryptionMode { get }
+
     /// Simple interface for responses received after sending commands to Tangem cards.
     associatedtype Response
     
@@ -36,7 +39,9 @@ extension CardSessionRunnable {
     public var preflightReadMode: PreflightReadMode { .fullCardRead }
     
     public var shouldAskForAccessCode: Bool { true }
-    
+
+    public var encryptionMode: EncryptionMode { .none }
+
     public func prepare(_ session: CardSession, completion: @escaping CompletionResult<Void>) {
         completion(.success(()))
     }
